@@ -1,0 +1,1949 @@
+@font-face {
+    font-family: 'Nikkey';
+    src: url('/assets/fonts/PPNikkeiJournal-Ultrabold.woff2') format('woff2'),
+         url('/assets/fonts/PPNikkeiJournal-Ultrabold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+}
+
+:root {
+    --background-color: #ececf0;
+    --box-color: #e0e0e6;
+}
+
+#content {  
+    display: grid;
+    grid-template-columns: repeat(96, 1fr);
+    grid-template-rows: repeat(26, 1fr);
+    gap: 1.5rem;
+    padding: 2rem 2rem 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 800px;
+    margin-top: -25px;
+}
+
+
+#box-projects {
+    --gradient-angle: 135deg;
+    background: linear-gradient(var(--gradient-angle), #E7C76F 0%, #8E8DBE 60%);
+    grid-column: 5 / 29;
+    grid-row: 2 / 6;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: --gradient-angle 0.3s ease;
+}
+
+#box-projects::before {
+    content: '';
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 400%;
+    height: 400%;
+    opacity: 0.1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    animation: grain 8s steps(10) infinite;
+    pointer-events: none;
+}
+
+#box-projects:hover {
+    --gradient-angle: 165deg;
+}
+
+@property --gradient-angle {
+    syntax: '<angle>';
+    initial-value: 135deg;
+    inherits: false;
+}
+
+#box-projects h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#box-about {
+    background-color: var(--box-color);
+    grid-column: 29 / 53;
+    grid-row: 2 / 7;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: left;
+    position: relative;
+}
+
+#box-techstack {
+    background-color: var(--box-color);
+    grid-column: 29 / 37;
+    grid-row: 7 / 14;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+#box-right-top {
+    background-color: var(--box-color);
+    grid-column: 37 / 53;
+    grid-row: 7 / 11;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+#box-right-bottom {
+    background-color: var(--box-color);
+    grid-column: 37 / 53;
+    grid-row: 11 / 14;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+#box-lastfm {
+    background-color: var(--box-color);
+    grid-column: 5 / 29;
+    grid-row: 6 / 17;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+
+
+#box-links a {
+    position: relative; /* Positioning context for the underline */
+    text-decoration: none; /* Remove default underline */
+    color: #333; /* Link color */
+    margin: 0 1rem; /* Space between links */
+}
+
+/* Pseudo-element for the underline */
+#box-links a::after {
+    content: ''; /* Creates a pseudo-element */
+    position: absolute; /* Positions it relative to the link */
+    left: 0; /* Start from the left */
+    bottom: -5px; /* Position it below the text */
+    width: 100%; /* Full width of the link */
+    height: 3px; /* Height of the underline */
+    background: #333; /* Color of the underline */
+    transform: scaleX(0); /* Initially hidden */
+    transform-origin: left; /* Ensure animation starts from the left */
+    transition: transform 0.5s ease; /* Animation for the underline, longer duration */
+}
+
+/* Animate underline on hover over the entire box */
+#box-links:hover a::after {
+    transform: scaleX(1); /* Expands the underline on hover */
+}
+
+/* Keep the hover effect for individual links */
+#box-links a:hover::after {
+    transform: scaleX(1); /* Expands the underline on hover */
+}
+
+/* Add a new box for CV */
+#cv-download {
+    background-color: var(--box-color);
+    grid-column: 45 / 53;
+    grid-row: 14 / 17;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cv-link {
+    display: block;
+    position: relative;
+    width: 82px;  /* 48px * 1.7 */
+    height: 82px; /* 48px * 1.7 */
+}
+
+.cv-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.cv-empty {
+    opacity: 1;
+}
+
+.cv-filled {
+    opacity: 0;
+}
+
+#cv-download:hover .cv-empty {
+    opacity: 0;
+}
+
+#cv-download:hover .cv-filled {
+    opacity: 1;
+}
+
+h1 {
+    font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+/* Add some basic reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Helvetica, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    background-color: var(--background-color);
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.box {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#box-right-top.box {
+    cursor: default;
+}
+
+#box-right-top.box:hover {
+    transform: none;
+}
+
+.content-section {
+    opacity: 1;
+    transform: translateY(0);
+    min-height: 100vh;
+    padding: 0 0 2rem 0;
+    width: calc((10 / 12) * 100%);
+    max-width: calc((10 / 12) * 1400px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 1rem;
+    margin-bottom: 6rem;
+    padding-top: 2rem;
+}
+
+.content-section h2 {
+    grid-column: 1 / -1;
+    font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    color: #333;
+}
+
+.section-content {
+    grid-column: 1 / -1;
+    background-color: transparent;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    min-height: 60vh;
+}
+
+.custom-cursor {
+    width: auto;
+    min-width: 24px;
+    max-width: none;
+    height: 24px;
+    padding: 0 12px;
+    white-space: nowrap;
+    background-color: rgba(180, 180, 185, 0.8);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 12px;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: transform 0.1s ease, 
+                left 0.05s linear, 
+                top 0.05s linear,
+                opacity 0.2s ease,
+                width 0.2s ease;
+    transform: translate(-50%, 20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-cursor.internal::after {
+    content: '↓';
+    font-size: 14px;
+    color: #333;
+    line-height: 1;
+}
+
+.custom-cursor.external::after {
+    content: attr(data-href);
+    font-size: 12px;
+    color: #333;
+    line-height: 1;
+    padding: 0 4px;
+}
+
+.custom-cursor.active {
+    opacity: 1;
+    animation: cursorFadeIn 0.2s ease;
+}
+
+@keyframes cursorFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 20px) scale(1);
+    }
+}
+
+.content-wrapper {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.content-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.github-link {
+    text-decoration: none;
+    color: #333;
+    font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.ln-link {
+    text-decoration: none;
+    color: #333;
+    font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-left: 2rem;
+}
+
+.cv-link {
+    text-decoration: none;
+    color: #333;
+    font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+
+#music-stats {
+    background-color: var(--box-color);
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    text-align: left;
+    margin-bottom: 0.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0.75rem;
+}
+
+#playsChart {
+    max-width: 400px;
+    max-height: 200px;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+#box-lastfm:hover #playsChart {
+    background-color: var(--box-color);
+}
+
+#music-stats > div {
+    margin-bottom: 0.25rem;
+}
+
+#recent-track {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 0.75rem;
+}
+
+#recent-track img {
+    width: 51px !important;
+    height: 51px !important;
+    margin-right: 10px !important;
+}
+
+#recent-track h4 {
+    font-size: 1.15em !important;
+    margin-bottom: 8px !important;
+}
+
+#recent-track p {
+    font-size: 1.1em !important;
+}
+
+#recent-track p:last-child {
+    font-size: 0.9em !important;
+    margin-top: 3px !important;
+}
+
+#top-track {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#top-album {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#top-artist {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+#random-recommendation {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+#music-stats h3 {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+#music-stats h4 {
+    margin: 0.25rem 0 0.115rem;
+}
+
+#music-stats img {
+    border-radius: 8px;
+    margin-bottom: 0.25rem;
+    width: 50px !important;
+    height: 50px !important;
+}
+
+#box-about h1 {
+    font-size: 3rem;
+    text-align: left;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#box-about h1 span {
+    --text-angle: 135deg;
+    background-image: linear-gradient(var(--text-angle), #E7C76F 0%, #8E8DBE 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    transition: --text-angle 0.3s ease;
+}
+
+#box-about:hover h1 span {
+    --text-angle: 165deg;
+}
+
+@property --text-angle {
+    syntax: '<angle>';
+    initial-value: 135deg;
+    inherits: false;
+}
+
+.wave {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    vertical-align: -8px;
+    margin-right: 12px;
+    transform-origin: 70% 70%;
+}
+
+#box-about:hover .wave {
+    animation: wave 2.5s ease infinite;
+}
+
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.about-text {
+    text-align: left !important;
+    margin-top: 1rem;
+    font-size: 1.0rem;
+}
+
+.about-text a {
+    color: black !important;
+    text-decoration: underline !important;
+}
+
+.portfolio-sections {
+    padding: 2rem;
+    background-color: var(--box-color);
+    border-radius: 0.5rem;
+}
+
+#projects-section {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    margin-bottom: 7rem;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Remove gap since we're handling spacing with padding */
+    overflow-x: hidden;
+    width: 100%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.project {
+    padding: 1.5rem 1rem;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.project:last-child {
+    border-bottom: none; /* Remove last border since container has bottom border */
+}
+
+.project.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tags {
+    margin-top: 0.5rem;
+}
+
+.tags span {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    color: inherit;
+}
+
+.preview-window {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    display: none;
+    pointer-events: none;
+}
+
+.preview-window img {
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(203, 110, 240, 0.5);
+    opacity: 1;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    transform: scale(1) translate(-50%, -50%);
+    position: fixed;
+}
+
+.preview-window img.visible {
+    opacity: 1;
+    transform: scale(1) translate(-50%, -50%);
+    box-shadow: none;
+}
+
+.hide-cursor {
+    cursor: none; /* Hide the cursor */
+}
+
+.project a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+}
+
+.project img {
+    margin-left: 5px; /* Add some space between text and icon */
+}
+
+.link-icon {
+    float: right; /* Aligns the icon to the right */
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherit color from parent */
+    margin-left: 10px; /* Space between text and icon */
+}
+
+.link-icon i {
+    font-size: 1.2rem; /* Adjust icon size */
+}
+
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(4, 50px);
+    gap: 1.5rem;
+    position: absolute;
+    bottom: 1.9rem;
+    left: 1.5rem;
+}
+
+.tech-stack a {
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+
+.tech-stack img {
+    width: 50px;
+    height: 50px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.2s ease;
+}
+
+#box-techstack .tech-stack img[alt="Rust"] {
+    width: 60px;
+    height: 60px;
+    margin: -5px;  /* To compensate for the larger size and maintain grid alignment */
+}
+
+#box-about:hover .tech-stack img {
+    filter: grayscale(0%);
+}
+
+.tech-stack a:hover img {
+    transform: scale(1.1);
+}
+
+#cv-download a {
+    transition: transform 0.2s ease;
+}
+
+
+@keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -5%); }
+    20% { transform: translate(-10%, 5%); }
+    30% { transform: translate(5%, -10%); }
+    40% { transform: translate(-5%, 15%); }
+    50% { transform: translate(-10%, 5%); }
+    60% { transform: translate(15%, 0); }
+    70% { transform: translate(0, 10%); }
+    80% { transform: translate(-15%, 0); }
+    90% { transform: translate(10%, 5%); }
+}
+
+.project-links {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.project-links a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    width: 55px; /* Set fixed width for both links */
+    text-align: left; /* Align text to the left */
+}
+
+.project-links a:hover {
+    text-decoration: underline;
+}
+
+.about-section-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    align-items: flex-start;
+}
+
+.about-section-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-text-content {
+    padding-right: 2rem;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.about-text-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-text-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.education-timeline {
+    position: relative;
+    top: -90px;
+    margin-bottom: -60px;
+    background-color: var(--box-color);
+    padding: 2rem;
+    padding-bottom: 3rem;
+    border-radius: 0.5rem;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    margin-left: -1.9rem;
+}
+
+.education-timeline.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--timeline-color, rgba(142, 141, 190, 0));
+    transition: background-color 0.3s ease;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 20px;
+    width: 2px;
+    height: calc(100% + 1.5rem);
+    background: var(--timeline-color, rgba(142, 141, 190, 0));
+    opacity: var(--timeline-opacity, 0);
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.timeline-item:last-child::after {
+    display: none;
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    color: #8E8DBE;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;  /* Add this to control the line height */
+}
+
+.timeline-subtitle {
+    font-size: 1rem;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.timeline-description {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    margin-right: 2rem;
+}
+
+.timeline-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    margin-right: 1.6rem;
+}
+
+.timeline-tech span {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Adjust the spacing of the first timeline item to account for the new padding */
+.timeline-item:first-child {
+    margin-top: 0;
+}
+
+/* Adjust the spacing of the last timeline item */
+.timeline-item:last-child {
+    margin-bottom: 0.5rem;
+}
+
+/* Container for the scrolling tech stack */
+.tech-scroll-container {
+    max-width: 500px;
+    overflow: hidden;
+    margin-top: 2rem;
+    position: relative;
+    /* Adjust mask for more subtle fading edges */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
+}
+
+/* The scrolling wrapper */
+.about-tech-stack {
+    display: flex;
+    gap: 2rem;
+    animation: scrollTech 30s linear infinite;
+    width: fit-content;
+    padding: 0 2rem;
+}
+
+/* Make the animation smoother */
+@keyframes scrollTech {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 1rem));  /* Adjust for smoother transition */
+    }
+}
+
+/* Adjust icon sizes */
+.about-tech-stack a {
+    width: 32px;  /* Slightly smaller icons */
+    height: 32px;
+}
+
+.about-tech-stack img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Stagger child elements animation */
+.projects-list .project,
+.about-section-content > div,
+.timeline-item {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Delay each project item slightly */
+.projects-list .project.visible,
+.about-section-content > div.visible,
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add staggered delays for children */
+.projects-list .project:nth-child(1) { transition-delay: 0.1s; }
+.projects-list .project:nth-child(2) { transition-delay: 0.2s; }
+.projects-list .project:nth-child(3) { transition-delay: 0.3s; }
+.projects-list .project:nth-child(4) { transition-delay: 0.4s; }
+.projects-list .project:nth-child(5) { transition-delay: 0.5s; }
+.projects-list .project:nth-child(6) { transition-delay: 0.6s; }
+
+.about-section-content .about-text-content { transition-delay: 0.2s; }
+.about-section-content .education-timeline { transition-delay: 0.4s; }
+
+.timeline-item:nth-child(1) { transition-delay: 0.5s; }
+.timeline-item:nth-child(2) { transition-delay: 0.6s; }
+.timeline-item:nth-child(3) { transition-delay: 0.7s; }
+.timeline-item:nth-child(4) { transition-delay: 0.8s; }
+.timeline-item:nth-child(5) { transition-delay: 0.9s; }
+
+
+.section-content-about {
+    grid-column: 1 / -1;
+    background-color: transparent;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.5rem;
+    min-height: 60vh;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* Further decrease space between section header and content */
+#about-section h2 {
+    margin-bottom: 0 !important;
+}
+
+.about-text-content p:first-child {
+    margin-top: 0 !important;
+}
+
+/* Social Links Styles - with left-aligned header */
+.social-links-container {
+    margin-top: 3rem;
+    text-align: left; /* Change from center to left */
+}
+
+.social-links-container h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: #333;
+    text-align: left; /* Explicitly set left alignment */
+}
+
+.social-links {
+    display: flex;
+    justify-content: flex-start; /* Change from center to flex-start */
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    background-color: var(--box-color);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-box i {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-box span {
+    font-size: 0.9rem;
+}
+
+.social-box:hover {
+    transform: translateY(-5px);
+    background-color: #c9c9d1;
+}
+
+/* Special colors for different social platforms on hover */
+.social-box:hover i.fa-github {
+    color: #333;
+}
+
+.social-box:hover i.fa-linkedin {
+    color: #0077b5;
+}
+
+.social-box:hover i.fa-envelope {
+    color: #d54b3d;
+}
+
+/* Add Discord hover color */
+.social-box:hover i.fa-discord {
+    color: #5865F2; /* Discord brand color */
+}
+
+/* Remove Twitter hover color since we're not using it anymore */
+.social-box:hover i.fa-twitter {
+    color: #1da1f2;
+}
+
+/* Ensure consistent spacing between heading and content at all screen sizes */
+
+.section-content-about {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Target the first element in the about text section directly */
+.about-text-content p:first-of-type {
+    margin-top: 0 !important;
+}
+
+/* Add more specific rule for large screens to override any responsive settings */
+@media screen and (min-width: 1200px) {
+    #about-section h2 {
+        margin-bottom: 0 !important;
+    }
+    
+    .about-text-content {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    /* Force first paragraph to have no top margin */
+    .about-text-content p:first-child,
+    .about-text-content p:first-of-type {
+        margin-top: 0 !important;
+    }
+}
+
+/* Music section styles */
+.music-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Left side styles */
+.music-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.music-text-box {
+  padding-right: 2rem;
+  margin-bottom: 1.5rem;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  /* Remove border-radius since background is transparent */
+  border-radius: 0;
+}
+
+.music-text-box p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #333;
+  line-height: 1.6; /* Match about text line height */
+  position: relative;
+}
+/* Make the first paragraph top margin consistent */
+.music-text-box p:first-child,
+.music-text-box p:first-of-type {
+  margin-top: 0 !important;
+}
+
+/* Input field styles */
+.music-input-container {
+  background-color: var(--box-color);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.music-search-input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.music-search-button {
+  padding: 0.75rem 1rem;
+  background-color: #8E8DBE;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.music-search-button:hover {
+  background-color: #7b7aa6;
+}
+
+/* Right side - music boxes */
+.music-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.music-box {
+  background-color: var(--box-color);
+  padding: 2rem 1rem 2rem 1rem !important; /* Top and sides padding only */
+  border-radius: 0.5rem;
+  margin-bottom: 1rem !important; /* Control spacing between boxes */
+  position: relative; /* For absolute positioning */
+  overflow: visible; /* Allow content to overflow */
+}
+
+/* Target all potential sources of bottom spacing */
+.music-box::after {
+  content: "";
+  display: block;
+  height: 0 !important;
+  clear: both;
+}
+
+/* Target the content container specifically */
+.music-box-content {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 0.3rem;
+}
+
+/* Target the list container */
+.music-list {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Target all list items */
+.music-list-item {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.2 !important; /* Tighten line height */
+}
+
+/* Target the last list item specifically */
+.music-list-item:last-child {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Target all potential elements inside list items */
+.music-list-item * {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Create negative space to counter any default spacing */
+.music-box::before {
+  content: "";
+  display: block;
+  height: 0;
+  margin-bottom: -5px !important;
+}
+
+.music-box h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.music-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.music-item-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+
+.music-item-info h5 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+}
+
+.music-item-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.music-item-loading {
+  color: #777;
+  font-style: italic;
+}
+
+.music-item-stats {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #8E8DBE;
+}
+
+/* Music list styling */
+.music-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.music-list-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 1px 0 0 0 !important; /* Force zero bottom padding */
+  margin-bottom: 0 !important; /* Force zero bottom margin */
+}
+
+.play-count {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.item-separator {
+  margin: 0 5px;
+  color: #888;
+}
+
+.item-name {
+  font-weight: 500;
+}
+
+.item-artist {
+  color: #888;
+  font-style: italic;
+}
+
+/* Remove this rule that was adding the dash */
+.item-name::after {
+  content: none;
+}
+
+/* Add styles for music thumbnails */
+.music-thumbnail {
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.music-item-text {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Ensure no extra padding at bottom of lists */
+.music-list-item:last-child {
+  padding-bottom: 0; /* Remove padding from last item */
+  margin-bottom: 0; /* Remove margin from last item */
+}
+
+/* Make sure the music box content has no bottom margin */
+.music-box-content {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* Apply negative bottom margin to pull content up */
+.music-box-content > :last-child {
+  margin-bottom: -5px; /* Use negative margin to reduce space */
+}
+
+/* Album history grid styles */
+.album-history-container {
+  margin-top: 2rem;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.album-item {
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.album-item:hover {
+  transform: scale(1.05);
+}
+
+.album-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-info {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  overflow: hidden;
+}
+
+.album-name {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.album-artist {
+  color: #888;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loading-albums, .error-loading, .no-albums {
+  grid-column: 1 / -1;
+  padding: 2rem;
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+
+/* Move albums container higher on the page */
+.albums-2025-container {
+  margin-top: -20px; /* Negative margin to move it up */
+  margin-bottom: 2rem;
+  position: relative;
+  top: -10px;
+}
+
+/* Adjust album grid to match new positioning */
+.album-grid-small {
+  --album-size: 100px;
+  --album-gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--album-gap);
+  max-height: 470px;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+/* When hovering over the container, show the scrollbar */
+.albums-2025-container:hover .album-grid-small {
+  scrollbar-color: rgba(142, 141, 190, 0.4) transparent;
+}
+
+/* Initially invisible scrollbar for Webkit */
+.album-grid-small::-webkit-scrollbar {
+  width: 4px;
+}
+
+.album-grid-small::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 12px;
+}
+
+.album-grid-small::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 12px;
+  transition: background 0.3s ease;
+}
+
+/* Show scrollbar only on hover for Webkit */
+.albums-2025-container:hover .album-grid-small::-webkit-scrollbar-thumb {
+  background: rgba(142, 141, 190, 0.4);
+}
+
+.albums-2025-container:hover .album-grid-small::-webkit-scrollbar-thumb:hover {
+  background: rgba(142, 141, 190, 0.7);
+}
+
+.album-grid-small .album-item {
+  width: var(--album-size);
+  height: auto;
+  margin-bottom: 16px;
+}
+
+/* Remove spacing between Music header and content */
+#music-section h2 {
+  margin-bottom: 0.5rem; /* Reduce bottom margin of the header */
+}
+
+#music-section .section-content {
+  padding-top: 1rem; /* Reduce top padding of the content container */
+}
+
+.music-container {
+  margin-top: -0.5rem; /* Use negative margin to pull content up */
+}
+
+/* Ensure consistent spacing across sections */
+.section-content {
+  padding-top: 1rem; /* Reduce default top padding for all section content */
+}
+
+/* Create a container for header and timespan */
+.section-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0; /* Remove bottom margin to reduce spacing */
+  padding: 0 2rem;
+}
+
+/* Adjust header positioning to reduce space */
+.section-header-container h2 {
+  margin: 0;
+  padding: 0;
+  margin-top: 2rem;
+  margin-bottom: 0; /* Ensure no bottom margin */
+  margin-left: 0;
+}
+
+/* Reposition and resize timespan container to match other boxes */
+.section-header-container .music-timespan-container {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  width: calc(50% - 1rem); /* Match exactly with music boxes width */
+  background-color: var(--box-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+/* Further reduce spacing for music section specifically */
+#music-section .section-content {
+  padding-top: 0.5rem; /* Reduce top padding even more */
+}
+
+/* Remove any top margin from the first text paragraph */
+.music-text-box p:first-child {
+  margin-top: 0;
+}
+
+/* Adjust the timespan buttons to appear right-aligned */
+.section-header-container .timespan-buttons {
+  justify-content: flex-end;
+}
+
+/* Make header container full width in the grid */
+#music-section .section-header-container {
+  grid-column: 1 / -1;
+}
+
+/* Be even more aggressive with the last child margins/paddings */
+.music-box-content > *:last-child {
+  margin-bottom: -10px !important; /* Increase negative margin */
+}
+
+/* Be explicit about item paddings */
+.item-name, .item-artist, .play-count, .item-separator {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.album-grid-small .album-info {
+  margin-top: 0.3rem; /* Reduced top margin */
+  font-size: 0.7rem; /* Smaller font size */
+  overflow: visible; /* Allow overflow */
+  max-width: var(--album-size); /* Constrain width to match album */
+}
+
+.album-grid-small .album-name {
+  font-weight: 500;
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 0.1rem;
+}
+
+.album-grid-small .album-artist {
+  color: #888;
+  font-style: italic;
+  font-size: 0.65rem;
+  white-space: normal;
+  overflow: visible;
+  line-height: 1.1;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* Improve the timespan button layout */
+.timespan-buttons {
+  display: flex;
+  justify-content: space-between; /* Even spacing between buttons */
+  flex-wrap: wrap;
+  gap: 0.4rem; /* Smaller gap between buttons */
+  margin-top: 0.5rem; /* Space after the heading */
+}
+
+.timespan-btn {
+  flex: 1; /* Make buttons grow evenly */
+  min-width: calc(20% - 0.5rem); /* Ensure 5 buttons fit nicely */
+  padding: 0.4rem 0.2rem; /* Smaller padding */
+  background-color: #f0f0f4;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  font-size: 0.85rem; /* Slightly smaller text */
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.timespan-btn:hover {
+  background-color: #e4e4eb;
+}
+
+.timespan-btn.active {
+  background-color: #8E8DBE;
+  color: white;
+  border-color: #8E8DBE;
+}
+
+.music-timespan-container h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+#ascii-clock {
+  position: fixed;
+  top: 7vh;
+  left: 6vw;
+  font-family: monospace;
+  font-size: min(0.8vw, 3.8px);
+  color: #333;
+  background-color: transparent;
+  z-index: 100;
+  line-height: 1.2;
+  padding: 0;
+  user-select: none;
+  opacity: 0.9;
+  transform-origin: top left;
+  transform: scale(1);
+  pointer-events: auto;
+  cursor: none;
+  margin-top: -20px;
+}
+
+.custom-cursor.clock-hover {
+  width: 140px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 10px;
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (max-width: 768px) {
+  #ascii-clock {
+    font-size: 3px;
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  #ascii-clock {
+    font-size: 2.5px;
+    transform: scale(0.6);
+  }
+}
+
+@media (min-width: 1440px) {
+  #ascii-clock {
+    font-size: 3.5px;
+    transform: scale(1.2);
+  }
+}
+
+/* Ensure the last section doesn't have excessive bottom margin */
+.content-section:last-of-type {
+  margin-bottom: 8rem; /* Provide good spacing at the bottom of the page */
+}
+
+/* Remove scrollbar but keep functionality */
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Chrome, Safari and Opera */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  background: transparent;
+}
+
+/* Ensure the scrollbar is hidden in all webkit browsers */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  background: transparent;
+}
+
+/* Add responsive design rules */
+@media screen and (max-width: 768px) {
+  /* Hide navigation and clock completely on mobile */
+  .side-nav,
+  .ascii-clock {
+    display: none !important;
+  }
+
+  #content {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem;
+    padding: 1rem;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* Make bento boxes take full width of their container */
+  #box-projects,
+  #box-about,
+  #box-lastfm,
+  #box-links,
+  #cv-download {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    margin-bottom: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Adjust about box header size for mobile */
+  #box-about h1 {
+    font-size: 1.8rem !important; /* Increased from 1.1rem */
+    margin-bottom: 1rem !important;
+  }
+
+  #box-about h1 img.wave {
+    width: 32px !important; /* Increased from 20px */
+    height: 32px !important; /* Increased from 20px */
+    vertical-align: middle !important;
+  }
+
+  #box-about .gradient-text {
+    font-size: 1.8rem !important; /* Increased from 1.1rem */
+  }
+
+  /* Fix section layouts for mobile */
+  .content-section {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  /* About section mobile layout */
+  .about-section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .education-timeline {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    margin: 2rem 0;
+  }
+
+  /* Music section mobile layout */
+  .music-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .music-info,
+  .music-boxes {
+    width: 100%;
+  }
+
+  /* Adjust other content sections */
+  .section-content {
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .section-content-about {
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Adjust about section text width */
+  .about-text-content {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  /* Fix tech stack positioning and layout */
+  #box-about {
+    order: -1 !important;
+  }
+
+  #box-projects {
+    order: 1 !important;
+  }
+
+  .tech-stack {
+    position: static !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1rem !important;
+    margin-top: 2rem !important;
+    bottom: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    margin-bottom: -8rem !important;
+  }
+
+  .tech-stack a {
+    width: 35px !important;
+    height: 35px !important;
+    margin: 0 !important;
+  }
+
+  .tech-stack img {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  /* For even smaller screens */
+  @media screen and (max-width: 480px) {
+    .tech-stack {
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 0.8rem !important;
+    }
+
+    .tech-stack a,
+    .tech-stack img {
+      width: 30px !important;
+      height: 30px !important;
+    }
+  }
+
+  /* Make preview cards responsive */
+  .project {
+    padding: 1.5rem 1rem !important;
+    position: relative !important;
+  }
+
+  .project h3 {
+    font-size: 1.2rem !important;
+    margin-bottom: 0.8rem !important;
+    padding-right: 70px !important; /* Make space for links */
+  }
+
+  .project p {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1rem !important;
+    padding-right: 70px !important; /* Make space for links */
+  }
+
+  /* Remove line breaks in project descriptions */
+  .project p br {
+    display: none !important;
+  }
+
+  .project-links {
+    position: absolute !important;
+    right: 1rem !important;
+    top: 1.5rem !important;
+    transform: none !important;
+    gap: 0.3rem !important;
+  }
+
+  .project-links a {
+    font-size: 0.9rem !important;
+    width: auto !important;
+    min-width: 45px !important;
+  }
+
+  .tags {
+    font-size: 0.8rem !important;
+    margin-top: 0.5rem !important;
+  }
+
+  .tags span {
+    margin-right: 0.4rem !important;
+  }
+
+  .music-timespan-container {
+    display: none !important;
+  }
+}
+
+/* Additional adjustments for even smaller screens */
+@media screen and (max-width: 480px) {
+  .project h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .project p {
+    font-size: 0.85rem !important;
+  }
+
+  .project-links a {
+    font-size: 0.85rem !important;
+    min-width: 40px !important;
+  }
+}
+
+#box-github {
+  background-color: var(--box-color);
+  grid-column: 29 / 37;
+  grid-row: 14 / 17;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#box-linkedin {
+  background-color: var(--box-color);
+  grid-column: 37 / 45;
+  grid-row: 14 / 17;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.github-link, .ln-link {
+  display: block;
+  position: relative;
+  width: 82px;
+  height: 82px;
+}
+
+.github-icon, .linkedin-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.github-empty, .linkedin-empty {
+  opacity: 1;
+}
+
+.github-filled, .linkedin-filled {
+  opacity: 0;
+}
+
+#box-github:hover .github-empty,
+#box-linkedin:hover .linkedin-empty {
+  opacity: 0;
+}
+
+#box-github:hover .github-filled,
+#box-linkedin:hover .linkedin-filled {
+  opacity: 1;
+}
+
+.ln-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 82px;
+    height: 82px;
+    transform: translateX(-15px);
+}
+
+.linkedin-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#box-techstack .tech-stack img {
+    width: 50px;
+    height: 50px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.2s ease;
+}
+
+#box-techstack:hover .tech-stack img {
+    filter: grayscale(0%);
+}
+
+#box-techstack .tech-stack a:hover img {
+    transform: scale(1.1);
+}
