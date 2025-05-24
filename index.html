@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1.0" />
+    <title>Reazn's Portfolio</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="styles/nav.css">
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+    <pre id="ascii-clock" class="ascii-clock"></pre>
+    <div id="content">
+      <div id="box-projects" class="box" onclick="scrollToSection('projects-section')">
+        <h1>Projects</h1>
+      </div>
+      <div id="box-about" class="box" onclick="scrollToSection('about-section')">
+        <h1><img src="https://em-content.zobj.net/source/apple/354/waving-hand_1f44b.png" class="wave" alt="👋"> Hi I'm <span class="gradient-text">Reazn</span></h1>
+        <p class="about-text">I'm a 17 year old swiss computer science student and avid music enjoyer. I love creating websites for personal use and experimenting with new technologies. 
+          In my spare time I dabble in photography, graphic design and editing.<hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.1); margin: 20px 0 0px 0;"><br>
+          Currently I'm working on <a href="https://dajia.lol" target="_blank" style="color: black; text-decoration: underline;">Dajia.lol</a> - a very customizable biolinks website with LastFM integrations. <em>(you should totally check it out!)</em></p>
+      </div>
+      <div id="box-techstack" class="box">
+        <div class="tech-stack">
+          <a href="https://www.rust-lang.org/" target="_blank"><img src="/assets/rust.png" alt="Rust" title="Rust"></a>
+          <a href="https://reactjs.org/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React"></a>
+          <a href="https://www.python.org" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python"></a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript"></a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" title="HTML"></a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" title="CSS"></a>
+          <a href="https://www.postgresql.org/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" title="PostgreSQL"></a>
+          <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" title="C#"></a>
+          <a href="https://git-scm.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git"></a>
+          <a href="https://supabase.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" title="Supabase"></a>
+        </div>
+      </div>
+      <div id="box-right-top" class="box" style="overflow: hidden; cursor: pointer; padding: 1rem;">
+        <a href="https://github.com/florianruby" target="_blank" style="text-decoration: none;">
+        <h1 style="margin: 0 0 0.5rem 0; text-align: left; font-size: 1.3rem;">GitHub Activity</h1>
+         <img src="http://localhost:3003/contributions/florianruby?months=4&boxSize=12&boxSpacing=3&borderRadius=3&inactiveColor=%23ececf0&minActivityColor=%23e8cb38&maxActivityColor=%235649cc&showLabels=true&backgroundColor=transparent" 
+              alt="My GitHub Contribution Graph"
+             style="width: 100%; height: auto; margin: 0;">
+            </a>
+      </div>
+      <div id="box-right-bottom" class="box" style="padding: 1rem;">
+        <div class="stats-container" style="display: flex; justify-content: space-between; align-items: stretch; height: 100%;">
+          <!-- Weather Section -->
+          <div class="weather-section" style="flex: 1; display: flex; flex-direction: column;">
+            <h2 style="font-size: 1.3rem; margin: 0 0 0.5rem 0;">Weather</h2>
+            <div class="weather-info">
+              <div class="temperature" style="font-size: 2rem; margin-bottom: 0.5rem;">--°C</div>
+              <div class="condition" style="font-size: 1.1rem;">--</div>
+            </div>
+          </div>
+
+          <!-- Divider -->
+          <div class="divider" style="width: 1px; background-color: rgba(0, 0, 0, 0.1); margin: 0 1rem;"></div>
+
+          <!-- Server Stats Section -->
+          <div class="server-stats" style="flex: 1;">
+            <h2 style="font-size: 1.3rem; margin: 0 0 0.5rem 0;">Server Stats</h2>
+            <div class="stats-info">
+              <div class="stat-item" style="margin-bottom: 0.5rem;">
+                <span class="stat-label">CPU Usage:</span>
+                <span class="cpu-usage">--%</span>
+              </div>
+              <div class="stat-item" style="margin-bottom: 0.5rem;">
+                <span class="stat-label">RAM Usage:</span>
+                <span class="ram-usage">--%</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">CPU Temp:</span>
+                <span class="cpu-temp">--°C</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="box-lastfm" class="box" onclick="scrollToSection('music-section')">
+        <h1>My listening habits</h1>
+        <div id="music-stats">
+          <div id="recent-track"></div>
+          <div id="top-track"></div>
+          <div id="top-artist"></div>
+          <div id="top-album"></div>
+          <div id="random-recommendation"></div>
+        </div>
+        <canvas id="listening-chart" width="350" height="100" style="max-width: 500px; width: 100%; max-height: 200px; margin-top: 10px; margin-bottom: 10px;"></canvas>
+      </div>
+      
+      <div id="box-github">
+        <a href="https://github.com/florianruby" class="github-link">
+          <img src="assets/gh-empty.png" alt="GitHub" class="github-icon github-empty">
+          <img src="assets/gh-filled.png" alt="GitHub" class="github-icon github-filled">
+        </a>
+      </div>
+      
+      <div id="box-linkedin">
+        <a href="https://www.linkedin.com/in/florian-ruby" class="ln-link">
+          <img src="assets/ln-empty.png" alt="LinkedIn" class="linkedin-icon linkedin-empty">
+          <img src="assets/ln-filled.png" alt="LinkedIn" class="linkedin-icon linkedin-filled">
+        </a>
+      </div>
+      <div id="cv-download">
+        <a href="/assets/TO BE SET" class="cv-link" download>
+          <img src="assets/cv-empty.png" alt="CV" class="cv-icon cv-empty">
+          <img src="assets/cv-filled.png" alt="CV" class="cv-icon cv-filled">
+        </a>
+      </div>
+    </div>
+
+    
+    <section id="projects-section" class="content-section">
+      <h2>Projects</h2>
+      <div class="section-content">
+        <div class="projects-list">
+
+          <div class="project" data-preview="./assets/portfolio/portfolio-website.png">
+            <h3>My Portfolio</h3>
+            <p>My old portfolio website.
+              <div class="project-links">
+                <a href="https://reazn.tech" target="_blank" class="view-link">view</a>
+                <a href="https://github.com/FlorianRuby/reazn-tech" target="_blank" class="projects-github-link">github</a>
+              </div>
+            </p>
+            <div class="tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
+
+          <div class="project" data-preview="./assets/default-track.jpg">
+            <h3>Notes Website</h3>
+            <p>A simple notes project featuring real-time Markdown implementation. 
+              <div class="project-links">
+                <a href="add link later" target="_blank" class="view-link">view</a>
+              </div>
+            </p>
+            <div class="tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
+
+          <div class="project" data-preview="./assets/portfolio/schulnetz-grade-calc-extension.png">
+            <h3>Average Grade Chrome Extension</h3>
+            <p>A Chrome Extension I built for our school's administrative website that calculates <br>the average of all grades and highlights subjects where improvement is possible.
+              <div class="project-links">
+                <a href="https://chromewebstore.google.com/detail/schul-netz-average-grade/pppikkhdeldemcaljbllcjhknijkbgck" target="_blank" class="view-link">view</a>
+                <a href="https://github.com/FlorianRuby/Schulnetz-Grade-Average-Calculator" target="_blank" class="projects-github-link">github</a>
+              </div>
+            </p>
+            <div class="tags">
+              <span>JavaScript</span>
+            </div>
+          </div>
+
+          <div class="project" data-preview="./assets/portfolio/habenwirmorgenopl.info.png">
+            <h3>Habenwirmorgenopl.info</h3>
+            <p>A simple website showing when we have school on premise or remotely.
+              <div class="project-links">
+                <a href="https://habenwirmorgenopl.info" target="_blank" class="view-link">view</a>
+                <a href="https://github.com/FlorianRuby/Habenwirmorgenopl.info" target="_blank" class="projects-github-link">github</a>
+              </div>
+            </p>
+            <div class="tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>ExcelJS</span>
+            </div>
+          </div>
+
+          <div class="project" data-preview="./assets/portfolio/flagtactoe.png">
+            <h3>FlagTacToe</h3>
+            <p>A browser educational game that combines TicTacToe with flags. <br>It offers a Daily challenge, Singleplayer as well as online Multiplayer.
+              <div class="project-links">
+                <a href="https://flagtactoe.reazn.tech" target="_blank" class="view-link">view</a>
+                <a href="thub.com/FlorianRuby/Flag-TTT" target="_blank" class="projects-github-link">github</a>
+              </div>
+            </p>
+            <div class="tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Heroku</span>
+            </div>
+          </div>
+
+          <div class="project" data-preview="./assets/portfolio/dailies.png">
+            <h3>Daily GameStats</h3>
+            <p>A website where users can submit their scores for games like Wordle. The website tracks their scores, <br>shows them on global leaderboards and provides the user with charts and other interesting statistics.
+              <div class="project-links">
+                <a href="https://dailies.reazn.tech" target="_blank" class="view-link">view</a>
+                <a href="https://github.com/FlorianRuby/dailies-stats" target="_blank" class="projects-github-link">github</a>
+              </div>
+            </p>
+            <div class="tags">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>Supabase</span>
+            </div>
+          </div>
+        </div>
+        <div class="preview-window">
+          <img id="preview-image" src="" alt="Project Preview">
+        </div>
+      </div>
+    </section>
+
+    <section id="about-section" class="content-section">
+      <h2>About Me</h2>
+      <div class="section-content-about">
+        <div class="about-section-content">
+          <div class="about-text-content">
+            <p>
+              I'm a 17-year-old computer science student based in Switzerland<img src="./assets/ch_apple_emoji.png" alt="Swiss flag" style="display: inline-block; vertical-align: middle; margin-left: 1px; margin-bottom: 1px; width: 27px; height: 27px;">. I love creating 
+              websites and exploring new technologies. My programming journey has started with simple HTML websites 
+              and has evolved to include full-stack development and various programming languages.
+            </p>
+            <p>
+              When I'm not coding, you'll find me discovering new music, taking photos, working on graphic design projects or studying Chinese.
+              I'm particularly interested in web design, data visualization, and creating tools that make information more accessible. </p>
+            <p>
+                Recently, I've also become interested in AI and machine learning. I've run LLMs on my PC and experimented with their implementations using APIs.
+            </p>
+            <p>
+              Feel free to check out my projects above or connect with me via email, GitHub, or LinkedIn below!
+            </p>
+            
+            <div class="tech-scroll-container">
+                <div class="about-tech-stack">
+                    <a href="https://www.python.org" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python"></a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript"></a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" title="HTML"></a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" title="CSS"></a>
+                    <a href="https://www.postgresql.org/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" title="PostgreSQL"></a>
+                    <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" title="C#"></a>
+                    <a href="https://git-scm.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git"></a>
+                    <a href="https://supabase.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" title="Supabase"></a>
+                    <a href="https://www.docker.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" title="Docker"></a>
+                    
+                    <a href="https://www.python.org" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python"></a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript"></a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" title="HTML"></a>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" title="CSS"></a>
+                    <a href="https://www.postgresql.org/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" title="PostgreSQL"></a>
+                    <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" title="C#"></a>
+                    <a href="https://git-scm.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git"></a>
+                    <a href="https://supabase.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" title="Supabase"></a>
+                    <a href="https://www.docker.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" title="Docker"></a>
+                </div>
+            </div>
+            <div class="social-links-container">
+              <h3>Connect With Me</h3>
+              <div class="social-links">
+                <a href="https://github.com/florianruby" target="_blank" class="social-box">
+                  <i class="fab fa-github"></i>
+                  <span>GitHub</span>
+                </a>
+                <a href="https://linkedin.com/in/florian-ruby" target="_blank" class="social-box">
+                  <i class="fab fa-linkedin"></i>
+                  <span>LinkedIn</span>
+                </a>
+                <a href="mailto:reazn.dev@gmail.com" class="social-box">
+                  <i class="fas fa-envelope"></i>
+                  <span>Email</span>
+                </a>
+                <a href="https://discord.com/users/reazn999" target="_blank" class="social-box">
+                  <i class="fab fa-discord"></i>
+                  <span>Discord</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="education-timeline">
+            <div class="timeline-item">
+              <div class="timeline-title">Berufsfachschule BBB Baden</div>
+              <div class="timeline-date">2023 - 2027</div>
+              <div class="timeline-description">  Specializing in app and web development, databases, and cloud applications.</div>
+              <div class="timeline-tech">
+                <span>C#</span> •
+                <span>Python</span> •
+                <span>JavaScript</span> •
+                <span>Machine Learning</span> •
+                <span>Git</span> •
+                <span>SQL</span> •
+                <span>HTML</span> •
+                <span>CSS</span> •
+                <span>Docker</span> •
+                <span>AWS</span> •
+                <span>Scrum</span>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Kantonsschule Baden</div>
+              <div class="timeline-date">2023 - 2027</div>
+              <div class="timeline-description">Focus on business law, finance, and languages.</div>
+              <div class="timeline-tech">
+                <span>Business Law</span> •
+                <span>Law</span> •
+                <span>Finance & Accounting</span> •
+                <span>Math</span> •
+                <span>French</span> •
+                <span>English</span> •
+                <span>German</span> •
+                <span>Chinese</span>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Bezirksschule Bremgarten</div>
+              <div class="timeline-date">2020 - 2023</div>
+                <span>General Education</span>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Primarschule Oberlunkhofen</div>
+              <div class="timeline-date">2016 - 2020</div>
+                <span>General Education</span>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Grundschule Hirschfelde</div>
+              <div class="timeline-date">2014 - 2016</div>
+                <span>General Education</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="music-section" class="content-section">
+      <div class="section-header-container">
+        <h2>Music</h2>
+        <div class="music-timespan-container">
+          <h4>Select Time Period</h4>
+          <div class="timespan-buttons">
+            <button class="timespan-btn active" data-timespan="7day">7 Days</button>
+            <button class="timespan-btn" data-timespan="1month">1 Month</button>
+            <button class="timespan-btn" data-timespan="3month">3 Months</button>
+            <button class="timespan-btn" data-timespan="12month">1 Year</button>
+            <button class="timespan-btn" data-timespan="overall">All Time</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section-content">
+        <div class="music-container">
+          <!-- Left side with text -->
+          <div class="music-info">
+            <div class="music-text-box">
+              <p>Music is a huge part of my daily life - I'm constantly exploring new artists and genres, from ambient soundscapes to jazz to experimental hip-hop. My listening habits are diverse and ever-evolving, as I believe every genre has something unique to offer and I'm always open for new stuff. </p>
+              <p>That's why this year I've challenged myself to listen to a new album every single day throughout 2025, pushing the boundaries of my musical comfort zone. You can see some of the albums I've listened to below!</p>
+            </div>
+            
+            <div class="album-history-container albums-2025-container">
+              <h4>Albums I've Listened to in 2025</h4>
+              <div class="album-grid album-grid-small" id="album-history-grid" style="--album-size: 100px; --album-gap: 8px;">
+                <div class="loading-albums">Loading album history...</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right side with music boxes -->
+          <div class="music-boxes">
+            <div class="music-box" id="top-artist-box">
+              <h4>Top Artist</h4>
+              <div class="music-box-content">
+                <div class="music-item-loading">Loading...</div>
+              </div>
+            </div>
+            
+            <div class="music-box" id="top-track-box">
+              <h4>Top Track</h4>
+              <div class="music-box-content">
+                <div class="music-item-loading">Loading...</div>
+              </div>
+            </div>
+            
+            <div class="music-box" id="top-album-box">
+              <h4>Top Album</h4>
+              <div class="music-box-content">
+                <div class="music-item-loading">Loading...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="side-nav">
+      <a href="#content" class="nav-item">Home</a>
+      <a href="#projects-section" class="nav-item">Projects</a>
+      <a href="#about-section" class="nav-item">About</a>
+      <a href="#music-section" class="nav-item">Music</a>
+    </nav>
+
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/chart.js"></script>
+    <script src="/scripts/preview-cards.js"></script>
+    <script src="/scripts/music-stats.js"></script>
+    <script src="/scripts/album-history.js"></script>
+    <script src="/scripts/stats.js"></script>
+  </body>
+</html>
