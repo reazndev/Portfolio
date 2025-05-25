@@ -19,7 +19,9 @@
     padding: 2rem 2rem 4rem 2rem;
     max-width: 1400px;
     margin: 0 auto;
+    height: 1650px;
     min-height: 800px;
+    max-height: 1650px;
     margin-top: -25px;
 }
 
@@ -101,6 +103,15 @@
     position: relative;
 }
 
+#box-right-top img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+#box-right-top:hover img {
+    filter: grayscale(0%);
+}
+
 #box-right-bottom {
     background-color: var(--box-color);
     grid-column: 37 / 53;
@@ -124,37 +135,37 @@
 
 
 #box-links a {
-    position: relative; /* Positioning context for the underline */
-    text-decoration: none; /* Remove default underline */
-    color: #333; /* Link color */
-    margin: 0 1rem; /* Space between links */
+    position: relative;
+    text-decoration: none;
+    color: #333;
+    margin: 0 1rem;
 }
 
-/* Pseudo-element for the underline */
+
 #box-links a::after {
-    content: ''; /* Creates a pseudo-element */
-    position: absolute; /* Positions it relative to the link */
-    left: 0; /* Start from the left */
-    bottom: -5px; /* Position it below the text */
-    width: 100%; /* Full width of the link */
-    height: 3px; /* Height of the underline */
-    background: #333; /* Color of the underline */
-    transform: scaleX(0); /* Initially hidden */
-    transform-origin: left; /* Ensure animation starts from the left */
-    transition: transform 0.5s ease; /* Animation for the underline, longer duration */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background: #333;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
 }
 
-/* Animate underline on hover over the entire box */
+
 #box-links:hover a::after {
-    transform: scaleX(1); /* Expands the underline on hover */
+    transform: scaleX(1);
 }
 
-/* Keep the hover effect for individual links */
+
 #box-links a:hover::after {
-    transform: scaleX(1); /* Expands the underline on hover */
+    transform: scaleX(1);
 }
 
-/* Add a new box for CV */
+
 #cv-download {
     background-color: var(--box-color);
     grid-column: 45 / 53;
@@ -171,8 +182,8 @@
 .cv-link {
     display: block;
     position: relative;
-    width: 82px;  /* 48px * 1.7 */
-    height: 82px; /* 48px * 1.7 */
+    width: 82px; 
+    height: 82px;
 }
 
 .cv-icon {
@@ -208,7 +219,7 @@ h1 {
     margin-top: 0.5rem;
 }
 
-/* Add some basic reset styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -219,11 +230,11 @@ body {
     font-family: Helvetica, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
     background-color: var(--background-color);
     scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-/* Chrome, Safari and Opera */
+
 body::-webkit-scrollbar {
     display: none;
 }
@@ -242,13 +253,15 @@ body::-webkit-scrollbar {
 }
 
 .content-section {
+    margin-top: 4rem;
     opacity: 1;
     transform: translateY(0);
     min-height: 100vh;
     padding: 0 0 2rem 0;
     width: calc((10 / 12) * 100%);
     max-width: calc((10 / 12) * 1400px);
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 1rem;
@@ -534,14 +547,14 @@ body::-webkit-scrollbar {
 }
 
 #projects-section {
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
     margin-bottom: 7rem;
 }
 
 .projects-list {
     display: flex;
     flex-direction: column;
-    gap: 0; /* Remove gap since we're handling spacing with padding */
+    gap: 0;
     overflow-x: hidden;
     width: 100%;
     border-top: 1px solid black;
@@ -561,7 +574,7 @@ body::-webkit-scrollbar {
 }
 
 .project:last-child {
-    border-bottom: none; /* Remove last border since container has bottom border */
+    border-bottom: none;
 }
 
 .project.visible {
@@ -612,27 +625,27 @@ body::-webkit-scrollbar {
 }
 
 .hide-cursor {
-    cursor: none; /* Hide the cursor */
+    cursor: none;
 }
 
 .project a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit color from parent */
+    text-decoration: none;
+    color: inherit;
 }
 
 .project img {
-    margin-left: 5px; /* Add some space between text and icon */
+    margin-left: 5px;
 }
 
 .link-icon {
-    float: right; /* Aligns the icon to the right */
-    text-decoration: none; /* Removes underline */
-    color: inherit; /* Inherit color from parent */
-    margin-left: 10px; /* Space between text and icon */
+    float: right;
+    text-decoration: none;
+    color: inherit;
+    margin-left: 10px;
 }
 
 .link-icon i {
-    font-size: 1.2rem; /* Adjust icon size */
+    font-size: 1.2rem;
 }
 
 .tech-stack {
@@ -661,7 +674,7 @@ body::-webkit-scrollbar {
 #box-techstack .tech-stack img[alt="Rust"] {
     width: 60px;
     height: 60px;
-    margin: -5px;  /* To compensate for the larger size and maintain grid alignment */
+    margin: -5px; 
 }
 
 #box-about:hover .tech-stack img {
@@ -706,8 +719,8 @@ body::-webkit-scrollbar {
     color: black;
     font-size: 1rem;
     transition: all 0.2s ease;
-    width: 55px; /* Set fixed width for both links */
-    text-align: left; /* Align text to the left */
+    width: 55px;
+    text-align: left;
 }
 
 .project-links a:hover {
@@ -813,7 +826,7 @@ body::-webkit-scrollbar {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    line-height: 1.2;  /* Add this to control the line height */
+    line-height: 1.2; 
 }
 
 .timeline-subtitle {
@@ -842,28 +855,28 @@ body::-webkit-scrollbar {
     color: #666;
 }
 
-/* Adjust the spacing of the first timeline item to account for the new padding */
+
 .timeline-item:first-child {
     margin-top: 0;
 }
 
-/* Adjust the spacing of the last timeline item */
+
 .timeline-item:last-child {
     margin-bottom: 0.5rem;
 }
 
-/* Container for the scrolling tech stack */
+
 .tech-scroll-container {
     max-width: 500px;
     overflow: hidden;
     margin-top: 2rem;
     position: relative;
-    /* Adjust mask for more subtle fading edges */
+   
     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 5%, rgba(0,0,0,1) 95%, transparent 100%);
 }
 
-/* The scrolling wrapper */
+
 .about-tech-stack {
     display: flex;
     gap: 2rem;
@@ -872,19 +885,19 @@ body::-webkit-scrollbar {
     padding: 0 2rem;
 }
 
-/* Make the animation smoother */
+
 @keyframes scrollTech {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-50% - 1rem));  /* Adjust for smoother transition */
+        transform: translateX(calc(-50% - 1rem)); 
     }
 }
 
-/* Adjust icon sizes */
+
 .about-tech-stack a {
-    width: 32px;  /* Slightly smaller icons */
+    width: 32px; 
     height: 32px;
 }
 
@@ -893,7 +906,7 @@ body::-webkit-scrollbar {
     height: 32px;
 }
 
-/* Stagger child elements animation */
+
 .projects-list .project,
 .about-section-content > div,
 .timeline-item {
@@ -902,7 +915,7 @@ body::-webkit-scrollbar {
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-/* Delay each project item slightly */
+
 .projects-list .project.visible,
 .about-section-content > div.visible,
 .timeline-item.visible {
@@ -910,7 +923,7 @@ body::-webkit-scrollbar {
     transform: translateY(0);
 }
 
-/* Add staggered delays for children */
+
 .projects-list .project:nth-child(1) { transition-delay: 0.1s; }
 .projects-list .project:nth-child(2) { transition-delay: 0.2s; }
 .projects-list .project:nth-child(3) { transition-delay: 0.3s; }
@@ -939,7 +952,7 @@ body::-webkit-scrollbar {
     padding-top: 0;
 }
 
-/* Further decrease space between section header and content */
+
 #about-section h2 {
     margin-bottom: 0 !important;
 }
@@ -948,22 +961,22 @@ body::-webkit-scrollbar {
     margin-top: 0 !important;
 }
 
-/* Social Links Styles - with left-aligned header */
+
 .social-links-container {
     margin-top: 3rem;
-    text-align: left; /* Change from center to left */
+    text-align: left;
 }
 
 .social-links-container h3 {
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
     color: #333;
-    text-align: left; /* Explicitly set left alignment */
+    text-align: left;
 }
 
 .social-links {
     display: flex;
-    justify-content: flex-start; /* Change from center to flex-start */
+    justify-content: flex-start;
     gap: 1.5rem;
     flex-wrap: wrap;
 }
@@ -996,7 +1009,7 @@ body::-webkit-scrollbar {
     background-color: #c9c9d1;
 }
 
-/* Special colors for different social platforms on hover */
+
 .social-box:hover i.fa-github {
     color: #333;
 }
@@ -1009,29 +1022,29 @@ body::-webkit-scrollbar {
     color: #d54b3d;
 }
 
-/* Add Discord hover color */
+
 .social-box:hover i.fa-discord {
-    color: #5865F2; /* Discord brand color */
+    color: #5865F2;
 }
 
-/* Remove Twitter hover color since we're not using it anymore */
+
 .social-box:hover i.fa-twitter {
     color: #1da1f2;
 }
 
-/* Ensure consistent spacing between heading and content at all screen sizes */
+
 
 .section-content-about {
     margin-top: 0 !important;
     padding-top: 0 !important;
 }
 
-/* Target the first element in the about text section directly */
+
 .about-text-content p:first-of-type {
     margin-top: 0 !important;
 }
 
-/* Add more specific rule for large screens to override any responsive settings */
+
 @media screen and (min-width: 1200px) {
     #about-section h2 {
         margin-bottom: 0 !important;
@@ -1042,14 +1055,14 @@ body::-webkit-scrollbar {
         padding-top: 0 !important;
     }
     
-    /* Force first paragraph to have no top margin */
+   
     .about-text-content p:first-child,
     .about-text-content p:first-of-type {
         margin-top: 0 !important;
     }
 }
 
-/* Music section styles */
+
 .music-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1058,7 +1071,7 @@ body::-webkit-scrollbar {
   margin: 0 auto;
 }
 
-/* Left side styles */
+
 .music-info {
   display: flex;
   flex-direction: column;
@@ -1070,7 +1083,7 @@ body::-webkit-scrollbar {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.6s ease, transform 0.6s ease;
-  /* Remove border-radius since background is transparent */
+ 
   border-radius: 0;
 }
 
@@ -1078,16 +1091,16 @@ body::-webkit-scrollbar {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
   color: #333;
-  line-height: 1.6; /* Match about text line height */
+  line-height: 1.6;
   position: relative;
 }
-/* Make the first paragraph top margin consistent */
+
 .music-text-box p:first-child,
 .music-text-box p:first-of-type {
   margin-top: 0 !important;
 }
 
-/* Input field styles */
+
 .music-input-container {
   background-color: var(--box-color);
   padding: 1.5rem;
@@ -1118,7 +1131,7 @@ body::-webkit-scrollbar {
   background-color: #7b7aa6;
 }
 
-/* Right side - music boxes */
+
 .music-boxes {
   display: flex;
   flex-direction: column;
@@ -1127,14 +1140,14 @@ body::-webkit-scrollbar {
 
 .music-box {
   background-color: var(--box-color);
-  padding: 2rem 1rem 2rem 1rem !important; /* Top and sides padding only */
+  padding: 2rem 1rem 2rem 1rem !important;
   border-radius: 0.5rem;
-  margin-bottom: 1rem !important; /* Control spacing between boxes */
-  position: relative; /* For absolute positioning */
-  overflow: visible; /* Allow content to overflow */
+  margin-bottom: 1rem !important;
+  position: relative;
+  overflow: visible;
 }
 
-/* Target all potential sources of bottom spacing */
+
 .music-box::after {
   content: "";
   display: block;
@@ -1142,39 +1155,39 @@ body::-webkit-scrollbar {
   clear: both;
 }
 
-/* Target the content container specifically */
+
 .music-box-content {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
   padding-left: 0.3rem;
 }
 
-/* Target the list container */
+
 .music-list {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
 
-/* Target all list items */
+
 .music-list-item {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
-  line-height: 1.2 !important; /* Tighten line height */
+  line-height: 1.2 !important;
 }
 
-/* Target the last list item specifically */
+
 .music-list-item:last-child {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
 
-/* Target all potential elements inside list items */
+
 .music-list-item * {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
 
-/* Create negative space to counter any default spacing */
+
 .music-box::before {
   content: "";
   display: block;
@@ -1223,7 +1236,7 @@ body::-webkit-scrollbar {
   color: #8E8DBE;
 }
 
-/* Music list styling */
+
 .music-list {
   display: flex;
   flex-direction: column;
@@ -1236,8 +1249,8 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   font-size: 0.9rem;
-  padding: 1px 0 0 0 !important; /* Force zero bottom padding */
-  margin-bottom: 0 !important; /* Force zero bottom margin */
+  padding: 1px 0 0 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .play-count {
@@ -1259,12 +1272,12 @@ body::-webkit-scrollbar {
   font-style: italic;
 }
 
-/* Remove this rule that was adding the dash */
+
 .item-name::after {
   content: none;
 }
 
-/* Add styles for music thumbnails */
+
 .music-thumbnail {
   width: 30px;
   height: 30px;
@@ -1279,24 +1292,24 @@ body::-webkit-scrollbar {
   flex-wrap: wrap;
 }
 
-/* Ensure no extra padding at bottom of lists */
+
 .music-list-item:last-child {
-  padding-bottom: 0; /* Remove padding from last item */
-  margin-bottom: 0; /* Remove margin from last item */
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
-/* Make sure the music box content has no bottom margin */
+
 .music-box-content {
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-/* Apply negative bottom margin to pull content up */
+
 .music-box-content > :last-child {
-  margin-bottom: -5px; /* Use negative margin to reduce space */
+  margin-bottom: -5px;
 }
 
-/* Album history grid styles */
+
 .album-history-container {
   margin-top: 2rem;
 }
@@ -1360,15 +1373,15 @@ body::-webkit-scrollbar {
   font-style: italic;
 }
 
-/* Move albums container higher on the page */
+
 .albums-2025-container {
-  margin-top: -20px; /* Negative margin to move it up */
+  margin-top: -20px;
   margin-bottom: 2rem;
   position: relative;
   top: -10px;
 }
 
-/* Adjust album grid to match new positioning */
+
 .album-grid-small {
   --album-size: 100px;
   --album-gap: 8px;
@@ -1382,12 +1395,12 @@ body::-webkit-scrollbar {
   scrollbar-color: transparent transparent;
 }
 
-/* When hovering over the container, show the scrollbar */
+
 .albums-2025-container:hover .album-grid-small {
   scrollbar-color: rgba(142, 141, 190, 0.4) transparent;
 }
 
-/* Initially invisible scrollbar for Webkit */
+
 .album-grid-small::-webkit-scrollbar {
   width: 4px;
 }
@@ -1403,7 +1416,7 @@ body::-webkit-scrollbar {
   transition: background 0.3s ease;
 }
 
-/* Show scrollbar only on hover for Webkit */
+
 .albums-2025-container:hover .album-grid-small::-webkit-scrollbar-thumb {
   background: rgba(142, 141, 190, 0.4);
 }
@@ -1418,88 +1431,87 @@ body::-webkit-scrollbar {
   margin-bottom: 16px;
 }
 
-/* Remove spacing between Music header and content */
+
 #music-section h2 {
-  margin-bottom: 0.5rem; /* Reduce bottom margin of the header */
+  margin-bottom: 0.5rem;
 }
 
 #music-section .section-content {
-  padding-top: 1rem; /* Reduce top padding of the content container */
+  padding-top: 1rem;
 }
 
 .music-container {
-  margin-top: -0.5rem; /* Use negative margin to pull content up */
+  margin-top: -0.5rem;
 }
 
-/* Ensure consistent spacing across sections */
+
 .section-content {
-  padding-top: 1rem; /* Reduce default top padding for all section content */
+  padding-top: 1rem;
 }
 
-/* Create a container for header and timespan */
+
 .section-header-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 0; /* Remove bottom margin to reduce spacing */
   padding: 0 2rem;
 }
 
-/* Adjust header positioning to reduce space */
+
 .section-header-container h2 {
   margin: 0;
   padding: 0;
   margin-top: 2rem;
-  margin-bottom: 0; /* Ensure no bottom margin */
+  margin-bottom: 0;
   margin-left: 0;
 }
 
-/* Reposition and resize timespan container to match other boxes */
+
 .section-header-container .music-timespan-container {
   margin-top: 2rem;
   margin-bottom: 0;
-  width: calc(50% - 1rem); /* Match exactly with music boxes width */
+  width: calc(50% - 1rem);
   background-color: var(--box-color);
   padding: 1rem;
   border-radius: 0.5rem;
 }
 
-/* Further reduce spacing for music section specifically */
+
 #music-section .section-content {
-  padding-top: 0.5rem; /* Reduce top padding even more */
+  padding-top: 0.5rem;
 }
 
-/* Remove any top margin from the first text paragraph */
+
 .music-text-box p:first-child {
   margin-top: 0;
 }
 
-/* Adjust the timespan buttons to appear right-aligned */
+
 .section-header-container .timespan-buttons {
   justify-content: flex-end;
 }
 
-/* Make header container full width in the grid */
+
 #music-section .section-header-container {
   grid-column: 1 / -1;
 }
 
-/* Be even more aggressive with the last child margins/paddings */
+
 .music-box-content > *:last-child {
-  margin-bottom: -10px !important; /* Increase negative margin */
+  margin-bottom: -10px !important;
 }
 
-/* Be explicit about item paddings */
+
 .item-name, .item-artist, .play-count, .item-separator {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
 
 .album-grid-small .album-info {
-  margin-top: 0.3rem; /* Reduced top margin */
-  font-size: 0.7rem; /* Smaller font size */
-  overflow: visible; /* Allow overflow */
-  max-width: var(--album-size); /* Constrain width to match album */
+  margin-top: 0.3rem;
+  font-size: 0.7rem;
+  overflow: visible;
+  max-width: var(--album-size);
 }
 
 .album-grid-small .album-name {
@@ -1527,27 +1539,27 @@ body::-webkit-scrollbar {
   -webkit-box-orient: vertical;
 }
 
-/* Improve the timespan button layout */
+
 .timespan-buttons {
   display: flex;
-  justify-content: space-between; /* Even spacing between buttons */
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.4rem; /* Smaller gap between buttons */
-  margin-top: 0.5rem; /* Space after the heading */
+  gap: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .timespan-btn {
-  flex: 1; /* Make buttons grow evenly */
-  min-width: calc(20% - 0.5rem); /* Ensure 5 buttons fit nicely */
-  padding: 0.4rem 0.2rem; /* Smaller padding */
+  flex: 1;
+  min-width: calc(20% - 0.5rem);
+  padding: 0.4rem 0.2rem;
   background-color: #f0f0f4;
   border: 1px solid #ddd;
   border-radius: 0.25rem;
-  font-size: 0.85rem; /* Slightly smaller text */
+  font-size: 0.85rem;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .timespan-btn:hover {
@@ -1595,7 +1607,7 @@ body::-webkit-scrollbar {
   font-size: 10px;
 }
 
-/* Responsive adjustments for different screen sizes */
+
 @media (max-width: 768px) {
   #ascii-clock {
     font-size: 3px;
@@ -1617,18 +1629,18 @@ body::-webkit-scrollbar {
   }
 }
 
-/* Ensure the last section doesn't have excessive bottom margin */
+
 .content-section:last-of-type {
-  margin-bottom: 8rem; /* Provide good spacing at the bottom of the page */
+  margin-bottom: 8rem;
 }
 
-/* Remove scrollbar but keep functionality */
+
 html, body {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Chrome, Safari and Opera */
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
@@ -1636,16 +1648,16 @@ body::-webkit-scrollbar {
   background: transparent;
 }
 
-/* Ensure the scrollbar is hidden in all webkit browsers */
+
 ::-webkit-scrollbar {
   display: none;
   width: 0;
   background: transparent;
 }
 
-/* Add responsive design rules */
+
 @media screen and (max-width: 768px) {
-  /* Hide navigation and clock completely on mobile */
+ 
   .side-nav,
   .ascii-clock {
     display: none !important;
@@ -1660,7 +1672,7 @@ body::-webkit-scrollbar {
     margin: 0 auto;
   }
 
-  /* Make bento boxes take full width of their container */
+ 
   #box-projects,
   #box-about,
   #box-lastfm,
@@ -1673,29 +1685,29 @@ body::-webkit-scrollbar {
     box-sizing: border-box;
   }
 
-  /* Adjust about box header size for mobile */
+ 
   #box-about h1 {
-    font-size: 1.8rem !important; /* Increased from 1.1rem */
+    font-size: 1.8rem !important;
     margin-bottom: 1rem !important;
   }
 
   #box-about h1 img.wave {
-    width: 32px !important; /* Increased from 20px */
-    height: 32px !important; /* Increased from 20px */
+    width: 32px !important;
+    height: 32px !important;
     vertical-align: middle !important;
   }
 
   #box-about .gradient-text {
-    font-size: 1.8rem !important; /* Increased from 1.1rem */
+    font-size: 1.8rem !important;
   }
 
-  /* Fix section layouts for mobile */
+ 
   .content-section {
     width: 90%;
     padding: 1rem;
   }
 
-  /* About section mobile layout */
+ 
   .about-section-content {
     display: flex;
     flex-direction: column;
@@ -1710,7 +1722,7 @@ body::-webkit-scrollbar {
     margin: 2rem 0;
   }
 
-  /* Music section mobile layout */
+ 
   .music-container {
     display: flex;
     flex-direction: column;
@@ -1722,7 +1734,7 @@ body::-webkit-scrollbar {
     width: 100%;
   }
 
-  /* Adjust other content sections */
+ 
   .section-content {
     width: 100%;
     padding: 1rem 0;
@@ -1733,13 +1745,13 @@ body::-webkit-scrollbar {
     padding: 0;
   }
 
-  /* Adjust about section text width */
+ 
   .about-text-content {
     width: 90%;
     margin: 0 auto;
   }
 
-  /* Fix tech stack positioning and layout */
+ 
   #box-about {
     order: -1 !important;
   }
@@ -1771,7 +1783,7 @@ body::-webkit-scrollbar {
     height: 35px !important;
   }
 
-  /* For even smaller screens */
+ 
   @media screen and (max-width: 480px) {
     .tech-stack {
       grid-template-columns: repeat(4, 1fr) !important;
@@ -1785,7 +1797,7 @@ body::-webkit-scrollbar {
     }
   }
 
-  /* Make preview cards responsive */
+ 
   .project {
     padding: 1.5rem 1rem !important;
     position: relative !important;
@@ -1794,17 +1806,17 @@ body::-webkit-scrollbar {
   .project h3 {
     font-size: 1.2rem !important;
     margin-bottom: 0.8rem !important;
-    padding-right: 70px !important; /* Make space for links */
+    padding-right: 70px !important;
   }
 
   .project p {
     font-size: 0.9rem !important;
     line-height: 1.4 !important;
     margin-bottom: 1rem !important;
-    padding-right: 70px !important; /* Make space for links */
+    padding-right: 70px !important;
   }
 
-  /* Remove line breaks in project descriptions */
+ 
   .project p br {
     display: none !important;
   }
@@ -1837,7 +1849,7 @@ body::-webkit-scrollbar {
   }
 }
 
-/* Additional adjustments for even smaller screens */
+
 @media screen and (max-width: 480px) {
   .project h3 {
     font-size: 1.1rem !important;
@@ -1947,3 +1959,444 @@ body::-webkit-scrollbar {
 #box-techstack .tech-stack a:hover img {
     transform: scale(1.1);
 }
+
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+  padding: 0.5rem;
+}
+
+
+.weather-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-right: 1rem;
+  text-align: center;
+  align-items: center;
+  margin-left: auto;
+  width: 45%;
+}
+
+.weather-section h2 {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.temperature {
+  font-family: 'Nikkey', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 2.5rem !important;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+  line-height: 1;
+  color: #333333;
+}
+
+.condition {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
+
+.server-stats {
+  flex: 1;
+  padding-left: 1.5rem;
+  text-align: left;
+  width: 45%;
+}
+
+.server-stats h2 {
+  padding-left: 0.5rem;
+  margin-bottom: 1rem;
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-family: Helvetica, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-size: 1.0rem;
+}
+
+.stat-label {
+  color: #333;
+}
+
+.cpu-usage, .ram-usage, .cpu-temp {
+  font-family: Helvetica, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  font-size: 1.0rem;
+  color: #333;
+}
+
+
+.divider {
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 0.5rem 0;
+  align-self: stretch;
+}
+
+
+.wakatime-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wakatime-box {
+    padding-top: 2rem;
+}
+
+.most-used-languages-box {
+  background: var(--box-color);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.wakatime-box h3 {
+    font-family: 'Nikkey', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.2rem;
+    color: #333333;
+    margin-bottom: 1.5rem;
+}
+
+
+.time-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.time-stat-box {
+    background: rgba(0, 0, 0, 0.02);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.time-stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+}
+
+.time-stat-value {
+    font-family: 'Nikkey', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.4rem;
+    color: #333333;
+}
+
+
+#language-stats {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-right: -10px;
+}
+
+#language-stats::-webkit-scrollbar {
+    width: 4px;
+}
+
+#language-stats::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#language-stats::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.language-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.language-item:last-child {
+    margin-bottom: 0;
+}
+
+.language-info {
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.language-name {
+    font-size: 0.95rem;
+    color: #333333;
+}
+
+.language-hours {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 0.5rem;
+}
+
+.language-bar-container {
+    flex: 1;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    margin: 0 1rem;
+    overflow: hidden;
+}
+
+.language-bar {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+    opacity: 0.8;
+}
+
+.language-bar:hover {
+    opacity: 1;
+}
+
+.language-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.language-item:hover {
+    transform: translateX(4px);
+}
+
+.language-info {
+    width: 180px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.language-name {
+    font-size: 0.95rem;
+    color: #333333;
+    font-weight: 500;
+}
+
+.language-hours {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 0.5rem;
+}
+
+.language-percentage {
+    width: 60px;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+}
+
+
+.monkeytype-section {
+    margin-top: 2rem;
+}
+
+.section-subtitle {
+    font-family: 'Nikkey', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.8rem;
+    color: #333333;
+    margin-bottom: 1.5rem;
+}
+
+.monkeytype-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.monkeytype-personal-bests-box {
+  border-radius: 0.5rem;
+}
+
+.monkeytype-box {
+    background: var(--box-color);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.monkeytype-box h3 {
+    font-family: 'Nikkey', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.2rem;
+    color: #333333;
+    margin-bottom: 2rem;
+}
+
+.personal-bests-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.personal-best-item {
+    background: rgba(0, 0, 0, 0.02);
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.personal-best-item:hover {
+    transform: translateY(-2px);
+}
+
+.pb-mode {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+}
+
+.pb-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.pb-wpm {
+    font-family: 'Nikkey', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1.6rem;
+    color: #333333;
+}
+
+.pb-accuracy {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+
+.recent-results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-right: -10px;
+}
+
+.recent-results-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.recent-results-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.recent-results-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.04);
+    border-radius: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.result-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.result-wpm {
+    font-family: 'Nikkey', Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    color: #333333;
+}
+
+.result-accuracy {
+    font-size: 0.9rem;
+    color: #666;
+    padding-left: 0.5rem;
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.result-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.result-mode {
+    font-size: 0.9rem;
+    color: #333333;
+}
+
+.result-date {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+
+.section-divider {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 3rem 0;
+    width: 100%;
+}
+
+/* Monkeytype section layout */
+.monkeytype-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.monkeytype-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.monkeytype-box {
+  background: var(--box-color);
+  border-radius: 10px;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .monkeytype-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .monkeytype-left-column {
+    gap: 1rem;
+  }
+} 

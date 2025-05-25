@@ -15,21 +15,31 @@ async function updateWeather() {
     }
 }
 
-// Function to update server stats
+// Function to fetch and update server stats
 async function updateServerStats() {
     try {
-        const response = await fetch('http://localhost:3006/stats');
-        const data = await response.json();
+        const response = await fetch('http://100.64.190.77:3004/stats');
+        const stats = await response.json();
+        
+        // Update CPU Usage
+        const cpuUsage = document.querySelector('.cpu-usage');
+        if (cpuUsage) {
+            cpuUsage.textContent = `${stats.cpuUsage}%`;
+        }
 
-        // Update the DOM
-        document.querySelector('.cpu-usage').textContent = `${data.cpuUsage}%`;
-        document.querySelector('.ram-usage').textContent = `${data.ramUsage}%`;
-        document.querySelector('.cpu-temp').textContent = data.cpuTemp === 'N/A' ? '--°C' : `${data.cpuTemp}°C`;
+        // Update RAM Usage
+        const ramUsage = document.querySelector('.ram-usage');
+        if (ramUsage) {
+            ramUsage.textContent = `${stats.ram.usage}%`;
+        }
+
+        // Update CPU Temperature
+        const cpuTemp = document.querySelector('.cpu-temp');
+        if (cpuTemp) {
+            cpuTemp.textContent = `${stats.cpuTemp}°C`;
+        }
     } catch (error) {
         console.error('Error fetching server stats:', error);
-        document.querySelector('.cpu-usage').textContent = '--%';
-        document.querySelector('.ram-usage').textContent = '--%';
-        document.querySelector('.cpu-temp').textContent = '--°C';
     }
 }
 
@@ -41,7 +51,7 @@ function initStats() {
 
     // Set up periodic updates
     setInterval(updateWeather, 300000); // Update weather every 5 minutes
-    setInterval(updateServerStats, 30000); // Update server stats every 30 seconds
+    setInterval(updateServerStats, 5000); // Update server stats every 5 seconds
 }
 
 // Initialize when the document is loaded

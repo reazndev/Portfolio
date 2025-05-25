@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.MONITOR_PORT || 3004;
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://your-production-domain.com'],
+    origin: ['http://100.64.190.77:3004/stats', 'http://100.64.190.77:3004/stats'],
     methods: ['GET'],
     credentials: false
 }));

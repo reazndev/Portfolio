@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -7,6 +9,96 @@ const weatherHandler = require('./api/weather');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+// Cache for Monkeytype stats
+let monkeytypeCache = {
+  data: null,
+  lastUpdated: 0
+};
+
+// Function to fetch Monkeytype stats
+async function fetchMonkeytypeStats() {
+  try {
+    const apiKey = process.env.MONKEYTYPE_API_KEY;
+    if (!apiKey) {
+      throw new Error('Monkeytype API key not found');
+    }
+
+    const baseUrl = 'https://api.monkeytype.com';
+
+    // Fetch personal bests
+    const personalBestsResponse = await fetch(`${baseUrl}/users/personalBests?mode=time`, {
+      headers: {
+        'Authorization': `ApeKey ${apiKey}`
+      }
+    });
+
+    // Fetch last 10 results
+    const recentResultsResponse = await fetch(`${baseUrl}/results?limit=7`, {
+      headers: {
+        'Authorization': `ApeKey ${apiKey}`
+      }
+    });
+
+    if (!personalBestsResponse.ok || !recentResultsResponse.ok) {
+      throw new Error(`Monkeytype API error: ${personalBestsResponse.status} / ${recentResultsResponse.status}`);
+    }
+
+    // Parse JSON responses
+    const personalBests = await personalBestsResponse.json();
+    const recentResults = await recentResultsResponse.json();
+
+    // Format recent results to be more concise
+    const formattedResults = recentResults.data.map(result => ({
+      wpm: Math.floor(result.wpm),
+      acc: Math.floor(result.acc),
+      mode: `${result.mode}${result.mode2}`,
+      timestamp: new Date(result.timestamp).toLocaleString(),
+      consistency: Math.floor(result.consistency),
+      time: Math.floor(result.testDuration)
+    }));
+
+    // Format personal bests to be more concise
+    const formattedPersonalBests = {};
+    for (const [mode, results] of Object.entries(personalBests.data)) {
+      formattedPersonalBests[mode] = results.map(pb => ({
+        wpm: Math.floor(pb.wpm),
+        acc: Math.floor(pb.acc),
+        timestamp: new Date(pb.timestamp).toLocaleString()
+      })).slice(0, 3); // Keep top 3 for each mode
+    }
+
+    return {
+      personalBests: formattedPersonalBests,
+      recentResults: formattedResults
+    };
+  } catch (error) {
+    console.error('Error fetching Monkeytype stats:', error);
+    return null;
+  }
+}
+
+// Update Monkeytype cache every 10 minutes
+setInterval(async () => {
+  console.log('Updating Monkeytype cache...');
+  const newData = await fetchMonkeytypeStats();
+  if (newData) {
+    monkeytypeCache.data = newData;
+    monkeytypeCache.lastUpdated = Date.now();
+    console.log('Monkeytype cache updated successfully');
+  }
+}, 10 * 60 * 1000); // 10 minutes in milliseconds
+
+// Initial cache population
+(async () => {
+  console.log('Performing initial Monkeytype cache population...');
+  const initialData = await fetchMonkeytypeStats();
+  if (initialData) {
+    monkeytypeCache.data = initialData;
+    monkeytypeCache.lastUpdated = Date.now();
+    console.log('Initial Monkeytype cache populated successfully');
+  }
+})();
 
 // Serve static files first
 app.use(express.static(__dirname));
@@ -369,6 +461,95 @@ app.get('/api/debug/config', (req, res) => {
     memory_usage: process.memoryUsage(),
     uptime: process.uptime()
   });
+});
+
+// WakaTime API endpoints
+app.get('/api/wakatime/stats', async (req, res) => {
+  try {
+    const apiKey = process.env.WAKATIME_API_KEY;
+    if (!apiKey) {
+      throw new Error('WakaTime API key not found');
+    }
+
+    // Fetch all-time stats
+    const allTimeResponse = await fetch('https://wakatime.com/api/v1/users/current/stats/all_time', {
+      headers: {
+        'Authorization': `Basic ${Buffer.from(apiKey).toString('base64')}`
+      }
+    });
+
+    // Fetch last 7 days stats for daily average
+    const weeklyResponse = await fetch('https://wakatime.com/api/v1/users/current/stats/last_7_days', {
+      headers: {
+        'Authorization': `Basic ${Buffer.from(apiKey).toString('base64')}`
+      }
+    });
+
+    if (!allTimeResponse.ok || !weeklyResponse.ok) {
+      throw new Error(`WakaTime API error: ${allTimeResponse.status} / ${weeklyResponse.status}`);
+    }
+
+    const allTimeData = await allTimeResponse.json();
+    const weeklyData = await weeklyResponse.json();
+
+    // Calculate daily average from weekly total, ensuring we have valid data
+    const weeklySeconds = weeklyData.data.total_seconds || 0;
+    const dailyAverageSeconds = Math.round(weeklySeconds / 7);
+
+    // Combine the data
+    const combinedData = {
+      data: {
+        ...weeklyData.data,
+        all_time_seconds: allTimeData.data.total_seconds || 0,
+        languages: allTimeData.data.languages || [],
+        daily_average_seconds: dailyAverageSeconds,
+        total_seconds: weeklySeconds
+      }
+    };
+
+    res.json(combinedData);
+  } catch (error) {
+    console.error('Error fetching WakaTime stats:', error);
+    res.status(500).json({ error: 'Failed to fetch WakaTime stats' });
+  }
+});
+
+app.get('/api/wakatime/languages', async (req, res) => {
+  try {
+    const apiKey = process.env.WAKATIME_API_KEY;
+    if (!apiKey) {
+      throw new Error('WakaTime API key not found');
+    }
+
+    const response = await fetch('https://wakatime.com/api/v1/users/current/stats/last_7_days', {
+      headers: {
+        'Authorization': `Basic ${Buffer.from(apiKey).toString('base64')}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`WakaTime API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const languages = data.data.languages.slice(0, 5); // Get top 5 languages
+    res.json(languages);
+  } catch (error) {
+    console.error('Error fetching WakaTime languages:', error);
+    res.status(500).json({ error: 'Failed to fetch WakaTime languages' });
+  }
+});
+
+// Monkeytype API endpoint - now uses cache
+app.get('/api/monkeytype/stats', (req, res) => {
+  if (!monkeytypeCache.data) {
+    return res.status(503).json({ 
+      error: 'Monkeytype stats not available', 
+      details: 'Cache not yet populated'
+    });
+  }
+
+  res.json(monkeytypeCache.data);
 });
 
 // Serve index.html for all other routes

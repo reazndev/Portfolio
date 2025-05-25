@@ -12,7 +12,6 @@
     <link rel="shortcut icon" href="assets/favicon/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link rel="stylesheet" href="styles/nav.css">
   </head>
   <body>
     <div class="custom-cursor"></div>
@@ -50,28 +49,28 @@
             </a>
       </div>
       <div id="box-right-bottom" class="box" style="padding: 1rem;">
-        <div class="stats-container" style="display: flex; justify-content: space-between; align-items: stretch; height: 100%;">
+        <div class="stats-container">
           <!-- Weather Section -->
-          <div class="weather-section" style="flex: 1; display: flex; flex-direction: column;">
-            <h2 style="font-size: 1.3rem; margin: 0 0 0.5rem 0;">Weather</h2>
+          <div class="weather-section">
+            <h2>Weather</h2>
             <div class="weather-info">
-              <div class="temperature" style="font-size: 2rem; margin-bottom: 0.5rem;">--°C</div>
-              <div class="condition" style="font-size: 1.1rem;">--</div>
+              <div class="temperature">--°C</div>
+              <div class="condition">--</div>
             </div>
           </div>
 
           <!-- Divider -->
-          <div class="divider" style="width: 1px; background-color: rgba(0, 0, 0, 0.1); margin: 0 1rem;"></div>
+          <div class="divider"></div>
 
           <!-- Server Stats Section -->
-          <div class="server-stats" style="flex: 1;">
-            <h2 style="font-size: 1.3rem; margin: 0 0 0.5rem 0;">Server Stats</h2>
+          <div class="server-stats">
+            <h2>Server Stats</h2>
             <div class="stats-info">
-              <div class="stat-item" style="margin-bottom: 0.5rem;">
+              <div class="stat-item">
                 <span class="stat-label">CPU Usage:</span>
                 <span class="cpu-usage">--%</span>
               </div>
-              <div class="stat-item" style="margin-bottom: 0.5rem;">
+              <div class="stat-item">
                 <span class="stat-label">RAM Usage:</span>
                 <span class="ram-usage">--%</span>
               </div>
@@ -401,11 +400,80 @@
       </div>
     </section>
 
+    <section id="other-stats-section" class="content-section">
+      <div class="section-header-container">
+        <h2 style="white-space: nowrap;">Other Fun Stats</h2>
+      </div>
+      
+      <div class="section-content">
+        <h3 class="section-subtitle">WakaTime</h3>
+
+        <div class="wakatime-container">
+          <!-- Time Stats Box -->
+          <div class="wakatime-box">
+            <div class="music-text-box">
+              <p>On Jan 18th 2025 I started tracking my coding habits using WakaTime. Below you can see how much time I spend coding as well as my most used languages. <em>(React counts as JS.)</em>
+              <br> Alternatively you can find my WakaTime profile <a href="https://wakatime.com/@reazn999" target="_blank" style="color: black; text-decoration: underline;">here</a>.
+            </div>
+            <div class="time-stats">
+              <div class="time-stat-box">
+                <div class="time-stat-label">Last 7 Days</div>
+                <div class="time-stat-value" id="total-coding-time">--</div>
+              </div>
+              <div class="time-stat-box">
+                <div class="time-stat-label">All Time</div>
+                <div class="time-stat-value" id="all-time-stats">--</div>
+              </div>
+              <div class="time-stat-box">
+                <div class="time-stat-label">Daily Average</div>
+                <div class="time-stat-value" id="daily-average-stats">--</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Language Stats Box -->
+          <div class="most-used-languages-box">
+            <h3 style="margin-bottom: 1.5rem;">Languages</h3>
+            <div id="language-stats"></div>
+          </div>
+        </div>
+
+        <!-- Monkeytype Stats Section -->
+        <div class="section-divider"></div>
+        <div class="monkeytype-section">
+          <h3 class="section-subtitle">Monkeytype</h3>
+          <div class="monkeytype-container">
+            <!-- Left Column: Text and Personal Bests -->
+            <div class="monkeytype-left-column">
+              <div class="music-text-box">
+                <p>Monkeytype is an online typing test that measures your typing speed and accuracy with a very nice UI. <br> As I'm into custom keyboards I started using Monkeytype in 2023.
+                <br> You can find my Monkeytype profile <a href="https://monkeytype.com/profile/reazn" target="_blank" style="color: black; text-decoration: underline;">here</a>.
+                </p>
+              </div>
+              <div class="monkeytype-personal-bests-box">
+                <h3>Personal Bests</h3>
+                <div id="personal-bests"></div>
+              </div>
+            </div>
+
+            <!-- Right Column: Recent Results -->
+            <div class="monkeytype-right-column">
+              <div class="monkeytype-box">
+                <h3>Recent Results</h3>
+                <div id="recent-results"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <nav class="side-nav">
       <a href="#content" class="nav-item">Home</a>
       <a href="#projects-section" class="nav-item">Projects</a>
       <a href="#about-section" class="nav-item">About</a>
       <a href="#music-section" class="nav-item">Music</a>
+      <a href="#other-stats-section" class="nav-item"> Fun Stats</a>
     </nav>
 
     <script src="/scripts/script.js"></script>
@@ -414,5 +482,8 @@
     <script src="/scripts/music-stats.js"></script>
     <script src="/scripts/album-history.js"></script>
     <script src="/scripts/stats.js"></script>
+    <script src="/scripts/other-stats.js"></script>
+    <script src="/scripts/wakatime-stats.js"></script>
+    <script src="/scripts/monkeytype-stats.js"></script>
   </body>
 </html>
