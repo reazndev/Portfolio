@@ -4,7 +4,13 @@ const axios = require('axios');
 const cors = require('cors');
 const app = express();
 
-app.use(cors());
+// Configure CORS
+app.use(cors({
+    origin: ['https://reazn.tech', 'https://stats.reazn.tech', 'https://gh.reazn.tech'],
+    methods: ['GET'],
+    credentials: true
+}));
+
 app.use(express.json());
 
 // Check if GitHub token is available

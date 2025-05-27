@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1.0" />
     <title>Reazn's Portfolio</title>
     <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/nav.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
@@ -43,9 +44,11 @@
       <div id="box-right-top" class="box" style="overflow: hidden; cursor: pointer; padding: 1rem;">
         <a href="https://github.com/florianruby" target="_blank" style="text-decoration: none;">
         <h1 style="margin: 0 0 0.5rem 0; text-align: left; font-size: 1.3rem;">GitHub Activity</h1>
-         <img src="http://localhost:3003/contributions/florianruby?months=4&boxSize=12&boxSpacing=3&borderRadius=3&inactiveColor=%23ececf0&minActivityColor=%23e8cb38&maxActivityColor=%235649cc&showLabels=true&backgroundColor=transparent" 
+         <img src="/api/github-contributions/florianruby?months=4&boxSize=12&boxSpacing=3&borderRadius=3&inactiveColor=%23ececf0&minActivityColor=%23e8cb38&maxActivityColor=%235649cc&showLabels=true&backgroundColor=transparent" 
               alt="My GitHub Contribution Graph"
-             style="width: 100%; height: auto; margin: 0;">
+              onerror="console.error('Failed to load GitHub contributions:', this.src)"
+              onload="console.log('GitHub contributions loaded successfully')"
+              style="width: 100%; height: auto; margin: 0;">
             </a>
       </div>
       <div id="box-right-bottom" class="box" style="padding: 1rem;">
@@ -192,6 +195,7 @@
               <span>CSS</span>
               <span>JavaScript</span>
               <span>Heroku</span>
+              <span>Websockets</span>
             </div>
           </div>
 

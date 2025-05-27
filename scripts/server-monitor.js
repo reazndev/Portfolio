@@ -5,66 +5,28 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.MONITOR_PORT || 3004;
+const port = process.env.PORT || 3004;
 
 app.use(cors({
-    origin: ['http://100.64.190.77:3004/stats', 'http://100.64.190.77:3004/stats'],
+    origin: ['https://reazn.tech', 'https://stats.reazn.tech', 'https://gh.reazn.tech'],
     methods: ['GET'],
-    credentials: false
+    credentials: true
 }));
 
-// Function to get CPU temperature on Windows using wmic
-function getWindowsCpuTemp() {
+async function getCpuTemp() {
     return new Promise((resolve) => {
-        exec('wmic /namespace:\\\\root\\wmi PATH MSAcpi_ThermalZoneTemperature get CurrentTemperature', (error, stdout) => {
+        exec('cat /sys/class/thermal/thermal_zone0/temp', (error, stdout) => {
             if (error) {
-                console.error('Error reading Windows CPU temperature:', error);
+                console.error('Error reading Linux CPU temperature:', error);
                 resolve(null);
                 return;
             }
-            try {
-                // Parse the output - it's in tenths of Kelvin
-                const lines = stdout.split('\n').filter(line => line.trim());
-                if (lines.length >= 2) {
-                    const temp = parseInt(lines[1]);
-                    if (!isNaN(temp)) {
-                        // Convert from tenths of Kelvin to Celsius
-                        const celsius = Math.round((temp / 10 - 273.15) * 10) / 10;
-                        resolve(celsius);
-                        return;
-                    }
-                }
-                resolve(null);
-            } catch (e) {
-                console.error('Error parsing Windows CPU temperature:', e);
-                resolve(null);
-            }
+            const temp = parseInt(stdout) / 1000;
+            resolve(temp);
         });
     });
 }
 
-// Function to get CPU temperature based on platform
-async function getCpuTemp() {
-    if (process.platform === 'win32') {
-        return await getWindowsCpuTemp();
-    } else if (process.platform === 'linux') {
-        return new Promise((resolve) => {
-            exec('cat /sys/class/thermal/thermal_zone0/temp', (error, stdout) => {
-                if (error) {
-                    console.error('Error reading Linux CPU temperature:', error);
-                    resolve(null);
-                    return;
-                }
-                // Convert temperature from millidegrees to degrees Celsius
-                const temp = parseInt(stdout) / 1000;
-                resolve(temp);
-            });
-        });
-    }
-    return null;
-}
-
-// Function to get detailed CPU usage
 function getCpuUsage() {
     const cpus = os.cpus();
     const usage = cpus.map(cpu => {
@@ -75,7 +37,6 @@ function getCpuUsage() {
     return usage.reduce((acc, val) => acc + val, 0) / cpus.length;
 }
 
-// Function to format bytes into human readable format
 function formatBytes(bytes) {
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
     if (bytes === 0) return '0 Byte';
@@ -85,7 +46,6 @@ function formatBytes(bytes) {
 
 app.get('/stats', async (req, res) => {
     try {
-        // Get CPU usage
         const cpuUsage = Math.round(getCpuUsage());
 
         // Get memory usage
@@ -94,13 +54,10 @@ app.get('/stats', async (req, res) => {
         const usedMem = totalMem - freeMem;
         const ramUsage = Math.round((usedMem / totalMem) * 100);
 
-        // Get CPU temperature
         const cpuTemp = await getCpuTemp();
 
-        // Get system uptime in hours
         const uptimeHours = Math.floor(os.uptime() / 3600);
 
-        // Get load averages for 1, 5, and 15 minutes
         const loadAvg = os.loadavg();
 
         const stats = {
@@ -129,7 +86,6 @@ app.get('/stats', async (req, res) => {
     }
 });
 
-// Health check endpoint
 app.get('/health', (req, res) => {
     res.json({ 
         status: 'ok',
@@ -138,7 +94,7 @@ app.get('/health', (req, res) => {
     });
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`Server monitoring service running on port ${port}`);
     console.log(`Access stats at: http://localhost:${port}/stats`);
     console.log(`Health check at: http://localhost:${port}/health`);

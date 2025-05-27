@@ -19,9 +19,9 @@
     padding: 2rem 2rem 4rem 2rem;
     max-width: 1400px;
     margin: 0 auto;
-    height: 1650px;
+    height: 1050px; /* DO NOT FUCK WITH THIS */
     min-height: 800px;
-    max-height: 1650px;
+    max-height: 1050px;  /* DO NOT FUCK WITH THIS */
     margin-top: -25px;
 }
 
@@ -30,7 +30,7 @@
     --gradient-angle: 135deg;
     background: linear-gradient(var(--gradient-angle), #E7C76F 0%, #8E8DBE 60%);
     grid-column: 5 / 29;
-    grid-row: 2 / 6;
+    grid-row: 3 / 10;
     border-radius: 0.5rem;
     padding: 1.5rem;
     text-align: center;
@@ -76,7 +76,7 @@
 #box-about {
     background-color: var(--box-color);
     grid-column: 29 / 53;
-    grid-row: 2 / 7;
+    grid-row: 3 / 12;
     border-radius: 0.5rem;
     padding: 1.5rem;
     text-align: left;
@@ -86,7 +86,7 @@
 #box-techstack {
     background-color: var(--box-color);
     grid-column: 29 / 37;
-    grid-row: 7 / 14;
+    grid-row: 12 / 25;
     border-radius: 0.5rem;
     padding: 1.5rem;
     text-align: center;
@@ -96,7 +96,7 @@
 #box-right-top {
     background-color: var(--box-color);
     grid-column: 37 / 53;
-    grid-row: 7 / 11;
+    grid-row: 12 / 19;
     border-radius: 0.5rem;
     padding: 1.5rem;
     text-align: center;
@@ -115,7 +115,7 @@
 #box-right-bottom {
     background-color: var(--box-color);
     grid-column: 37 / 53;
-    grid-row: 11 / 14;
+    grid-row: 19 / 25;
     border-radius: 0.5rem;
     padding: 1.5rem;
     text-align: center;
@@ -125,7 +125,7 @@
 #box-lastfm {
     background-color: var(--box-color);
     grid-column: 5 / 29;
-    grid-row: 6 / 17;
+    grid-row: 10 / 31;
     border-radius: 0.5rem;
     padding: 1.5rem;
     text-align: left;
@@ -169,7 +169,7 @@
 #cv-download {
     background-color: var(--box-color);
     grid-column: 45 / 53;
-    grid-row: 14 / 17;
+    grid-row: 25 / 31;
     border-radius: 0.5rem;
     padding: 1.5rem;
     text-align: center;
@@ -1580,7 +1580,7 @@ body::-webkit-scrollbar {
 
 #ascii-clock {
   position: fixed;
-  top: 7vh;
+  top: 9vh;
   left: 6vw;
   font-family: monospace;
   font-size: min(0.8vw, 3.8px);
@@ -1868,7 +1868,7 @@ body::-webkit-scrollbar {
 #box-github {
   background-color: var(--box-color);
   grid-column: 29 / 37;
-  grid-row: 14 / 17;
+  grid-row: 25 / 31;
   border-radius: 0.5rem;
   padding: 1.5rem;
   text-align: center;
@@ -1881,7 +1881,7 @@ body::-webkit-scrollbar {
 #box-linkedin {
   background-color: var(--box-color);
   grid-column: 37 / 45;
-  grid-row: 14 / 17;
+  grid-row: 25 / 31;
   border-radius: 0.5rem;
   padding: 1.5rem;
   text-align: center;
@@ -2000,7 +2000,7 @@ body::-webkit-scrollbar {
   font-family: 'Nikkey', Helvetica, 'Helvetica Neue', Arial, sans-serif;
   font-size: 2.5rem !important;
   font-weight: 800;
-  margin-bottom: 0.2rem;
+  margin-top: 0.5rem;
   line-height: 1;
   color: #333333;
 }
@@ -2013,36 +2013,39 @@ body::-webkit-scrollbar {
 
 .server-stats {
   flex: 1;
-  padding-left: 1.5rem;
+  padding-left: 1rem;
   text-align: left;
   width: 45%;
 }
 
 .server-stats h2 {
   padding-left: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.3rem;
   font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
   font-size: 1.1rem;
   color: #333;
 }
 
 .stat-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-  font-family: Helvetica, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-  font-size: 1.0rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-family: Helvetica, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-size: 1.0rem;
+    gap: 1rem;
 }
 
 .stat-label {
-  color: #333;
+    color: #333;
+    white-space: nowrap;
 }
 
 .cpu-usage, .ram-usage, .cpu-temp {
-  font-family: Helvetica, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-  font-size: 1.0rem;
-  color: #333;
+    font-family: Helvetica, 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-size: 1rem;
+    color: #333;
+    text-align: right;
 }
 
 

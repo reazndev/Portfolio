@@ -106,67 +106,99 @@ app.use(express.static(__dirname));
 // API Routes
 app.get('/api/weather', weatherHandler);
 
-// Server stats endpoint
-app.get('/api/server-stats', (req, res) => {
-  try {
-    const cpuUsage = os.loadavg()[0] * 100 / os.cpus().length; // Convert load average to percentage
-    const totalMem = os.totalmem();
-    const freeMem = os.freemem();
-    const ramUsage = ((totalMem - freeMem) / totalMem) * 100;
-    
-    const cpuTemp = 45; // You might want to implement actual temperature reading based on your system
-
-    res.json({
-      cpuUsage: Math.round(cpuUsage),
-      ramUsage: Math.round(ramUsage),
-      cpuTemp: cpuTemp
-    });
-  } catch (error) {
-    console.error('Error getting server stats:', error);
-    res.status(500).json({ error: 'Failed to get server stats' });
-  }
-});
-
-// Explicitly serve CSS files
-app.get('/*.css', (req, res) => {
-  res.set('Content-Type', 'text/css');
-  res.sendFile(path.join(__dirname, req.path));
-});
-
-app.get('/styles/*.css', (req, res) => {
-  res.set('Content-Type', 'text/css');
-  res.sendFile(path.join(__dirname, req.path));
-});
-
-// Explicitly serve JavaScript files
-app.get('/*.js', (req, res) => {
-  res.set('Content-Type', 'application/javascript');
-  res.sendFile(path.join(__dirname, req.path));
-});
-
-// Serve static files from the root directory
-app.use(express.static(__dirname, {
-  setHeaders: (res, filePath) => {
-    if (filePath.endsWith('.css')) {
-      res.set('Content-Type', 'text/css');
-    } else if (filePath.endsWith('.js')) {
-      res.set('Content-Type', 'application/javascript');
+// Add proxy routes for GitHub contributions and server stats
+app.get('/api/github-contributions/:username', async (req, res) => {
+    try {
+        // Build the URL with properly encoded parameters
+        const baseUrl = `http://localhost:3003/contributions/${req.params.username}`;
+        const queryParams = new URLSearchParams(req.query).toString();
+        const fullUrl = queryParams ? `${baseUrl}?${queryParams}` : baseUrl;
+        
+        console.log('Fetching GitHub contributions from:', fullUrl); // Debug log
+        
+        const response = await fetch(fullUrl);
+        console.log('GitHub API response status:', response.status); // Debug log
+        
+        if (!response.ok) {
+            throw new Error(`GitHub contributions server responded with ${response.status}`);
+        }
+        
+        const data = await response.text();
+        console.log('Received data type:', typeof data); // Debug log
+        console.log('Data starts with:', data.substring(0, 100)); // Debug log
+        
+        res.setHeader('Content-Type', 'image/svg+xml');
+        res.send(data);
+    } catch (error) {
+        console.error('Error proxying GitHub contributions:', error);
+        res.status(500).json({ error: 'Failed to fetch GitHub contributions' });
     }
-  }
-}));
-
-// Serve static data files
-app.use('/data', express.static(path.join(__dirname, 'data')));
-
-// Serve files from the assets folder
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-
-// Route for the home page
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Last.fm API proxy endpoint to avoid CORS issues
+app.get('/api/server-stats', async (req, res) => {
+    try {
+        // Get CPU usage
+        const cpuUsage = os.loadavg()[0] * 100 / os.cpus().length;
+
+        // Get memory usage
+        const totalMem = os.totalmem();
+        const freeMem = os.freemem();
+        const usedMem = totalMem - freeMem;
+        const ramUsage = (usedMem / totalMem) * 100;
+
+        // Get CPU temperature (if available)
+        let cpuTemp;
+        try {
+            const { exec } = require('child_process');
+            const temp = await new Promise((resolve, reject) => {
+                exec('cat /sys/class/thermal/thermal_zone0/temp', (error, stdout) => {
+                    if (error) {
+                        resolve(null);
+                        return;
+                    }
+                    resolve(parseInt(stdout) / 1000);
+                });
+            });
+            cpuTemp = temp || 'N/A';
+        } catch (error) {
+            cpuTemp = 'N/A';
+        }
+
+        const stats = {
+            cpuUsage: Math.round(cpuUsage * 10) / 10,
+            ram: {
+                usage: Math.round(ramUsage * 10) / 10,
+                total: formatBytes(totalMem),
+                used: formatBytes(usedMem),
+                free: formatBytes(freeMem)
+            },
+            cpuTemp: typeof cpuTemp === 'number' ? Math.round(cpuTemp * 10) / 10 : cpuTemp,
+            platform: process.platform,
+            uptime: Math.floor(os.uptime() / 3600),
+            loadAverage: {
+                '1min': Math.round(os.loadavg()[0] * 10) / 10,
+                '5min': Math.round(os.loadavg()[1] * 10) / 10,
+                '15min': Math.round(os.loadavg()[2] * 10) / 10
+            },
+            timestamp: new Date().toISOString()
+        };
+
+        res.json(stats);
+    } catch (error) {
+        console.error('Error getting server stats:', error);
+        res.status(500).json({ error: 'Failed to get server stats' });
+    }
+});
+
+// Helper function to format bytes
+function formatBytes(bytes) {
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes === 0) return '0 Bytes';
+    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    return Math.round((bytes / Math.pow(1024, i)) * 100) / 100 + ' ' + sizes[i];
+}
+
+// All other API routes...
 app.get('/api/lastfm/:method', async (req, res) => {
   try {
     const { method } = req.params;
@@ -187,7 +219,6 @@ app.get('/api/lastfm/:method', async (req, res) => {
   }
 });
 
-// New endpoint for last week's tracks
 app.get('/api/lastfm/tracks/weekly', async (req, res) => {
   try {
     const apiKey = process.env.LASTFM_API_KEY || '974fb2e0a3add0ac42c2729f6c1e854a';
@@ -232,7 +263,6 @@ app.get('/api/lastfm/tracks/weekly', async (req, res) => {
   }
 });
 
-// Add a new endpoint for weekly chart data
 app.get('/api/lastfm/tracks/chart', async (req, res) => {
   try {
     const apiKey = process.env.LASTFM_API_KEY || '974fb2e0a3add0ac42c2729f6c1e854a';
@@ -307,11 +337,6 @@ app.get('/api/lastfm/tracks/chart', async (req, res) => {
   }
 });
 
-// Environment variables for Heroku
-const LASTFM_API_KEY = process.env.LASTFM_API_KEY || '974fb2e0a3add0ac42c2729f6c1e854a';
-const LASTFM_USER = process.env.LASTFM_USER || 'syntiiix';
-
-// Last.fm top stats endpoint - Heroku optimized
 app.get('/api/lastfm/top', async (req, res) => {
   try {
     const period = req.query.period || '7day';
@@ -410,7 +435,6 @@ app.get('/api/lastfm/top', async (req, res) => {
   }
 });
 
-// Updated test endpoint to use HTTPS and add more logging
 app.get('/api/lastfm/test', async (req, res) => {
   try {
     console.log('Testing Last.fm API connection...');
@@ -441,7 +465,6 @@ app.get('/api/lastfm/test', async (req, res) => {
   }
 });
 
-// Add a debug endpoint to verify environment settings (password protected for security)
 app.get('/api/debug/config', (req, res) => {
   const debugPassword = req.query.key;
   
@@ -463,7 +486,6 @@ app.get('/api/debug/config', (req, res) => {
   });
 });
 
-// WakaTime API endpoints
 app.get('/api/wakatime/stats', async (req, res) => {
   try {
     const apiKey = process.env.WAKATIME_API_KEY;
@@ -540,7 +562,6 @@ app.get('/api/wakatime/languages', async (req, res) => {
   }
 });
 
-// Monkeytype API endpoint - now uses cache
 app.get('/api/monkeytype/stats', (req, res) => {
   if (!monkeytypeCache.data) {
     return res.status(503).json({ 
@@ -552,12 +573,51 @@ app.get('/api/monkeytype/stats', (req, res) => {
   res.json(monkeytypeCache.data);
 });
 
-// Serve index.html for all other routes
+// Explicitly serve CSS files
+app.get('/*.css', (req, res) => {
+  res.set('Content-Type', 'text/css');
+  res.sendFile(path.join(__dirname, req.path));
+});
+
+app.get('/styles/*.css', (req, res) => {
+  res.set('Content-Type', 'text/css');
+  res.sendFile(path.join(__dirname, req.path));
+});
+
+// Explicitly serve JavaScript files
+app.get('/*.js', (req, res) => {
+  res.set('Content-Type', 'application/javascript');
+  res.sendFile(path.join(__dirname, req.path));
+});
+
+// Serve static files from the root directory
+app.use(express.static(__dirname, {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.css')) {
+      res.set('Content-Type', 'text/css');
+    } else if (filePath.endsWith('.js')) {
+      res.set('Content-Type', 'application/javascript');
+    }
+  }
+}));
+
+// Serve static data files
+app.use('/data', express.static(path.join(__dirname, 'data')));
+
+// Serve files from the assets folder
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+// Route for the home page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// THIS MUST BE THE LAST ROUTE - Catch-all route for serving index.html
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 }); 

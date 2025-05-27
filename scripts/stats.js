@@ -18,28 +18,35 @@ async function updateWeather() {
 // Function to fetch and update server stats
 async function updateServerStats() {
     try {
-        const response = await fetch('http://100.64.190.77:3004/stats');
+        const response = await fetch('/api/server-stats');
         const stats = await response.json();
+        console.log('Server stats received:', stats); // Debug log
         
         // Update CPU Usage
         const cpuUsage = document.querySelector('.cpu-usage');
         if (cpuUsage) {
-            cpuUsage.textContent = `${stats.cpuUsage}%`;
+            cpuUsage.textContent = stats.cpuUsage ? `${stats.cpuUsage}%` : 'N/A';
         }
 
         // Update RAM Usage
         const ramUsage = document.querySelector('.ram-usage');
-        if (ramUsage) {
-            ramUsage.textContent = `${stats.ram.usage}%`;
+        if (ramUsage && stats.ram) {
+            ramUsage.textContent = typeof stats.ram.usage === 'number' ? `${stats.ram.usage}%` : 'N/A';
         }
 
         // Update CPU Temperature
         const cpuTemp = document.querySelector('.cpu-temp');
         if (cpuTemp) {
-            cpuTemp.textContent = `${stats.cpuTemp}°C`;
+            cpuTemp.textContent = stats.cpuTemp ? `${stats.cpuTemp}°C` : 'N/A';
         }
     } catch (error) {
         console.error('Error fetching server stats:', error);
+        // Set all values to N/A on error
+        const elements = ['.cpu-usage', '.ram-usage', '.cpu-temp'];
+        elements.forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) element.textContent = 'N/A';
+        });
     }
 }
 
