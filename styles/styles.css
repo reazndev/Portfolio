@@ -1670,10 +1670,19 @@ body::-webkit-scrollbar {
     padding: 1rem;
     width: 90%;
     margin: 0 auto;
+    height: 2200px;
   }
 
  
-  #box-projects,
+  #projects-section {
+    padding-top: 800px;
+  }
+
+  #box-projects { 
+    height: 300px !important;
+    padding-top: -110px !important;
+  }
+
   #box-about,
   #box-lastfm,
   #box-links,
@@ -1700,7 +1709,6 @@ body::-webkit-scrollbar {
   #box-about .gradient-text {
     font-size: 1.8rem !important;
   }
-
  
   .content-section {
     width: 90%;
@@ -1711,7 +1719,6 @@ body::-webkit-scrollbar {
   .about-section-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
   }
 
   .education-timeline {
@@ -1721,7 +1728,6 @@ body::-webkit-scrollbar {
     width: 100%;
     margin: 2rem 0;
   }
-
  
   .music-container {
     display: flex;
@@ -1776,6 +1782,7 @@ body::-webkit-scrollbar {
     width: 35px !important;
     height: 35px !important;
     margin: 0 !important;
+    margin-top: -35px !important;
   }
 
   .tech-stack img {
