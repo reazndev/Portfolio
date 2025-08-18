@@ -1,1026 +1,1303 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1.0" />
-    <title>Reazn's Portfolio</title>
-    <link rel="stylesheet" href="styles/styles.css" />
-    <link rel="stylesheet" href="styles/nav.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  </head>
-  <body>
-    <div class="custom-cursor"></div>
-    <pre id="ascii-clock" class="ascii-clock"></pre>
-    <div id="content">
-      <div id="box-projects" class="box" onclick="scrollToSection('projects-section')">
-        <h1>Projects</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1.0" />
+  <title>Reazn's Portfolio</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicon/site.webmanifest">
+  <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body>
+  <div class="custom-cursor"></div>
+  <pre id="ascii-clock" class="ascii-clock"></pre>
+  <div id="content">
+    <div id="box-projects" class="box" onclick="scrollToSection('projects-section')">
+      <h1>Projects</h1>
+    </div>
+    <div id="box-about" class="box" onclick="scrollToSection('about-section')">
+      <h1><img src="https://em-content.zobj.net/source/apple/354/waving-hand_1f44b.png" class="wave" alt="👋"> Hi I'm
+        <span class="gradient-text">Reazn</span></h1>
+      <p class="about-text">I'm a 17 year old Swiss computer science student and avid music enjoyer. I love creating
+        websites for personal use and making my life with my own applications easier. <br>
+        In my spare time I dive head first into everything Linux related, dabble in photography as well as graphic
+        design.
+        <hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.1); margin: 20px 0 0px 0;"><br>
+        Currently I'm working on <a href="https://dajia.lol" target="_blank"
+          style="color: black; text-decoration: underline;">Dajia.lol</a>
+    </div>
+    <div id="box-techstack" class="box">
+      <div class="tech-stack">
+        <a href="https://www.rust-lang.org/" target="_blank"><img src="/assets/rust.png" alt="Rust" title="Rust"></a>
+        <a href="https://reactjs.org/" target="_blank"><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
+            title="React"></a>
+        <a href="https://www.python.org" target="_blank"><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"
+            title="Python"></a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"
+            title="JavaScript"></a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"
+            title="HTML"></a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" title="CSS"></a>
+        <a href="https://www.postgresql.org/" target="_blank"><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"
+            title="PostgreSQL"></a>
+        <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank"><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" title="C#"></a>
+        <a href="https://git-scm.com" target="_blank"><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git"></a>
+        <a href="https://supabase.com" target="_blank"><img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase"
+            title="Supabase"></a>
       </div>
-      <div id="box-about" class="box" onclick="scrollToSection('about-section')">
-        <h1><img src="https://em-content.zobj.net/source/apple/354/waving-hand_1f44b.png" class="wave" alt="👋"> Hi I'm <span class="gradient-text">Reazn</span></h1>
-        <p class="about-text">I'm a 17 year old Swiss computer science student and avid music enjoyer. I love creating websites for personal use and making my life with my own applications easier. <br>
-          In my spare time I dive head first into everything Linux related, dabble in photography as well as graphic design.<hr style="border: none; border-top: 1px solid rgba(0, 0, 0, 0.1); margin: 20px 0 0px 0;"><br>
-          Currently I'm working on <a href="https://dajia.lol" target="_blank" style="color: black; text-decoration: underline;">Dajia.lol</a>
-      </div>
-      <div id="box-techstack" class="box">
-        <div class="tech-stack">
-          <a href="https://www.rust-lang.org/" target="_blank"><img src="/assets/rust.png" alt="Rust" title="Rust"></a>
-          <a href="https://reactjs.org/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React"></a>
-          <a href="https://www.python.org" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python"></a>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript"></a>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" title="HTML"></a>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" title="CSS"></a>
-          <a href="https://www.postgresql.org/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" title="PostgreSQL"></a>
-          <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" title="C#"></a>
-          <a href="https://git-scm.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git"></a>
-          <a href="https://supabase.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" title="Supabase"></a>
-        </div>
-      </div>
-      <div id="box-right-top" class="box" style="overflow: hidden; cursor: pointer; padding: 1rem;">
-        <a href="https://github.com/reazndev" target="_blank" style="text-decoration: none;">
+    </div>
+    <div id="box-right-top" class="box" style="overflow: hidden; cursor: pointer; padding: 1rem;">
+      <a href="https://github.com/reazndev" target="_blank" style="text-decoration: none;">
         <h1 style="margin: 0 0 0.5rem 0; text-align: left; font-size: 1.3rem;">GitHub Activity</h1>
-         <img src="/api/github-contributions/reazndev?months=4&boxSize=12&boxSpacing=3&borderRadius=3&inactiveColor=%23ececf0&minActivityColor=%23e8cb38&maxActivityColor=%235649cc&showLabels=true&backgroundColor=transparent" 
-              alt="My GitHub Contribution Graph"
-              onerror="console.error('Failed to load GitHub contributions:', this.src)"
-              onload="console.log('GitHub contributions loaded successfully')"
-              style="width: 100%; height: auto; margin: 0;">
-            </a>
-      </div>
-      <div id="box-right-bottom" class="box" style="padding: 1rem;">
-        <div class="stats-container">
-          <!-- Weather Section -->
-          <div class="weather-section">
-            <h2>Weather</h2>
-            <div class="weather-info">
-              <div class="temperature">--°C</div>
-              <div class="condition">--</div>
-            </div>
+        <img
+          src="/api/github-contributions/reazndev?months=4&boxSize=12&boxSpacing=3&borderRadius=3&inactiveColor=%23ececf0&minActivityColor=%23e8cb38&maxActivityColor=%235649cc&showLabels=true&backgroundColor=transparent"
+          alt="My GitHub Contribution Graph" onerror="console.error('Failed to load GitHub contributions:', this.src)"
+          onload="console.log('GitHub contributions loaded successfully')"
+          style="width: 100%; height: auto; margin: 0;">
+      </a>
+    </div>
+    <div id="box-right-bottom" class="box" style="padding: 1rem;">
+      <div class="stats-container">
+        <!-- Weather Section -->
+        <div class="weather-section">
+          <h2>Weather</h2>
+          <div class="weather-info">
+            <div class="temperature">--°C</div>
+            <div class="condition">--</div>
           </div>
+        </div>
 
-          <!-- Divider -->
-          <div class="divider"></div>
+        <!-- Divider -->
+        <div class="divider"></div>
 
-          <!-- Server Stats Section -->
-          <div class="server-stats">
-            <h2>Server Stats</h2>
-            <div class="stats-info">
-              <div class="stat-item">
-                <span class="stat-label">CPU Usage:</span>
-                <span class="cpu-usage">--%</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-label">RAM Usage:</span>
-                <span class="ram-usage">--%</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-label">CPU Temp:</span>
-                <span class="cpu-temp">--°C</span>
-              </div>
+        <!-- Server Stats Section -->
+        <div class="server-stats">
+          <h2>Server Stats</h2>
+          <div class="stats-info">
+            <div class="stat-item">
+              <span class="stat-label">CPU Usage:</span>
+              <span class="cpu-usage">--%</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">RAM Usage:</span>
+              <span class="ram-usage">--%</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">CPU Temp:</span>
+              <span class="cpu-temp">--°C</span>
             </div>
           </div>
         </div>
       </div>
-      <div id="box-lastfm" class="box" onclick="scrollToSection('music-section')">
-        <h1>My listening habits</h1>
-        <div id="music-stats">
-          <div id="recent-track"></div>
-          <div id="top-track"></div>
-          <div id="top-artist"></div>
-          <div id="top-album"></div>
-          <div id="random-recommendation"></div>
+    </div>
+    <div id="box-lastfm" class="box" onclick="scrollToSection('music-section')">
+      <h1>My listening habits</h1>
+      <div id="music-stats">
+        <div id="recent-track"></div>
+        <div id="top-track"></div>
+        <div id="top-artist"></div>
+        <div id="top-album"></div>
+        <div id="random-recommendation"></div>
+      </div>
+      <canvas id="listening-chart" width="350" height="100"
+        style="max-width: 500px; width: 100%; max-height: 200px; margin-top: 10px; margin-bottom: 10px;"></canvas>
+    </div>
+
+    <div id="box-github">
+      <a href="https://github.com/reazndev" class="github-link">
+        <img src="assets/gh-empty.png" alt="GitHub" class="github-icon github-empty">
+        <img src="assets/gh-filled.png" alt="GitHub" class="github-icon github-filled">
+      </a>
+    </div>
+
+    <div id="box-linkedin">
+      <a href="https://www.linkedin.com/in/florian-ruby" class="ln-link">
+        <img src="assets/ln-empty.png" alt="LinkedIn" class="linkedin-icon linkedin-empty">
+        <img src="assets/ln-filled.png" alt="LinkedIn" class="linkedin-icon linkedin-filled">
+      </a>
+    </div>
+    <div id="cv-download">
+      <a href="not publicly sharing my CV for security reasons however you can read out to me!" class="cv-link" download>
+        <img src="assets/cv-empty.png" alt="CV" class="cv-icon cv-empty">
+        <img src="assets/cv-filled.png" alt="CV" class="cv-icon cv-filled">
+      </a>
+    </div>
+  </div>
+
+
+  <section id="projects-section" class="content-section">
+    <h2>Projects</h2>
+    <div class="section-content">
+          <p>You can find out more about some of my projects in a blog post manner by clicking on them or clicking on 'read'! </p><br>
+
+      <div class="projects-list">
+
+        <div class="project" onclick="openDajiaPopup(event)">
+          <h3>Dajia.lol</h3>
+          <p>A highly customisable bio card website with build in LastFm integration and many other APIs.
+          <div class="project-links">
+            <a href="https://dajia.lol" target="_blank" class="view-link" onclick="event.stopPropagation()">view</a>
+            <a href="#" class="projects-github-link" onclick="event.stopPropagation(); openDajiaPopup(event);">read</a>
+          </div>
+          </p>
+          <div class="tags">
+            <span>React</span>
+            <span>JavaScript</span>
+            <span>CSS</span>
+            <span>Rust</span>
+            <span>PostgreSQL</span>
+            <span>10+ APIs</span>
+          </div>
         </div>
-        <canvas id="listening-chart" width="350" height="100" style="max-width: 500px; width: 100%; max-height: 200px; margin-top: 10px; margin-bottom: 10px;"></canvas>
+
+        <div class="project" data-preview="./assets/portfolio/portfolio-website.png">
+          <h3>My old Portfolio</h3>
+          <p>My old portfolio website.
+          <div class="project-links">
+            <a href="https://github.com/reazndev/reazn-tech" target="_blank" class="projects-github-link">github</a>
+          </div>
+          </p>
+          <div class="tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <h3>Leurs</h3>
+          <p>An advanced all in one Discord bot featuring many useful commands and AI integrations.
+          <div class="project-links">
+            <a href="https://docs.leurs.ch" target="_blank" class="view-link">view</a>
+            <a href="https://github.com/im23d/leurs" target="_blank" class="projects-github-link">github</a>
+          </div>
+          </p>
+          <div class="tags">
+            <span>Python</span>
+            <span>Ollama</span>
+            <span>Deepseek</span>
+            <span>Mistral</span>
+            <span>Selfhosted</span>
+          </div>
+        </div>
+
+        <div class="project" data-preview="./assets/portfolio/schulnetz-grade-calc-extension.png">
+          <h3>Average Grade Chrome Extension</h3>
+          <p>A Chrome Extension I built for our school's administrative website that calculates <br>the average of all
+            grades and highlights subjects where improvement is possible.
+          <div class="project-links">
+            <a href="https://chromewebstore.google.com/detail/schul-netz-average-grade/pppikkhdeldemcaljbllcjhknijkbgck"
+              target="_blank" class="view-link">view</a>
+            <a href="https://github.com/reazndev/Schulnetz-Grade-Average-Calculator" target="_blank"
+              class="projects-github-link">github</a>
+          </div>
+          </p>
+          <div class="tags">
+            <span>JavaScript</span>
+          </div>
+        </div>
+
+        <div class="project" data-preview="./assets/portfolio/habenwirmorgenopl.info.png">
+          <h3>Habenwirmorgenopl.info</h3>
+          <p>A simple website showing when we have school on premise or remotely.
+          <div class="project-links">
+            <a href="https://habenwirmorgenopl.info" target="_blank" class="view-link">view</a>
+            <a href="https://github.com/reazndev/Habenwirmorgenopl.info" target="_blank"
+              class="projects-github-link">github</a>
+          </div>
+          </p>
+          <div class="tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>ExcelJS</span>
+            <span>Selfhosted</span>
+          </div>
+        </div>
+
+        <div class="project" data-preview="./assets/portfolio/flagtactoe.png">
+          <h3>FlagTacToe</h3>
+          <p>A browser educational game that combines TicTacToe with flags. <br>It offers a Daily challenge,
+            Singleplayer as well as online Multiplayer.
+          <div class="project-links">
+            <a href="https://flagtactoe.reazn.tech" target="_blank" class="view-link">view</a>
+            <a href="https://github.com/reazndev/Flag-TTT" target="_blank" class="projects-github-link">github</a>
+          </div>
+          </p>
+          <div class="tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Heroku</span>
+            <span>Websockets</span>
+          </div>
+        </div>
+
+        <div class="project" data-preview="./assets/portfolio/dailies.png">
+          <h3>Daily GameStats</h3>
+          <p>A website where users can submit their scores for games like Wordle. The website tracks their scores,
+            <br>shows them on global leaderboards and provides the user with charts and other interesting statistics.
+          <div class="project-links">
+            <a href="https://dailies.reazn.tech" target="_blank" class="view-link">view</a>
+            <a href="https://github.com/reazndev/dailies-stats" target="_blank" class="projects-github-link">github</a>
+          </div>
+          </p>
+          <div class="tags">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Supabase</span>
+          </div>
+        </div>
       </div>
-      
-      <div id="box-github">
-        <a href="https://github.com/reazndev" class="github-link">
-          <img src="assets/gh-empty.png" alt="GitHub" class="github-icon github-empty">
-          <img src="assets/gh-filled.png" alt="GitHub" class="github-icon github-filled">
-        </a>
+      <div class="preview-window">
+        <img id="preview-image" src="" alt="Project Preview">
       </div>
-      
-      <div id="box-linkedin">
-        <a href="https://www.linkedin.com/in/florian-ruby" class="ln-link">
-          <img src="assets/ln-empty.png" alt="LinkedIn" class="linkedin-icon linkedin-empty">
-          <img src="assets/ln-filled.png" alt="LinkedIn" class="linkedin-icon linkedin-filled">
-        </a>
+    </div>
+  </section>
+
+  <section id="about-section" class="content-section">
+    <h2>About Me</h2>
+    <div class="section-content-about">
+      <div class="about-section-content">
+        <div class="about-text-content">
+          <p>
+            I'm a 17-year-old computer science student based in Switzerland<img src="./assets/ch_apple_emoji.png"
+              alt="Swiss flag"
+              style="display: inline-block; vertical-align: middle; margin-left: 1px; margin-bottom: 1px; width: 27px; height: 27px;">.
+            I love creating
+            websites and exploring new technologies. My programming journey has started with simple HTML websites
+            and has evolved to include full-stack development and various programming languages.
+          </p>
+          <p>
+            When I'm not coding, you'll find me discovering new music, taking photos, working on graphic design projects
+            or studying Chinese.
+            I'm particularly interested in web design, data visualization, and creating tools that make information more
+            accessible. </p>
+          <p>
+            Recently, I've also become interested in AI and machine learning. I've run LLMs on my PC and experimented
+            with their implementations using APIs.
+          </p>
+          <p>
+            Feel free to check out my projects above or connect with me via email, GitHub, or LinkedIn below!
+          </p>
+
+          <div class="tech-scroll-container">
+            <div class="about-tech-stack">
+              <a href="https://www.python.org" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"
+                  title="Python"></a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                  alt="JavaScript" title="JavaScript"></a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"
+                  title="HTML"></a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"
+                  title="CSS"></a>
+              <a href="https://www.postgresql.org/" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                  alt="PostgreSQL" title="PostgreSQL"></a>
+              <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"
+                  title="C#"></a>
+              <a href="https://git-scm.com" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+                  title="Git"></a>
+              <a href="https://supabase.com" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase"
+                  title="Supabase"></a>
+              <a href="https://www.docker.com" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"
+                  title="Docker"></a>
+
+              <a href="https://www.python.org" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"
+                  title="Python"></a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                  alt="JavaScript" title="JavaScript"></a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"
+                  title="HTML"></a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"
+                  title="CSS"></a>
+              <a href="https://www.postgresql.org/" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                  alt="PostgreSQL" title="PostgreSQL"></a>
+              <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"
+                  title="C#"></a>
+              <a href="https://git-scm.com" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+                  title="Git"></a>
+              <a href="https://supabase.com" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase"
+                  title="Supabase"></a>
+              <a href="https://www.docker.com" target="_blank"><img
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"
+                  title="Docker"></a>
+            </div>
+          </div>
+          <div class="social-links-container">
+            <h3>Connect With Me</h3>
+            <div class="social-links">
+              <a href="https://github.com/reazndev" target="_blank" class="social-box">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+              </a>
+              <a href="https://linkedin.com/in/florian-ruby" target="_blank" class="social-box">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a href="mailto:reazn.dev@gmail.com" class="social-box">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+              </a>
+              <a href="https://discord.com/users/reazn999" target="_blank" class="social-box">
+                <i class="fab fa-discord"></i>
+                <span>Discord</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="education-timeline">
+          <div class="timeline-item">
+            <div class="timeline-title">Berufsfachschule BBB Baden</div>
+            <div class="timeline-date">2023 - 2027</div>
+            <div class="timeline-description"> Specializing in app and web development, databases, and cloud
+              applications.</div>
+            <div class="timeline-tech">
+              <span>C#</span> •
+              <span>Python</span> •
+              <span>JavaScript</span> •
+              <span>Machine Learning</span> •
+              <span>Git</span> •
+              <span>SQL</span> •
+              <span>HTML</span> •
+              <span>CSS</span> •
+              <span>Docker</span> •
+              <span>AWS</span> •
+              <span>Scrum</span>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Kantonsschule Baden</div>
+            <div class="timeline-date">2023 - 2027</div>
+            <div class="timeline-description">Focus on business law, finance, and languages.</div>
+            <div class="timeline-tech">
+              <span>Business Law</span> •
+              <span>Law</span> •
+              <span>Finance & Accounting</span> •
+              <span>Math</span> •
+              <span>French</span> •
+              <span>English</span> •
+              <span>German</span> •
+              <span>Chinese</span>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Bezirksschule Bremgarten</div>
+            <div class="timeline-date">2020 - 2023</div>
+            <span>General Education</span>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Primarschule Oberlunkhofen</div>
+            <div class="timeline-date">2016 - 2020</div>
+            <span>General Education</span>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Grundschule Hirschfelde</div>
+            <div class="timeline-date">2014 - 2016</div>
+            <span>General Education</span>
+          </div>
+        </div>
       </div>
-      <div id="cv-download">
-        <a href="/assets/TO BE SET" class="cv-link" download>
-          <img src="assets/cv-empty.png" alt="CV" class="cv-icon cv-empty">
-          <img src="assets/cv-filled.png" alt="CV" class="cv-icon cv-filled">
-        </a>
+    </div>
+  </section>
+
+  <section id="music-section" class="content-section">
+    <div class="section-header-container">
+      <h2>Music</h2>
+      <div class="music-timespan-container">
+        <h4>Select Time Period</h4>
+        <div class="timespan-buttons">
+          <button class="timespan-btn active" data-timespan="7day">7 Days</button>
+          <button class="timespan-btn" data-timespan="1month">1 Month</button>
+          <button class="timespan-btn" data-timespan="3month">3 Months</button>
+          <button class="timespan-btn" data-timespan="12month">1 Year</button>
+          <button class="timespan-btn" data-timespan="overall">All Time</button>
+        </div>
       </div>
     </div>
 
-    
-    <section id="projects-section" class="content-section">
-      <h2>Projects</h2>
-      <div class="section-content">
-        <div class="projects-list">
-
-          <div class="project" onclick="openDajiaPopup(event)">
-            <h3>Dajia.lol</h3>
-            <p>A highly customisable bio card website with build in LastFm integration and many other APIs.
-              <div class="project-links">
-                <a href="https://dajia.lol" target="_blank" class="view-link" onclick="event.stopPropagation()">view</a>
-                <a href="https://dajia.lol/reazn" target="_blank" class="projects-github-link" onclick="event.stopPropagation()">example</a>
-              </div>
+    <div class="section-content">
+      <div class="music-container">
+        <!-- Left side with text -->
+        <div class="music-info">
+          <div class="music-text-box">
+            <p>Music is a huge part of my daily life - I'm constantly exploring new artists and genres, from ambient
+              soundscapes to jazz to experimental hip-hop. My listening habits are diverse and ever-evolving, as I
+              believe every genre has something unique to offer and I'm always open for new stuff. </p>
+            <p>That's why this year I've challenged myself to listen to a new album every single day throughout 2025,
+              pushing the boundaries of my musical comfort zone. You can see some of the albums I've listened to below!
             </p>
-            <div class="tags">
-              <span>React</span>
-              <span>JavaScript</span>
-              <span>CSS</span>
-              <span>Rust</span>
-	      <span>PostgreSQL</span>
-	      <span>10+ APIs</span>
-	    </div>
           </div>
 
-          <div class="project" data-preview="./assets/portfolio/portfolio-website.png">
-            <h3>My old Portfolio</h3>
-            <p>My old portfolio website.
-              <div class="project-links">
-                <a href="https://github.com/reazndev/reazn-tech" target="_blank" class="projects-github-link">github</a>
-	      </div>
-            </p>
-            <div class="tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-            </div>
-          </div>
-
-          <div class="project">
-            <h3>Leurs</h3>
-            <p>An advanced all in one Discord bot featuring many useful commands and AI integrations. 
-              <div class="project-links">
-                <a href="https://docs.leurs.ch" target="_blank" class="view-link">view</a>
-                <a href="https://github.com/im23d/leurs" target="_blank" class="projects-github-link">github</a>
-              </div>
-            </p>
-            <div class="tags">
-              <span>Python</span>
-              <span>Ollama</span>
-              <span>Deepseek</span>
-	      <span>Mistral</span>
-	      <span>Selfhosted</span>
-            </div>
-          </div>
-
-          <div class="project" data-preview="./assets/portfolio/schulnetz-grade-calc-extension.png">
-            <h3>Average Grade Chrome Extension</h3>
-            <p>A Chrome Extension I built for our school's administrative website that calculates <br>the average of all grades and highlights subjects where improvement is possible.
-              <div class="project-links">
-                <a href="https://chromewebstore.google.com/detail/schul-netz-average-grade/pppikkhdeldemcaljbllcjhknijkbgck" target="_blank" class="view-link">view</a>
-                <a href="https://github.com/reazndev/Schulnetz-Grade-Average-Calculator" target="_blank" class="projects-github-link">github</a>
-              </div>
-            </p>
-            <div class="tags">
-              <span>JavaScript</span>
-            </div>
-          </div>
-
-          <div class="project" data-preview="./assets/portfolio/habenwirmorgenopl.info.png">
-            <h3>Habenwirmorgenopl.info</h3>
-            <p>A simple website showing when we have school on premise or remotely.
-              <div class="project-links">
-                <a href="https://habenwirmorgenopl.info" target="_blank" class="view-link">view</a>
-                <a href="https://github.com/reazndev/Habenwirmorgenopl.info" target="_blank" class="projects-github-link">github</a>
-              </div>
-            </p>
-            <div class="tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>ExcelJS</span>
-	      <span>Selfhosted</span>
-            </div>
-          </div>
-
-          <div class="project" data-preview="./assets/portfolio/flagtactoe.png">
-            <h3>FlagTacToe</h3>
-            <p>A browser educational game that combines TicTacToe with flags. <br>It offers a Daily challenge, Singleplayer as well as online Multiplayer.
-              <div class="project-links">
-                <a href="https://flagtactoe.reazn.tech" target="_blank" class="view-link">view</a>
-                <a href="https://github.com/reazndev/Flag-TTT" target="_blank" class="projects-github-link">github</a>
-              </div>
-            </p>
-            <div class="tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>Heroku</span>
-              <span>Websockets</span>
-            </div>
-          </div>
-
-          <div class="project" data-preview="./assets/portfolio/dailies.png">
-            <h3>Daily GameStats</h3>
-            <p>A website where users can submit their scores for games like Wordle. The website tracks their scores, <br>shows them on global leaderboards and provides the user with charts and other interesting statistics.
-              <div class="project-links">
-                <a href="https://dailies.reazn.tech" target="_blank" class="view-link">view</a>
-                <a href="https://github.com/reazndev/dailies-stats" target="_blank" class="projects-github-link">github</a>
-              </div>
-            </p>
-            <div class="tags">
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>JavaScript</span>
-              <span>Supabase</span>
+          <div class="album-history-container albums-2025-container">
+            <h4>Albums I've Listened to in 2025</h4>
+            <div class="album-grid album-grid-small" id="album-history-grid"
+              style="--album-size: 100px; --album-gap: 8px;">
+              <div class="loading-albums">Loading album history...</div>
             </div>
           </div>
         </div>
-        <div class="preview-window">
-          <img id="preview-image" src="" alt="Project Preview">
-        </div>
-      </div>
-    </section>
 
-    <section id="about-section" class="content-section">
-      <h2>About Me</h2>
-      <div class="section-content-about">
-        <div class="about-section-content">
-          <div class="about-text-content">
-            <p>
-              I'm a 17-year-old computer science student based in Switzerland<img src="./assets/ch_apple_emoji.png" alt="Swiss flag" style="display: inline-block; vertical-align: middle; margin-left: 1px; margin-bottom: 1px; width: 27px; height: 27px;">. I love creating 
-              websites and exploring new technologies. My programming journey has started with simple HTML websites 
-              and has evolved to include full-stack development and various programming languages.
-            </p>
-            <p>
-              When I'm not coding, you'll find me discovering new music, taking photos, working on graphic design projects or studying Chinese.
-              I'm particularly interested in web design, data visualization, and creating tools that make information more accessible. </p>
-            <p>
-                Recently, I've also become interested in AI and machine learning. I've run LLMs on my PC and experimented with their implementations using APIs.
-            </p>
-            <p>
-              Feel free to check out my projects above or connect with me via email, GitHub, or LinkedIn below!
-            </p>
-            
-            <div class="tech-scroll-container">
-                <div class="about-tech-stack">
-                    <a href="https://www.python.org" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python"></a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript"></a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" title="HTML"></a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" title="CSS"></a>
-                    <a href="https://www.postgresql.org/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" title="PostgreSQL"></a>
-                    <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" title="C#"></a>
-                    <a href="https://git-scm.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git"></a>
-                    <a href="https://supabase.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" title="Supabase"></a>
-                    <a href="https://www.docker.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" title="Docker"></a>
-                    
-                    <a href="https://www.python.org" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python"></a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript"></a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" title="HTML"></a>
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" title="CSS"></a>
-                    <a href="https://www.postgresql.org/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" title="PostgreSQL"></a>
-                    <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" title="C#"></a>
-                    <a href="https://git-scm.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git"></a>
-                    <a href="https://supabase.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" title="Supabase"></a>
-                    <a href="https://www.docker.com" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" title="Docker"></a>
-                </div>
-            </div>
-            <div class="social-links-container">
-              <h3>Connect With Me</h3>
-              <div class="social-links">
-                <a href="https://github.com/reazndev" target="_blank" class="social-box">
-                  <i class="fab fa-github"></i>
-                  <span>GitHub</span>
-                </a>
-                <a href="https://linkedin.com/in/florian-ruby" target="_blank" class="social-box">
-                  <i class="fab fa-linkedin"></i>
-                  <span>LinkedIn</span>
-                </a>
-                <a href="mailto:reazn.dev@gmail.com" class="social-box">
-                  <i class="fas fa-envelope"></i>
-                  <span>Email</span>
-                </a>
-                <a href="https://discord.com/users/reazn999" target="_blank" class="social-box">
-                  <i class="fab fa-discord"></i>
-                  <span>Discord</span>
-                </a>
-              </div>
+        <!-- Right side with music boxes -->
+        <div class="music-boxes">
+          <div class="music-box" id="top-artist-box">
+            <h4>Top Artist</h4>
+            <div class="music-box-content">
+              <div class="music-item-loading">Loading...</div>
             </div>
           </div>
 
-          <div class="education-timeline">
-            <div class="timeline-item">
-              <div class="timeline-title">Berufsfachschule BBB Baden</div>
-              <div class="timeline-date">2023 - 2027</div>
-              <div class="timeline-description">  Specializing in app and web development, databases, and cloud applications.</div>
-              <div class="timeline-tech">
-                <span>C#</span> •
-                <span>Python</span> •
-                <span>JavaScript</span> •
-                <span>Machine Learning</span> •
-                <span>Git</span> •
-                <span>SQL</span> •
-                <span>HTML</span> •
-                <span>CSS</span> •
-                <span>Docker</span> •
-                <span>AWS</span> •
-                <span>Scrum</span>
-              </div>
+          <div class="music-box" id="top-track-box">
+            <h4>Top Track</h4>
+            <div class="music-box-content">
+              <div class="music-item-loading">Loading...</div>
             </div>
+          </div>
 
-            <div class="timeline-item">
-              <div class="timeline-title">Kantonsschule Baden</div>
-              <div class="timeline-date">2023 - 2027</div>
-              <div class="timeline-description">Focus on business law, finance, and languages.</div>
-              <div class="timeline-tech">
-                <span>Business Law</span> •
-                <span>Law</span> •
-                <span>Finance & Accounting</span> •
-                <span>Math</span> •
-                <span>French</span> •
-                <span>English</span> •
-                <span>German</span> •
-                <span>Chinese</span>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-title">Bezirksschule Bremgarten</div>
-              <div class="timeline-date">2020 - 2023</div>
-                <span>General Education</span>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-title">Primarschule Oberlunkhofen</div>
-              <div class="timeline-date">2016 - 2020</div>
-                <span>General Education</span>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-title">Grundschule Hirschfelde</div>
-              <div class="timeline-date">2014 - 2016</div>
-                <span>General Education</span>
+          <div class="music-box" id="top-album-box">
+            <h4>Top Album</h4>
+            <div class="music-box-content">
+              <div class="music-item-loading">Loading...</div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="music-section" class="content-section">
-      <div class="section-header-container">
-        <h2>Music</h2>
-        <div class="music-timespan-container">
-          <h4>Select Time Period</h4>
-          <div class="timespan-buttons">
-            <button class="timespan-btn active" data-timespan="7day">7 Days</button>
-            <button class="timespan-btn" data-timespan="1month">1 Month</button>
-            <button class="timespan-btn" data-timespan="3month">3 Months</button>
-            <button class="timespan-btn" data-timespan="12month">1 Year</button>
-            <button class="timespan-btn" data-timespan="overall">All Time</button>
+  <section id="other-stats-section" class="content-section">
+    <div class="section-header-container">
+      <h2 style="white-space: nowrap;">Other Fun Stats</h2>
+    </div>
+
+    <div class="section-content">
+      <h3 class="section-subtitle">WakaTime</h3>
+
+      <div class="wakatime-container">
+        <!-- Time Stats Box -->
+        <div class="wakatime-box">
+          <div class="music-text-box">
+            <p>On Jan 18th 2025 I started tracking my coding habits using WakaTime. Below you can see how much time I
+              spend coding as well as my most used languages. <em>(React counts as JS.)</em>
+              <br> Alternatively you can find my WakaTime profile <a href="https://wakatime.com/@reazn999"
+                target="_blank" style="color: black; text-decoration: underline;">here</a>.
+          </div>
+          <div class="time-stats">
+            <div class="time-stat-box">
+              <div class="time-stat-label">Last 7 Days</div>
+              <div class="time-stat-value" id="total-coding-time">--</div>
+            </div>
+            <div class="time-stat-box">
+              <div class="time-stat-label">All Time</div>
+              <div class="time-stat-value" id="all-time-stats">--</div>
+            </div>
+            <div class="time-stat-box">
+              <div class="time-stat-label">Daily Average</div>
+              <div class="time-stat-value" id="daily-average-stats">--</div>
+            </div>
           </div>
         </div>
+
+        <!-- Language Stats Box -->
+        <div class="most-used-languages-box">
+          <h3 style="margin-bottom: 1.5rem;">Languages</h3>
+          <div id="language-stats"></div>
+        </div>
       </div>
-      
-      <div class="section-content">
-        <div class="music-container">
-          <!-- Left side with text -->
-          <div class="music-info">
+
+      <!-- Monkeytype Stats Section -->
+      <div class="section-divider"></div>
+      <div class="monkeytype-section">
+        <h3 class="section-subtitle">Monkeytype</h3>
+        <div class="monkeytype-container">
+          <!-- Left Column: Text and Personal Bests -->
+          <div class="monkeytype-left-column">
             <div class="music-text-box">
-              <p>Music is a huge part of my daily life - I'm constantly exploring new artists and genres, from ambient soundscapes to jazz to experimental hip-hop. My listening habits are diverse and ever-evolving, as I believe every genre has something unique to offer and I'm always open for new stuff. </p>
-              <p>That's why this year I've challenged myself to listen to a new album every single day throughout 2025, pushing the boundaries of my musical comfort zone. You can see some of the albums I've listened to below!</p>
+              <p>Monkeytype is an online typing test that measures your typing speed and accuracy with a very nice UI.
+                <br> As I'm into custom keyboards I started using Monkeytype in 2023.
+                <br> You can find my Monkeytype profile <a href="https://monkeytype.com/profile/reazn" target="_blank"
+                  style="color: black; text-decoration: underline;">here</a>.
+              </p>
             </div>
-            
-            <div class="album-history-container albums-2025-container">
-              <h4>Albums I've Listened to in 2025</h4>
-              <div class="album-grid album-grid-small" id="album-history-grid" style="--album-size: 100px; --album-gap: 8px;">
-                <div class="loading-albums">Loading album history...</div>
-              </div>
+            <div class="monkeytype-personal-bests-box">
+              <h3>Personal Bests</h3>
+              <div id="personal-bests"></div>
             </div>
+          </div>
+
+          <!-- Right Column: Recent Results -->
+          <div class="monkeytype-right-column">
+            <div class="monkeytype-box">
+              <h3>Recent Results</h3>
+              <div id="recent-results"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="side-nav">
+    <a href="#content" class="nav-item">Home</a>
+    <a href="#projects-section" class="nav-item">Projects</a>
+    <a href="#about-section" class="nav-item">About</a>
+    <a href="#music-section" class="nav-item">Music</a>
+    <a href="#other-stats-section" class="nav-item"> Fun Stats</a>
+  </nav>
+
+  <!-- Dajia.lol Popup -->
+  <div id="dajia-popup" class="popup-overlay">
+    <div class="popup-container">
+      <button class="popup-close" onclick="closeDajiaPopup()">&times;</button>
+      <button class="popup-share" onclick="copyPopupLink()" title="Copy link to this project">
+        <i class="fas fa-share"></i>
+      </button>
+
+      <div class="popup-content">
+        <!-- Hero Image -->
+        <div class="popup-hero">
+          <img src="/assets/showcase/showcase_dajia_landing-page" alt="Dajia.lol Hero" class="popup-hero-image">
+        </div>
+
+        <!-- Content Sections -->
+        <div class="popup-sections">
+          <!-- Table of Contents Sidebar -->
+          <div class="popup-toc">
+            <div class="toc-header">Contents</div>
+            <nav class="toc-nav">
+              <a href="#what-it-is" class="toc-item toc-h3">What it is</a>
+              <a href="#showcase" class="toc-item toc-h2">Showcase</a>
+              <a href="#why-i-made-this" class="toc-item toc-h3">Why I made this</a>
+              <a href="#what-it-does" class="toc-item toc-h3">What it does</a>
+              <a href="#music-stuff" class="toc-item toc-h4">Music stuff</a>
+              <a href="#other-integrations" class="toc-item toc-h4">Other integrations</a>
+              <a href="#building-it" class="toc-item toc-h2">Building it</a>
+              <a href="#technical-mess" class="toc-item toc-h3">Technical mess</a>
+              <a href="#react-learning-curve" class="toc-item toc-h3">React learning</a>
+              <a href="#database-architecture" class="toc-item toc-h3">Database</a>
+              <a href="#api-integration" class="toc-item toc-h3">API integration</a>
+              <a href="#caching-system" class="toc-item toc-h3">Caching</a>
+              <a href="#styling-rabbit-hole" class="toc-item toc-h3">Styling</a>
+              <a href="#features-that-killed-me" class="toc-item toc-h3">Features</a>
+              <a href="#stuff-that-breaks" class="toc-item toc-h3">What breaks</a>
+              <a href="#what-works" class="toc-item toc-h3">What works</a>
+              <a href="#architecture" class="toc-item toc-h3">Architecture</a>
+              <a href="#hosting-situation" class="toc-item toc-h3">Hosting</a>
+              <a href="#the-result" class="toc-item toc-h3">The result</a>
+            </nav>
           </div>
           
-          <!-- Right side with music boxes -->
-          <div class="music-boxes">
-            <div class="music-box" id="top-artist-box">
-              <h4>Top Artist</h4>
-              <div class="music-box-content">
-                <div class="music-item-loading">Loading...</div>
-              </div>
+          <!-- Main Content -->
+          <div class="popup-section">
+            <div class="reading-time">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12,6 12,12 16,14"></polyline>
+              </svg>
+              8 min read
             </div>
-            
-            <div class="music-box" id="top-track-box">
-              <h4>Top Track</h4>
-              <div class="music-box-content">
-                <div class="music-item-loading">Loading...</div>
-              </div>
-            </div>
-            
-            <div class="music-box" id="top-album-box">
-              <h4>Top Album</h4>
-              <div class="music-box-content">
-                <div class="music-item-loading">Loading...</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="other-stats-section" class="content-section">
-      <div class="section-header-container">
-        <h2 style="white-space: nowrap;">Other Fun Stats</h2>
-      </div>
-      
-      <div class="section-content">
-        <h3 class="section-subtitle">WakaTime</h3>
-
-        <div class="wakatime-container">
-          <!-- Time Stats Box -->
-          <div class="wakatime-box">
-            <div class="music-text-box">
-              <p>On Jan 18th 2025 I started tracking my coding habits using WakaTime. Below you can see how much time I spend coding as well as my most used languages. <em>(React counts as JS.)</em>
-              <br> Alternatively you can find my WakaTime profile <a href="https://wakatime.com/@reazn999" target="_blank" style="color: black; text-decoration: underline;">here</a>.
-            </div>
-            <div class="time-stats">
-              <div class="time-stat-box">
-                <div class="time-stat-label">Last 7 Days</div>
-                <div class="time-stat-value" id="total-coding-time">--</div>
-              </div>
-              <div class="time-stat-box">
-                <div class="time-stat-label">All Time</div>
-                <div class="time-stat-value" id="all-time-stats">--</div>
-              </div>
-              <div class="time-stat-box">
-                <div class="time-stat-label">Daily Average</div>
-                <div class="time-stat-value" id="daily-average-stats">--</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Language Stats Box -->
-          <div class="most-used-languages-box">
-            <h3 style="margin-bottom: 1.5rem;">Languages</h3>
-            <div id="language-stats"></div>
-          </div>
-        </div>
-
-        <!-- Monkeytype Stats Section -->
-        <div class="section-divider"></div>
-        <div class="monkeytype-section">
-          <h3 class="section-subtitle">Monkeytype</h3>
-          <div class="monkeytype-container">
-            <!-- Left Column: Text and Personal Bests -->
-            <div class="monkeytype-left-column">
-              <div class="music-text-box">
-                <p>Monkeytype is an online typing test that measures your typing speed and accuracy with a very nice UI. <br> As I'm into custom keyboards I started using Monkeytype in 2023.
-                <br> You can find my Monkeytype profile <a href="https://monkeytype.com/profile/reazn" target="_blank" style="color: black; text-decoration: underline;">here</a>.
-                </p>
-              </div>
-              <div class="monkeytype-personal-bests-box">
-                <h3>Personal Bests</h3>
-                <div id="personal-bests"></div>
-              </div>
-            </div>
-
-            <!-- Right Column: Recent Results -->
-            <div class="monkeytype-right-column">
-              <div class="monkeytype-box">
-                <h3>Recent Results</h3>
-                <div id="recent-results"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <nav class="side-nav">
-      <a href="#content" class="nav-item">Home</a>
-      <a href="#projects-section" class="nav-item">Projects</a>
-      <a href="#about-section" class="nav-item">About</a>
-      <a href="#music-section" class="nav-item">Music</a>
-      <a href="#other-stats-section" class="nav-item"> Fun Stats</a>
-    </nav>
-
-    <!-- Dajia.lol Popup -->
-    <div id="dajia-popup" class="popup-overlay">
-      <div class="popup-container">
-        <button class="popup-close" onclick="closeDajiaPopup()">&times;</button>
-        
-        <div class="popup-content">
-          <!-- Hero Image -->
-          <div class="popup-hero">
-            <img src="/assets/showcase/showcase_dajia_landing-page" alt="Dajia.lol Hero" class="popup-hero-image">
-          </div>
-          
-          <!-- Content Sections -->
-          <div class="popup-sections">
-            <div class="popup-section">
-              <h2>Dajia.lol</h2>
-              
-                <h2 id="what-it-is">What it is</h2>
-                <p>Dajia.lol is my take on the whole profile card thing. Yeah, there are tons of these already, but I had a specific problem - I&#39;ve been tracking everything I listen to with Last.fm since 2021, and there was literally nowhere to show that data in a way that actually looked good.</p>
-                <p>So I built a website where you can show off your music taste alongside all your other links and stuff. It&#39;s basically what would happen if a bio link site and your Spotify stats had a baby.</p>
-                <h2 id="why-i-made-this">Why I made this</h2>
-                <p>The whole idea started because Last.fm tracks everything you listen to (Spotify, Apple Music, whatever) - think Spotify Wrapped but every day and way better. But then what? The LastFM website looks horrendous, straight like out of 2005 so the data just sits there without the visuals it deserves. I wanted somewhere to actually display my listening history, top tracks, top artists, all that good stuff, without it looking like a boring spreadsheet.</p>
-                <p>Plus, most link-in-bio sites are pretty bland. They all look the same and don&#39;t really show your personality. I wanted something that actually felt like  <em>me</em> .</p>
-                <h2 id="what-it-does">What it does</h2>
-                <h3 id="music-stuff-the-main-thing-">Music stuff (the main thing)</h3>
-                <ul>
-                <li>Shows your Last.fm data in ways that actually look cool</li>
-                <li>Real-time &quot;currently listening to&quot; widget</li>
-                <li>Top tracks and artists for different time periods (last week, month, year, all time)</li>
-                <li>Your full listening history with nice visuals</li>
-                <li>Basically turns your music taste into something worth showing off</li>
-                </ul>
-                <h3 id="other-integrations">Other integrations</h3>
-                <ul>
-                <li>Discord integration so people can see what you&#39;re up to</li>
-                <li>Custom boxes that show more than just the link - they display cool stats like amount of repos, followers etc (GitHub repos, YouTube channels, SoundCloud, countdown timers)</li>
-                <li>Up to 30 different platform links because who wants to send each of their 15 social media accounts with its own link?</li>
-                </ul>
-                <h1 id="the-whole-package">The whole package</h1>
-                <p>Instead of sending people a boring Linktree link, you get one place that actually shows your personality through your music, activity, and everything else.</p>
-                <h2 id="building-it-aka-my-coding-journey-">Building it (aka my coding journey)</h2>
-                <p>This turned into way more than I expected. What started as &quot;I&#39;ll just make a quick site to show my Last.fm data&quot; became months of work and hundreds of hours of coding, designing, scrapping everything, and starting over.</p>
-                <h3 id="the-technical-mess-i-created">The technical mess I created</h3>
-                <p>I ended up building four different things:</p>
-                <p><strong>Frontend</strong> - React.js (my first real React project, which explains why it took forever)</p>
-                <p><strong>Last.fm data handler</strong> - Built this in Rust because why not make it harder for myself</p>
-                <p><strong>Main backend</strong> - JavaScript handling the website stuff and database</p>
-                <p><strong>Discord bot</strong> - Also JavaScript, grabs your Discord status and throws it in the database</p>
-                <h3 id="the-react-learning-curve-from-hell">The React learning curve from hell</h3>
-                <p>This was my first time really using React beyond the obligatory todo app tutorial. I probably rewrote the entire frontend architecture three times because I&#39;d discover hooks, or context, or the fact that putting everything in useState was like storing your entire life in your wallet.</p>
-                <p>The first version was a disaster of prop drilling that went so deep I needed GPS to find where I was passing data. useEffect dependencies were causing infinite re-render loops that made my laptop sound like it was trying to achieve flight.</p>
-                <p>Then I discovered React optimization and went completely overboard. Suddenly everything was wrapped in React.memo, useMemo, and useCallback like I was optimizing for NASA&#39;s next Mars mission. I was memoizing components that rendered once a month and caching calculations that took 0.003 milliseconds.</p>
-                <p>The breaking point came when I tried to manage form state manually and ended up with a component that was 400 lines of useState declarations.</p>
-                <h3 id="database-architecture-because-i-love-overengineering-">Database architecture (because I love overengineering)</h3>
-                <p>Instead of being a normal person and cramming everything into one table, I decided to build a &quot;properly normalized&quot; database structure. This sounded professional until I realized I now needed JOIN queries just to figure out what color someone wanted their buttons to be.</p>
-                <p>The custom_boxes table is where things got really out of hand. Each box stores metadata about external links - GitHub repos, YouTube channels, Discord servers. The additional_data column is JSONB because every platform returns different information and I gave up trying to create columns for every possible field.</p>
-                <p>Looking back, this is probably over-engineered for what amounts to &quot;show people&#39;s music taste and social links,&quot; but at least the queries are fast and it makes me feel like a Real Developer when I write JOIN statements to display someone&#39;s favorite color.</p>
-                <h3 id="api-integration-nightmare">API integration nightmare</h3>
-                <p>Every API has different limits and they all hate you in their own special way. It&#39;s like dealing with extremely specific bureaucrats who each have incomprehensible rules about how often you&#39;re allowed to ask them questions.</p>
-                <p> <strong>Last.fm</strong> : 5 requests per second sounds generous until you realize loading a single user profile requires 47 different API calls
-                <strong>Spotify</strong> : Rate limits that change based on popularity (success punishment!)
-                <strong>Discord</strong> : Actually reasonable limits, which made me suspicious
-                <strong>GitHub</strong> : 5,000 requests/hour, but checking if a repo exists costs the same as getting its entire commit history
-                <strong>Steam</strong> : Documentation written by someone who actively hates developers</p>
-                <h3 id="the-caching-system">The caching system</h3>
-                <p>Building a caching system sounds straightforward until you realize cache invalidation is one of the two hard problems in computer science. I ended up with more caching layers than a fancy pastry, each solving problems created by the previous layer.</p>
-                <p>Browser localStorage, database caching, smart invalidation - it&#39;s like conducting a symphony where every musician is playing at their own tempo. The system assumes Last.fm data older than 5 minutes is stale, Discord data older than 30 seconds is definitely stale, and GitHub data older than an hour might be stale unless it&#39;s a weekend.</p>
-                <h3 id="the-styling-rabbit-hole">The styling rabbit hole</h3>
-                <p>What started as &quot;background: blue&quot; turned into building a comprehensive theming system. Users wanted colors, then fonts, then custom backgrounds, then rounded buttons. Suddenly I&#39;m building UI customization that rivals Photoshop&#39;s layer styles.</p>
-                <p>CSS-in-JS seemed smart until I was writing JavaScript to generate CSS to style HTML generated by JavaScript. It&#39;s turtles all the way down. I eventually settled on CSS custom properties to maintain my sanity.</p>
-                <p>Custom cursors seemed fun until I discovered browser compatibility hell. Animations turned every transition into coordinating multiple elements like a very patient robot choreographer.</p>
-                <h3 id="the-features-that-almost-killed-me">The features that almost killed me</h3>
-                <p><strong>Custom Boxes</strong> sounded simple: fetch metadata from URLs and display nice cards. Every platform has its own special damn way of being difficult. GitHub wants auth sometimes, YouTube&#39;s API costs money if you breathe wrong, Steam&#39;s docs were written by committee via passive-aggressive post-it notes.</p>
-                <p> <strong>Audio System</strong> : Users wanted background music until I discovered browsers actively prevent auto-playing audio. It&#39;s like trying to surprise someone who has to explicitly consent to being surprised.</p>
-                <p> <strong>Template System</strong> : Let users save/share configurations. Required versioning, permissions, and basically building an app store for profile layouts.</p>
-                <h3 id="the-stuff-that-keeps-breaking">The stuff that keeps breaking</h3>
-                <p> <strong>CORS Issues</strong> : APIs don&#39;t work from browsers because &quot;security&quot; &gt; &quot;my app working&quot;
-                <strong>Mobile Safari</strong> : Apple decided web standards are suggestions. Things work everywhere except Safari, which runs on vindictive physics
-                <strong>API Changes</strong> : GitHub randomly deprecates endpoints, Spotify changes auth flows, Last.fm decides artist images need different formats because Thursday
-                <strong>User Content</strong> : Users upload 50MB corrupted images and create usernames with emoji that break URL routing</p>
-                <h3 id="performance-wins">Performance wins</h3>
-                <ul>
-                <li><strong>Code splitting</strong> with Vite (automatic but I optimized the important routes)</li>
-                <li><strong>Image optimization</strong> : WebP conversion, responsive sizing, lazy loading for anime wallpapers</li>
-                <li><strong>Database indexing</strong> : Turns out CS theory matters - proper indexes made everything fast</li>
-                <li><strong>Virtual scrolling</strong> : Only render visible items instead of crashing browsers with 1000+ track lists</li>
-                </ul>
-                <h3 id="what-actually-works">What actually works</h3>
-                <p>After months of building and rebuilding:</p>
-                <ul>
-                <li>Sub-second page loads (proper caching works)</li>
-                <li>Real-time music data that updates when you change songs</li>
-                <li>Mobile-first design that works everywhere</li>
-                <li>Customization system for unique profiles</li>
-                <li><p>Stable API integrations that handle failures gracefully</p>
-                <p><strong>Architecture that survived</strong> :</p>
-                </li>
-                </ul>
-                <p>Frontend: React 18 + Vite
-                Database: PostgreSQL (properly normalized)
-                Auth: Discord OAuth
-                Caching: Multi-layer (browser + database + smart invalidation)</p>
-                <h3 id="the-hosting-situation-aka-why-i-hate-myself-">The hosting situation (aka why I hate myself)</h3>
-                <p>Here&#39;s where things get really stupid: this entire over-engineered monstrosity is hosted on a Raspberry Pi 3 that&#39;s probably older than some of my users. We&#39;re talking 1GB of RAM and 16GB of storage - specifications that were modest when I was still in Kindergarden.</p>
-                <p>This little plastic computer, which costs less than a decent lunch, is somehow serving real-time music data, processing image uploads, managing database connections, and handling API requests for multiple users simultaneously. It&#39;s like asking a Honda Civic to tow a yacht - technically possible, but you&#39;re gonna hear some concerning noises.</p>
-                <p>The Pi sits in my basement so if it ever catches fire because some user decides to upload a 200MB pictures of his mother I&#39;ll know far too late that I have to call the fire department. (You can see the thermals of my &quot;server&quot; if you can even call it that, in the starting section of my website under &quot;server temps&quot;)</p>
-                <p>The really absurd part is that it actually works. Users are getting sub-second page loads from a device that has less computing power than the smartphone that my grandma still uses. The secret is aggressive caching, smart resource management, and the fact that most of the heavy lifting happens in users&#39; browsers thanks to React doing its thing client-side.</p>
-                <p>Sometimes I lie awake at night wondering what would happen if this thing actually got popular. The Pi would probably just catch fire and take my entire house with it. But until then, it&#39;s kind of amazing that you can build something legitimately useful on hardware that costs less than a train ticket from my house to my school.</p>
-                <h2 id="the-result">The result</h2>
-                <p>It&#39;s a website where you can actually show off who you are instead of just having a list of links. Your music taste, what you&#39;re doing on Discord, your projects, whatever you want - all in one place that doesn&#39;t look like every other generic profile page.</p>
-                <p>Plus I learned a ton building it, even if I wanted to throw my laptop out the window multiple times during the process.</p>
-                <p>Is it going to revolutionize the internet? Probably not. Is it a pretty cool way to show off your digital life? Yeah, I think so.</p>
-
+              <h3 id="what-it-is">What it is</h3>
+                <p>Dajia.lol is my take on the whole profile card thing. Yeah, there are tons of these already, but I had a
+                  specific problem - I've been tracking everything I listen to with Last.fm since 2021, and there was
+                  literally nowhere to show that data in a way that actually looked good.</p>
+                <p>So I built a website where you can show off your music taste alongside all your other links and stuff.
+                  It's basically what would happen if a bio link site and your Spotify stats had a baby.</p>
               <div class="popup-tech-showcase">
-                <div class="demo-links">
-                  <a href="https://dajia.lol" target="_blank" class="demo-link">Visit the Website</a>
-                  <a href="https://dajia.lol/reazn" target="_blank" class="demo-link">My Profile</a>
-                </div>
+              <div class="demo-links">
+                <a href="https://dajia.lol" target="_blank" class="demo-link">Visit the Website</a>
+                <a href="https://dajia.lol/reazn" target="_blank" class="demo-link">My Profile</a>
               </div>
-            </div>
-            
-            <div class="popup-section">
-              <h2>Development Timeline</h2>
-              <div class="commit-timeline">
-                <div class="commit-timeline-container">
-                  <div class="commit-timeline-line"></div>
-                  
-                  <!-- Development Phase -->
-                  <div class="commit-timeline-group">
-                    <div class="commit-phase-separator">
-                      <span class="commit-phase-label">START DEVELOPMENT</span>
-                    </div>
-                    <div class="commit-timeline-date">Commits in Feb, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon">
-                        <img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg">
-                      </div>
-                      <div class="commit-content">
-                        <p class="commit-message">initial idea <span class="commit-sha">f3a7b89  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Feb - Mar, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon">
-                        <img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg">
-                      </div>
-                      <div class="commit-content">
-                        <p class="commit-message">planning phase <span class="commit-sha">a2c9d1e  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Mar 16, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon">
-                        <img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg">
-                      </div>
-                      <div class="commit-content">
-                        <p class="commit-message">Initial page layout <span class="commit-sha">b8f4c2a  < > </span></p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- MVP Phase -->
-                  <div class="commit-timeline-group">
-                    <div class="commit-phase-separator">
-                      <span class="commit-phase-label">MVP READY</span>
-                    </div>
-                    <div class="commit-timeline-date">Commits on Mar 18, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: LastFM integration <span class="commit-sha">d4e7f9b  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Mar 20, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: Discord bot → Discord presence <span class="commit-sha">c7a3e5d  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Mar 25, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: add Discord presence <span class="commit-sha">e9b2f8c  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Mar 26, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">chore: optimise DB for less egress usage <span class="commit-sha">f1d6a4e  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Mar 28, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">style: change general formatting <span class="commit-sha">a5c8b2f  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 3, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: add links <span class="commit-sha">b9e3d7a  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 4, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: add custom boxes <span class="commit-sha">c2f5e9b  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 6, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: custom fonts <span class="commit-sha">d8a4c6e  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 7, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: add Github Account custom box <span class="commit-sha">e1b7f3d  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 8, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: reorder icons <span class="commit-sha">f4c9a2b  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 9, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">chore: clean up DB <span class="commit-sha">a7e5d8c  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 10, 2025</div>
-                    <div class="commit-group">
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">fix: background opacity slider <span class="commit-sha">b3f6e1a  < > </span></p>
-                        </div>
-                      </div>
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">feat: cursor effect <span class="commit-sha">c8d2f7e  < > </span></p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 11, 2025</div>
-                    <div class="commit-group">
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">feat: custom audio <span class="commit-sha">d5a9b4c  < > </span></p>
-                        </div>
-                      </div>
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">feat: add Github Repo custom box <span class="commit-sha">e7c3f8a  < > </span></p>
-                        </div>
-                      </div>
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">feat: add Spotify song custom box <span class="commit-sha">f2e6d1b  < > </span></p>
-                        </div>
-                      </div>
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">feat: typewriter effect (bio & username) <span class="commit-sha">g3h4i5j  < > </span></p>
-                        </div>
-                      </div>
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">feat: add Steam Account custom box <span class="commit-sha">h4i5j6k  < > </span></p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 12, 2025</div>
-                    <div class="commit-group">
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">feat: add badges <span class="commit-sha">c3d7a5e  < > </span></p>
-                        </div>
-                      </div>
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">feat: add UUI & join date <span class="commit-sha">d8f1b9c  < > </span></p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 13, 2025</div>
-                    <div class="commit-group">
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">style: reformat badges <span class="commit-sha">e4a6c2f  < > </span></p>
-                        </div>
-                      </div>
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">feat: add badges tooltip <span class="commit-sha">f7b3e8d  < > </span></p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 14, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">chore: rearrange settings <span class="commit-sha">a2c5f9b  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 20, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">style: redo entire settings page <span class="commit-sha">b8d4e1c  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 22, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: add landing page <span class="commit-sha">c6f2a7e  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 25, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: add subpages (pricing, TOS, Help) <span class="commit-sha">d9e3b8f  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Apr 29, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: improve responsiveness <span class="commit-sha">e1f7c4a  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on May 14, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: add Countdown custom box <span class="commit-sha">f5a8d2b  < > </span></p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Testing Phase -->
-                  <div class="commit-timeline-group">
-                    <div class="commit-phase-separator">
-                      <span class="commit-phase-label">INITIAL TESTING PHASE</span>
-                    </div>
-                    <div class="commit-timeline-date">Commits on May 15, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: Login via Discord <span class="commit-sha">a4b9e6c  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on May 29, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: add templates <span class="commit-sha">b7c3f1d  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on May 30, 2025</div>
-                    <div class="commit-group">
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">fix: Discord register/login not working <span class="commit-sha">c8d5a2e  < > </span></p>
-                        </div>
-                      </div>
-                      <div class="commit-item">
-                        <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                        <div class="commit-content">
-                          <p class="commit-message">fix: LastFM OAuth not working <span class="commit-sha">d2f6b9c  < > </span></p>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Jun 5, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: make typewriter speed adjustable <span class="commit-sha">e9a4c7f  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Jun 7, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: more bio customisation <span class="commit-sha">f3b8e1d  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Jun 9, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">style: redo templates page <span class="commit-sha">a6c2f5b  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Jun 11, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">feat: ability to delete templates <span class="commit-sha">b9d7a4e  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Jun 12, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">fix: particles → reduce lag <span class="commit-sha">c4e8b1f  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Jun 20, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">chore: code clean up & refactor <span class="commit-sha">d7f3c6a  < > </span></p>
-                      </div>
-                    </div>
-                    
-                    <div class="commit-timeline-date">Commits on Jun 30, 2025</div>
-                    <div class="commit-item">
-                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
-                      <div class="commit-content">
-                        <p class="commit-message">fix: many bugs reported by testers <span class="commit-sha">e2a5d9b  < > </span></p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <!-- Release Phase -->
-                  <div class="commit-timeline-group">
-                    <div class="commit-phase-separator">
-                      <span class="commit-phase-label">OFFICIAL RELEASE</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="popup-section">
-              <h2>Technology Stack</h2>
-              <p>Built with modern technologies for performance and scalability:</p>
-              <div class="tech-stack-popup">
-                <div class="tech-item">React</div>
-                <div class="tech-item">JavaScript</div>
-                <div class="tech-item">CSS3</div>
-                <div class="tech-item">Rust Backend</div>
-                <div class="tech-item">PostgreSQL</div>
-                <div class="tech-item">RESTful APIs</div>
               </div>
               
-              <div class="popup-cta">
-                <a href="https://dajia.lol" target="_blank" class="popup-btn primary">Visit Dajia.lol</a>
-                <a href="https://dajia.lol/reazn" target="_blank" class="popup-btn secondary">View My Profile</a>
+            <h2 id="showcase">Showcase</h2>
+            
+            <div class="showcase-grid">
+              <div class="showcase-item">
+                <video autoplay loop muted playsinline>
+                  <source src="/assets/showcase/dajia-profile.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <p style="font-style: italic; margin-top: 8px; text-align: center; font-size: 0.9em; color: #666;">Profile page</p>
+              </div>
+              
+              <div class="showcase-item">
+                <img src="/assets/showcase/dajia-settings" alt="Dajia Settings">
+                <p style="font-style: italic; margin-top: 8px; text-align: center; font-size: 0.9em; color: #666;">Settings with a lot of custumisation</p>
+                <p style="font-size: 0.85em; margin-top: 10px; line-height: 1.4; max-width: 600px;">Change your background image, avatar, colors, opacities, add custom audios, add effects like typewriter, particles following your cursor and much more.</p>
+              </div>
+              
+              <div class="showcase-item">
+                <img src="/assets/showcase/dajia-links" alt="Dajia Links">
+                <p style="font-style: italic; margin-top: 8px; text-align: center; font-size: 0.9em; color: #666;">30+ links supported</p>
+              </div>
+              
+              <div class="showcase-item">
+                <img src="/assets/showcase/dajia-themes" alt="Dajia Themes">
+                <p style="font-style: italic; margin-top: 8px; text-align: center; font-size: 0.9em; color: #666;">Theme selection page</p>
+                <p style="font-size: 0.85em; margin-top: 10px; line-height: 1.4; max-width: 600px;">Pick from a variety of user created themes, create and manage your own on this page as well.</p>
               </div>
             </div>
+            
+            <h3 id="why-i-made-this">Why I made this</h3>
+            <p>The whole idea started because Last.fm tracks everything you listen to (Spotify, Apple Music, whatever) -
+              think Spotify Wrapped but every day and way better. But then what? The LastFM website looks horrendous,
+              straight like out of 2005 so the data just sits there without the visuals it deserves. I wanted somewhere
+              to actually display my listening history, top tracks, top artists, all that good stuff, without it looking
+              like a boring spreadsheet.</p>
+            <p>Plus, most link-in-bio sites are pretty bland. They all look the same and don't really show your
+              personality. I wanted something that actually felt like <em>me</em> .</p>
+            <h3 id="what-it-does">What it does</h3>
+            <h4 id="music-stuff">Music stuff (the main thing)</h4>
+            <ul>
+              <li>Shows your Last.fm data in ways that actually look cool</li>
+              <li>Real-time "currently listening to" widget</li>
+              <li>Top tracks and artists for different time periods (last week, month, year, all time)</li>
+              <li>Your full listening history with nice visuals</li>
+              <li>Basically turns your music taste into something worth showing off</li>
+            </ul>
+            <h4 id="other-integrations">Other integrations</h4>
+            <ul>
+              <li>Discord integration so people can see what you're up to</li>
+              <li>Custom boxes that show more than just the link - they display cool stats like amount of repos,
+                followers etc (GitHub repos, YouTube channels, SoundCloud, countdown timers)</li>
+              <li>Up to 30 different platform links because who wants to send each of their 15 social media accounts
+                with its own link?</li>
+            </ul>
+            <h1>The whole package</h1>
+            <p>Instead of sending people a boring Linktree link, you get one place that actually shows your personality
+              through your music, activity, and everything else.</p>
+            <h2 id="building-it">Building it (aka my coding journey)</h2>
+            <p>This turned into way more than I expected. What started as "I'll just make a quick site to show my
+              Last.fm data" became months of work and hundreds of hours of coding, designing, scrapping everything,
+              and starting over.</p>
+            <h3 id="technical-mess">The technical mess I created</h3>
+            <p>I ended up building four different things:</p>
+              <ul>
+                <li><strong>Frontend</strong> - React.js (my first real React project, which explains why it took forever)</li>
+                <li><strong>Last.fm data handler</strong> - Built this in Rust because why not make it harder for myself</li>
+                <li><strong>Main backend</strong> - JavaScript handling the website stuff and database</li>
+                <li><strong>Discord bot</strong> - Also JavaScript, grabs your Discord status and throws it in the database</li>
+              </ul>
+            <h3 id="react-learning-curve">The React learning curve from hell</h3>
+            <p>This was my first time really using React beyond the obligatory todo app tutorial. I probably rewrote the
+              entire frontend architecture three times because I'd discover hooks, or context, or the fact that putting
+              everything in useState was like storing your entire life in your wallet.</p>
+            <p>The first version was a disaster of prop drilling that went so deep I needed GPS to find where I was
+              passing data. useEffect dependencies were causing infinite re-render loops that made my laptop sound like
+              it was trying to achieve flight.</p>
+            <p>Then I discovered React optimization and went completely overboard. Suddenly everything was wrapped in
+              React.memo, useMemo, and useCallback like I was optimizing for NASA's next Mars mission. I was memoizing
+              components that rendered once a month and caching calculations that took 0.003 milliseconds.</p>
+            <p>The breaking point came when I tried to manage form state manually and ended up with a component that was
+              400 lines of useState declarations.</p>
+            <h3 id="database-architecture">Database architecture (because I love
+              overengineering)</h3>
+            <p>Instead of being a normal person and cramming everything into one table, I decided to build a
+              "properly normalized" database structure. This sounded professional until I realized I now
+              needed JOIN queries just to figure out what color someone wanted their buttons to be.</p>
+            <p>The custom_boxes table is where things got really out of hand. Each box stores metadata about external
+              links - GitHub repos, YouTube channels, Discord servers. The additional_data column is JSONB because every
+              platform returns different information and I gave up trying to create columns for every possible field.
+            </p>
+            <p>Looking back, this is probably over-engineered for what amounts to "show people's music taste and
+              social links," but at least the queries are fast and it makes me feel like a Real Developer when I
+              write JOIN statements to display someone's favorite color.</p>
+            <h3 id="api-integration">API integration nightmare</h3>
+            <p>Every API has different limits and they all hate you in their own special way. It's like dealing with
+              extremely specific bureaucrats who each have incomprehensible rules about how often you're allowed to ask
+              them questions.</p>
+            <ul> 
+              <li><strong>Last.fm</strong>: 5 requests per second sounds generous until you realize loading a single user
+              profile requires 47 different API calls </li>
+              <li><strong>Spotify</strong>: Rate limits that change based on popularity (success punishment!)</li>
+              <li><strong>Discord</strong>: Actually reasonable limits, which made me suspicious</li>
+              <li><strong>GitHub</strong>: 5,000 requests/hour, but checking if a repo exists costs the same as getting its
+              entire commit history</li>
+              <li><strong>Steam</strong>: Documentation written by someone who actively hates developers</li>
+            </ul>
+            <h3 id="caching-system">The caching system</h3>
+            <p>Building a caching system sounds straightforward until you realize cache invalidation is one of the two
+              hard problems in computer science. I ended up with more caching layers than a fancy pastry, each solving
+              problems created by the previous layer.</p>
+            <p>Browser localStorage, database caching, smart invalidation - it's like conducting a symphony where every
+              musician is playing at their own tempo. The system assumes Last.fm data older than 5 minutes is stale,
+              Discord data older than 30 seconds is definitely stale, and GitHub data older than an hour might be stale
+              unless it's a weekend.</p>
+            <h3 id="styling-rabbit-hole">The styling rabbit hole</h3>
+            <p>What started as "background: blue" turned into building a comprehensive theming system. Users
+              wanted colors, then fonts, then custom backgrounds, then rounded buttons. Suddenly I'm building UI
+              customization that rivals Photoshop's layer styles.</p>
+            <p>CSS-in-JS seemed smart until I was writing JavaScript to generate CSS to style HTML generated by
+              JavaScript. It's turtles all the way down. I eventually settled on CSS custom properties to maintain my
+              sanity.</p>
+            <p>Custom cursors seemed fun until I discovered browser compatibility hell. Animations turned every
+              transition into coordinating multiple elements like a very patient robot choreographer.</p>
+            <h3 id="features-that-killed-me">The features that almost killed me</h3>
+            <p><strong>Custom Boxes: </strong> sounded simple, fetch metadata from URLs and display nice cards. Every
+              platform has its own special damn way of being difficult. GitHub wants auth sometimes, YouTube's API costs
+              money if you breathe wrong, Steam's docs were written by committee via passive-aggressive post-it notes.
+            </p>
+            <p> <strong>Audio System</strong>: Users wanted background music until I discovered browsers actively
+              prevent auto-playing audio. It's like trying to surprise someone who has to explicitly consent to being
+              surprised.</p>
+            <p> <strong>Template System</strong>: Let users save/share configurations. Required versioning,
+              permissions, and basically building an app store for profile layouts.</p>
+            <h3 id="stuff-that-breaks">The stuff that keeps breaking</h3>
+            <ul> 
+              <li><strong>CORS Issues</strong>: APIs don't work from browsers because "security" &gt; "my
+              app working"</li>
+              <li><strong>Mobile Safari</strong>: Apple decided web standards are suggestions. Things work everywhere
+              except Safari, which runs on vindictive physics</li>
+              <li><strong>API Changes</strong>: GitHub randomly deprecates endpoints, Spotify changes auth flows, Last.fm
+              decides artist images need different formats because Thursday</li>
+              <li><strong>User Content</strong>: Users upload 50MB corrupted images and create usernames with emoji that
+              break URL routing</li>
+            </ul>
+            <h3 id="what-works">What actually works</h3>
+            <p>After months of building and rebuilding:</p>
+            <ul>
+              <li>Sub-second page loads (proper caching works)</li>
+              <li>Real-time music data that updates when you change songs</li>
+              <li>Mobile-first design that works everywhere</li>
+              <li>Customization system for unique profiles</li>
+              <li>
+                <p>Stable API integrations that handle failures gracefully</p>
+              </li>
+            </ul>
+            <h3 id="architecture">Architecture that survived:</h3>
+
+            <ul>
+              <li>Frontend: React 18 + Vite</li>
+              <li>Database: PostgreSQL (properly normalized)</li>
+              <li>Auth: Discord OAuth</li>
+              <li>Caching: Multi-layer (browser + database + smart invalidation)</li>
+            </ul>
+            <h3 id="hosting-situation">The hosting situation (aka why I hate myself)</h3>
+            <p>Here's where things get really stupid: this entire over-engineered monstrosity is hosted on a Raspberry
+              Pi 3 that's probably older than some of my users. We're talking 1GB of RAM and 16GB of storage -
+              specifications that were modest when I was still in Kindergarden.</p>
+            <p>This little plastic computer, which costs less than a decent lunch, is somehow serving real-time music
+              data, processing image uploads, managing database connections, and handling API requests for multiple
+              users simultaneously. It's like asking a Honda Civic to tow a yacht - technically possible, but you're
+              gonna hear some concerning noises.</p>
+            <p>The Pi sits in my basement so if it ever catches fire because some user decides to upload a 200MB
+              pictures of his mother I'll know far too late that I have to call the fire department. (You can see the
+              thermals of my "server" if you can even call it that, in the starting section of my website
+              under "server temps")</p>
+            <p>The really absurd part is that it actually works. Users are getting sub-second page loads from a device
+              that has less computing power than the smartphone that my grandma still uses. The secret is aggressive
+              caching, smart resource management, and the fact that most of the heavy lifting happens in users' browsers
+              thanks to React doing its thing client-side.</p>
+            <p>Sometimes I lie awake at night wondering what would happen if this thing actually got popular. The Pi
+              would probably just catch fire and take my entire house with it. But until then, it's kind of amazing that
+              you can build something legitimately useful on hardware that costs less than a train ticket from my house
+              to my school.</p>
+            <h2 id="the-result">The result</h2>
+            <p>It's a website where you can actually show off who you are instead of just having a list of links. Your
+              music taste, what you're doing on Discord, your projects, whatever you want - all in one place that
+              doesn't look like every other generic profile page.</p>
+            <p>Plus I learned a ton building it, even if I wanted to throw my laptop out the window multiple times
+              during the process.</p>
+            <p>Is it going to revolutionize the internet? Probably not. Is it a pretty cool way to show off your digital
+              life? Yeah, I think so.</p>
+
+            <div class="popup-tech-showcase">
+              <div class="demo-links">
+                <a href="https://dajia.lol" target="_blank" class="demo-link">Visit the Website</a>
+                <a href="https://dajia.lol/reazn" target="_blank" class="demo-link">My Profile</a>
+              </div>
+            </div>
+
+            <h2 id="development-timeline">Development Timeline</h2>
+            <div class="commit-timeline">
+              <div class="commit-timeline-container">
+                <div class="commit-timeline-line"></div>
+                
+                <!-- Development Phase -->
+                <div class="commit-timeline-group">
+                  <div class="commit-phase-separator">
+                    <span class="commit-phase-label">START DEVELOPMENT</span>
+                  </div>
+                  <div class="commit-timeline-date">Commits in Feb, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon">
+                      <img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg">
+                    </div>
+                    <div class="commit-content">
+                      <p class="commit-message">initial idea <span class="commit-sha">f3a7b89  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Feb - Mar, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon">
+                      <img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg">
+                    </div>
+                    <div class="commit-content">
+                      <p class="commit-message">planning phase <span class="commit-sha">a2c9d1e  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Mar 16, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon">
+                      <img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg">
+                    </div>
+                    <div class="commit-content">
+                      <p class="commit-message">Initial page layout <span class="commit-sha">b8f4c2a  < > </span></p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- MVP Phase -->
+                <div class="commit-timeline-group">
+                  <div class="commit-phase-separator">
+                    <span class="commit-phase-label">MVP READY</span>
+                  </div>
+                  <div class="commit-timeline-date">Commits on Mar 18, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: LastFM integration <span class="commit-sha">d4e7f9b  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Mar 20, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: Discord bot → Discord presence <span class="commit-sha">c7a3e5d  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Mar 25, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: add Discord presence <span class="commit-sha">e9b2f8c  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Mar 26, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">chore: optimise DB for less egress usage <span class="commit-sha">f1d6a4e  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Mar 28, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">style: change general formatting <span class="commit-sha">a5c8b2f  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 3, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: add links <span class="commit-sha">b9e3d7a  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 4, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: add custom boxes <span class="commit-sha">c2f5e9b  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 6, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: custom fonts <span class="commit-sha">d8a4c6e  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 7, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: add Github Account custom box <span class="commit-sha">e1b7f3d  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 8, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: reorder icons <span class="commit-sha">f4c9a2b  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 9, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">chore: clean up DB <span class="commit-sha">a7e5d8c  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 10, 2025</div>
+                  <div class="commit-group">
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">fix: background opacity slider <span class="commit-sha">b3f6e1a  < > </span></p>
+                      </div>
+                    </div>
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">feat: cursor effect <span class="commit-sha">c8d2f7e  < > </span></p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 11, 2025</div>
+                  <div class="commit-group">
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">feat: custom audio <span class="commit-sha">d5a9b4c  < > </span></p>
+                      </div>
+                    </div>
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">feat: add Github Repo custom box <span class="commit-sha">e7c3f8a  < > </span></p>
+                      </div>
+                    </div>
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">feat: add Spotify song custom box <span class="commit-sha">f2e6d1b  < > </span></p>
+                      </div>
+                    </div>
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">feat: typewriter effect (bio & username) <span class="commit-sha">g3h4i5j  < > </span></p>
+                      </div>
+                    </div>
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">feat: add Steam Account custom box <span class="commit-sha">h4i5j6k  < > </span></p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 12, 2025</div>
+                  <div class="commit-group">
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">feat: add badges <span class="commit-sha">c3d7a5e  < > </span></p>
+                      </div>
+                    </div>
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">feat: add UUI & join date <span class="commit-sha">d8f1b9c  < > </span></p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 13, 2025</div>
+                  <div class="commit-group">
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">style: reformat badges <span class="commit-sha">e4a6c2f  < > </span></p>
+                      </div>
+                    </div>
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">feat: add badges tooltip <span class="commit-sha">f7b3e8d  < > </span></p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 14, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">chore: rearrange settings <span class="commit-sha">a2c5f9b  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 20, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">style: redo entire settings page <span class="commit-sha">b8d4e1c  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 22, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: add landing page <span class="commit-sha">c6f2a7e  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 25, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: add subpages (pricing, TOS, Help) <span class="commit-sha">d9e3b8f  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Apr 29, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: improve responsiveness <span class="commit-sha">e1f7c4a  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on May 14, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: add Countdown custom box <span class="commit-sha">f5a8d2b  < > </span></p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Testing Phase -->
+                <div class="commit-timeline-group">
+                  <div class="commit-phase-separator">
+                    <span class="commit-phase-label">INITIAL TESTING PHASE</span>
+                  </div>
+                  <div class="commit-timeline-date">Commits on May 15, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: Login via Discord <span class="commit-sha">a4b9e6c  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on May 29, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: add templates <span class="commit-sha">b7c3f1d  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on May 30, 2025</div>
+                  <div class="commit-group">
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">fix: Discord register/login not working <span class="commit-sha">c8d5a2e  < > </span></p>
+                      </div>
+                    </div>
+                    <div class="commit-item">
+                      <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                      <div class="commit-content">
+                        <p class="commit-message">fix: LastFM OAuth not working <span class="commit-sha">d2f6b9c  < > </span></p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Jun 5, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: make typewriter speed adjustable <span class="commit-sha">e9a4c7f  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Jun 7, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: more bio customisation <span class="commit-sha">f3b8e1d  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Jun 9, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">style: redo templates page <span class="commit-sha">a6c2f5b  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Jun 11, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">feat: ability to delete templates <span class="commit-sha">b9d7a4e  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Jun 12, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">fix: particles → reduce lag <span class="commit-sha">c4e8b1f  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Jun 20, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">chore: code clean up & refactor <span class="commit-sha">d7f3c6a  < > </span></p>
+                    </div>
+                  </div>
+                  
+                  <div class="commit-timeline-date">Commits on Jun 30, 2025</div>
+                  <div class="commit-item">
+                    <div class="commit-icon"><img src="assets/gh-commit.svg" alt="Commit" class="commit-icon-svg"></div>
+                    <div class="commit-content">
+                      <p class="commit-message">fix: many bugs reported by testers <span class="commit-sha">e2a5d9b  < > </span></p>
+                    </div>
+                  </div>
+                </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="/scripts/script.js"></script>
-    <script src="/scripts/chart.js"></script>
-    <script src="/scripts/preview-cards.js"></script>
-    <script src="/scripts/music-stats.js"></script>
-    <script src="/scripts/album-history.js"></script>
-    <script src="/scripts/stats.js"></script>
-    <script src="/scripts/other-stats.js"></script>
-    <script src="/scripts/wakatime-stats.js"></script>
-    <script src="/scripts/monkeytype-stats.js"></script>
-  </body>
+  <script src="/scripts/script.js"></script>
+  <script src="/scripts/chart.js"></script>
+  <script src="/scripts/preview-cards.js"></script>
+  <script src="/scripts/music-stats.js"></script>
+  <script src="/scripts/album-history.js"></script>
+  <script src="/scripts/stats.js"></script>
+  <script src="/scripts/other-stats.js"></script>
+  <script src="/scripts/wakatime-stats.js"></script>
+  <script src="/scripts/monkeytype-stats.js"></script>
+  
+  <script>
+    function initTOC() {
+      const tocItems = document.querySelectorAll('.toc-item');
+      
+      function updateActiveTOC() {
+        const popupContent = document.querySelector('.popup-content');
+        if (!popupContent) return;
+        
+        const scrollTop = popupContent.scrollTop;
+        const offset = 150;
+        
+        let activeItem = null;
+        let closestDistance = Infinity;
+        
+        tocItems.forEach(item => {
+          const targetId = item.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          
+          if (targetSection) {
+            const sectionTop = targetSection.offsetTop;
+            const distance = Math.abs(scrollTop + offset - sectionTop);
+            
+            if (scrollTop + offset >= sectionTop && distance < closestDistance) {
+              closestDistance = distance;
+              activeItem = item;
+            }
+          }
+        });
+        
+        tocItems.forEach(item => item.classList.remove('active'));
+        
+        if (activeItem) {
+          activeItem.classList.add('active');
+        }
+      }
+      
+      const popupContent = document.querySelector('.popup-content');
+      if (popupContent) {
+        popupContent.addEventListener('scroll', updateActiveTOC);
+        
+        setTimeout(updateActiveTOC, 100);
+      }
+      
+      tocItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = item.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          
+          if (targetSection && popupContent) {
+            const currentScrollTop = popupContent.scrollTop;
+            
+            const popupRect = popupContent.getBoundingClientRect();
+            const targetRect = targetSection.getBoundingClientRect();
+            
+            const relativeTop = targetRect.top - popupRect.top + currentScrollTop;
+            
+            const headerOffset = 20;
+            
+            popupContent.scrollTo({
+              top: relativeTop - headerOffset,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const popupTriggers = document.querySelectorAll('[onclick*="showPopup"]');
+      popupTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          setTimeout(initTOC, 100);
+        });
+      });
+    });
+  </script>
+</body>
+
 </html>

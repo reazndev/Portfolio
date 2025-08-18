@@ -34,7 +34,6 @@ async function fetchMonkeytypeStats() {
       }
     });
 
-    // Fetch last 10 results
     const recentResultsResponse = await fetch(`${baseUrl}/results?limit=7`, {
       headers: {
         'Authorization': `ApeKey ${apiKey}`
@@ -48,11 +47,9 @@ async function fetchMonkeytypeStats() {
       throw new Error(`Monkeytype API error for recent results: ${recentResultsResponse.status}`);
     }
 
-    // Parse JSON responses
     const personalBests = await personalBestsResponse.json();
     const recentResults = await recentResultsResponse.json();
 
-    // Format recent results to be more concise
     const formattedResults = recentResults.data.map(result => ({
       wpm: Math.floor(result.wpm),
       acc: Math.floor(result.acc),
@@ -62,14 +59,13 @@ async function fetchMonkeytypeStats() {
       time: Math.floor(result.testDuration)
     }));
 
-    // Format personal bests to be more concise
     const formattedPersonalBests = {};
     for (const [mode, results] of Object.entries(personalBests.data)) {
       formattedPersonalBests[mode] = results.map(pb => ({
         wpm: Math.floor(pb.wpm),
         acc: Math.floor(pb.acc),
         timestamp: pb.timestamp
-      })).slice(0, 3); // Keep top 3 for each mode
+      })).slice(0, 3); 
     }
 
     return {
@@ -78,11 +74,10 @@ async function fetchMonkeytypeStats() {
     };
   } catch (error) {
     console.error('Error fetching Monkeytype stats:', error);
-    throw error; // Re-throw to handle in the caller
+    throw error; 
   }
 }
 
-// Update Monkeytype cache every 5 minutes
 setInterval(async () => {
   try {
     console.log('Updating Monkeytype cache...');
@@ -95,7 +90,6 @@ setInterval(async () => {
   }
 }, 5 * 60 * 1000); // 5 minutes in milliseconds
 
-// Initial cache population with retries
 async function initializeCache(retries = 3, delay = 5000) {
   if (monkeytypeCache.isInitializing) return;
   monkeytypeCache.isInitializing = true;
@@ -118,35 +112,30 @@ async function initializeCache(retries = 3, delay = 5000) {
   }
 }
 
-// Start initial cache population
 initializeCache();
 
-// Serve static files first
 app.use(express.static(__dirname));
 
-// API Routes
 app.get('/api/weather', weatherHandler);
 
-// Add proxy routes for GitHub contributions and server stats
 app.get('/api/github-contributions/:username', async (req, res) => {
     try {
-        // Build the URL with properly encoded parameters
         const baseUrl = `http://localhost:3003/contributions/${req.params.username}`;
         const queryParams = new URLSearchParams(req.query).toString();
         const fullUrl = queryParams ? `${baseUrl}?${queryParams}` : baseUrl;
         
-        console.log('Fetching GitHub contributions from:', fullUrl); // Debug log
+        console.log('Fetching GitHub contributions from:', fullUrl);
         
         const response = await fetch(fullUrl);
-        console.log('GitHub API response status:', response.status); // Debug log
+        console.log('GitHub API response status:', response.status);
         
         if (!response.ok) {
             throw new Error(`GitHub contributions server responded with ${response.status}`);
         }
         
         const data = await response.text();
-        console.log('Received data type:', typeof data); // Debug log
-        console.log('Data starts with:', data.substring(0, 100)); // Debug log
+        console.log('Received data type:', typeof data); 
+        console.log('Data starts with:', data.substring(0, 100));
         
         res.setHeader('Content-Type', 'image/svg+xml');
         res.send(data);
@@ -158,16 +147,13 @@ app.get('/api/github-contributions/:username', async (req, res) => {
 
 app.get('/api/server-stats', async (req, res) => {
     try {
-        // Get CPU usage
         const cpuUsage = os.loadavg()[0] * 100 / os.cpus().length;
 
-        // Get memory usage
         const totalMem = os.totalmem();
         const freeMem = os.freemem();
         const usedMem = totalMem - freeMem;
         const ramUsage = (usedMem / totalMem) * 100;
 
-        // Get CPU temperature (if available)
         let cpuTemp;
         try {
             const { exec } = require('child_process');
@@ -211,7 +197,6 @@ app.get('/api/server-stats', async (req, res) => {
     }
 });
 
-// Helper function to format bytes
 function formatBytes(bytes) {
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
     if (bytes === 0) return '0 Bytes';
@@ -219,13 +204,11 @@ function formatBytes(bytes) {
     return Math.round((bytes / Math.pow(1024, i)) * 100) / 100 + ' ' + sizes[i];
 }
 
-// All other API routes...
 app.get('/api/lastfm/:method', async (req, res) => {
   try {
     const { method } = req.params;
     const { user, limit } = req.query;
     
-    // Use environment variable for API key
     const apiKey = process.env.LASTFM_API_KEY || '974fb2e0a3add0ac42c2729f6c1e854a';
     
     const response = await fetch(
@@ -245,13 +228,12 @@ app.get('/api/lastfm/tracks/weekly', async (req, res) => {
     const apiKey = process.env.LASTFM_API_KEY || '974fb2e0a3add0ac42c2729f6c1e854a';
     const username = 'syntiiix';
     const limit = 200;
-    const days = 30; // Changed from 7 to 30 days for monthly stats
+    const days = 30; 
     
     const allTracks = [];
     const currentDate = Math.floor(Date.now() / 1000);
     const oneMonthAgo = currentDate - (days * 24 * 60 * 60);
     
-    // Fetch up to 10 pages of tracks to get more monthly data
     for (let page = 1; page <= 10; page++) {
       const response = await fetch(
         `http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${username}&api_key=${apiKey}&format=json&limit=${limit}&page=${page}`
@@ -262,7 +244,6 @@ app.get('/api/lastfm/tracks/weekly', async (req, res) => {
       
       if (!tracks || tracks.length === 0) break;
       
-      // Filter tracks from the last month
       const filteredTracks = tracks.filter(track => {
         if (track.date && track.date['#text']) {
           const trackDate = Math.floor(new Date(track.date['#text']).getTime() / 1000);
@@ -273,7 +254,6 @@ app.get('/api/lastfm/tracks/weekly', async (req, res) => {
       
       allTracks.push(...filteredTracks);
       
-      // If we have less tracks than the limit or no tracks from this page are within our date range, we've reached the end
       if (tracks.length < limit || filteredTracks.length === 0) break;
     }
     
@@ -286,15 +266,14 @@ app.get('/api/lastfm/tracks/weekly', async (req, res) => {
 
 app.get('/api/lastfm/tracks/chart', async (req, res) => {
   try {
-    const apiKey = process.env.LASTFM_API_KEY || '974fb2e0a3add0ac42c2729f6c1e854a';
+    const apiKey = process.env.LASTFM_API_KEY || '974fb2e0a3add0ac42c2729f6c1e854a'; // lastfm API keys are 100% free so I dont bother putting them in the .env
     const username = 'syntiiix';
-    const limit = 1000; // Get more tracks to ensure we have enough data
+    const limit = 1000; 
     
     const allTracks = [];
     const currentDate = Math.floor(Date.now() / 1000);
     const sevenDaysAgo = currentDate - (7 * 24 * 60 * 60);
     
-    // Fetch up to 3 pages of tracks to ensure we get all data from the last 7 days
     for (let page = 1; page <= 3; page++) {
       const response = await fetch(
         `http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=${username}&api_key=${apiKey}&format=json&limit=${limit}&page=${page}`
@@ -305,7 +284,6 @@ app.get('/api/lastfm/tracks/chart', async (req, res) => {
       
       if (!tracks || tracks.length === 0) break;
       
-      // Filter tracks from the last 7 days
       const filteredTracks = tracks.filter(track => {
         if (track.date && track.date['#text']) {
           const trackDate = Math.floor(new Date(track.date['#text']).getTime() / 1000);
@@ -316,7 +294,6 @@ app.get('/api/lastfm/tracks/chart', async (req, res) => {
       
       allTracks.push(...filteredTracks);
       
-      // If we have tracks older than 7 days, we can stop
       const oldestTrackInBatch = tracks[tracks.length - 1];
       if (oldestTrackInBatch.date && oldestTrackInBatch.date['#text']) {
         const oldestDate = Math.floor(new Date(oldestTrackInBatch.date['#text']).getTime() / 1000);
@@ -324,11 +301,9 @@ app.get('/api/lastfm/tracks/chart', async (req, res) => {
       }
     }
     
-    // Group tracks by day
     const dailyCounts = {};
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     
-    // Initialize all 7 days with 0 counts
     for (let i = 6; i >= 0; i--) {
       const date = new Date();
       date.setDate(date.getDate() - i);
@@ -336,7 +311,6 @@ app.get('/api/lastfm/tracks/chart', async (req, res) => {
       dailyCounts[dayName] = 0;
     }
     
-    // Count tracks for each day
     allTracks.forEach(track => {
       if (track.date && track.date['#text']) {
         const trackDate = new Date(track.date['#text']);
@@ -345,7 +319,6 @@ app.get('/api/lastfm/tracks/chart', async (req, res) => {
       }
     });
     
-    // Convert to array format for the chart
     const chartData = Object.entries(dailyCounts).map(([day, count]) => ({
       day,
       count
@@ -362,7 +335,6 @@ app.get('/api/lastfm/top', async (req, res) => {
   try {
     const period = req.query.period || '7day';
     
-    // Heroku-friendly fetch with timeout
     const fetchWithTimeout = async (url, timeout = 8000) => {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), timeout);
@@ -377,7 +349,6 @@ app.get('/api/lastfm/top', async (req, res) => {
       }
     };
     
-    // Process API responses with better error handling
     let artistsData = [], tracksData = [], albumsData = [];
     
     try {
@@ -489,12 +460,10 @@ app.get('/api/lastfm/test', async (req, res) => {
 app.get('/api/debug/config', (req, res) => {
   const debugPassword = req.query.key;
   
-  // Simple security check - you should use a proper auth system in production
   if (debugPassword !== 'your-temp-debug-password') {
     return res.status(401).json({ error: 'Unauthorized' });
   }
   
-  // Return information about the environment without exposing the full API key
   res.json({
     environment: process.env.NODE_ENV || 'development',
     lastfm_user: LASTFM_USER,
@@ -521,7 +490,6 @@ app.get('/api/wakatime/stats', async (req, res) => {
       }
     });
 
-    // Fetch last 7 days stats for daily average
     const weeklyResponse = await fetch('https://wakatime.com/api/v1/users/current/stats/last_7_days', {
       headers: {
         'Authorization': `Basic ${Buffer.from(apiKey).toString('base64')}`
@@ -535,11 +503,9 @@ app.get('/api/wakatime/stats', async (req, res) => {
     const allTimeData = await allTimeResponse.json();
     const weeklyData = await weeklyResponse.json();
 
-    // Calculate daily average from weekly total, ensuring we have valid data
     const weeklySeconds = weeklyData.data.total_seconds || 0;
     const dailyAverageSeconds = Math.round(weeklySeconds / 7);
 
-    // Combine the data
     const combinedData = {
       data: {
         ...weeklyData.data,
@@ -590,7 +556,6 @@ app.get('/api/monkeytype/stats', async (req, res) => {
       await initializeCache();
     }
 
-    // If still no data, return error
     if (!monkeytypeCache.data) {
       return res.status(503).json({ 
         error: 'Monkeytype stats temporarily unavailable', 
@@ -608,7 +573,6 @@ app.get('/api/monkeytype/stats', async (req, res) => {
   }
 });
 
-// Explicitly serve CSS files
 app.get('/*.css', (req, res) => {
   res.set('Content-Type', 'text/css');
   res.sendFile(path.join(__dirname, req.path));
@@ -625,7 +589,6 @@ app.get('/*.js', (req, res) => {
   res.sendFile(path.join(__dirname, req.path));
 });
 
-// Serve static files from the root directory
 app.use(express.static(__dirname, {
   setHeaders: (res, filePath) => {
     if (filePath.endsWith('.css')) {
@@ -636,13 +599,10 @@ app.use(express.static(__dirname, {
   }
 }));
 
-// Serve static data files
 app.use('/data', express.static(path.join(__dirname, 'data')));
 
-// Serve files from the assets folder
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-// Route for the home page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -652,7 +612,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 }); 

@@ -1,31 +1,21 @@
-// Last.fm music data loading functionality
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Get all timespan buttons
   const timespanButtons = document.querySelectorAll('.timespan-btn');
   
-  // Add click event to all timespan buttons
   timespanButtons.forEach(button => {
     button.addEventListener('click', function() {
-      // Remove active class from all buttons
       timespanButtons.forEach(btn => btn.classList.remove('active'));
       
-      // Add active class to clicked button
       this.classList.add('active');
       
-      // Get selected timespan
       const timespan = this.dataset.timespan;
       
-      // Load music data for selected timespan
       loadMusicData(timespan);
     });
   });
   
-  // Load default timespan (7 days)
   loadMusicData('7day');
 });
 
-// Enhanced mock data with realistic values
 const mockData = {
   topArtists: [
     {
@@ -69,22 +59,18 @@ const mockData = {
   ]
 };
 
-// Update loadMusicData to remove the "last updated" notification
 async function loadMusicData(timespan) {
   console.log(`Loading music data for timespan: ${timespan}`);
   
-  // Show loading state
   document.querySelectorAll('.music-box-content').forEach(box => {
     box.innerHTML = '<div class="music-item-loading">Loading...</div>';
   });
   
   try {
-    // Try to fetch from the static JSON file
     let data = null;
     let usedMockData = false;
     
     try {
-      // Add cache-busting parameter
       const timestamp = new Date().getTime();
       const url = `/data/lastfm-${timespan}.json?_=${timestamp}`;
       console.log(`Fetching from static file: ${url}`);
@@ -98,17 +84,14 @@ async function loadMusicData(timespan) {
       data = await response.json();
       console.log('Static data loaded:', data);
       
-      // Remove the "last updated" notification code from here
     } catch (fetchError) {
       console.warn("Failed to fetch from static file, using mock data:", fetchError);
       data = mockData;
       usedMockData = true;
     }
     
-    // Display the data
     updateMusicDisplay(data);
     
-    // Show a note if we used mock data
     if (usedMockData) {
       document.querySelectorAll('.music-box-content').forEach(box => {
         const noteElement = document.createElement('div');
@@ -129,28 +112,23 @@ async function loadMusicData(timespan) {
   }
 }
 
-// Improved updateMusicDisplay function with cover images
 function updateMusicDisplay(data) {
-  // Format function for number formatting
   const formatNumber = (num) => {
     return parseInt(num).toLocaleString();
   };
   
-  // Check if image URL is valid
   const isValidImageUrl = (url) => {
     if (!url) return false;
     if (url.length < 10) return false;
     if (url.endsWith('/noimage/noimage.png')) return false;
-    if (url.includes('2a96cbd8b46e442fc41c2b86b821562f')) return false; // Last.fm default placeholder
+    if (url.includes('2a96cbd8b46e442fc41c2b86b821562f')) return false; 
     return true;
   };
   
-  // Default image paths
   const defaultArtistImage = './assets/default-artist.jpg';
   const defaultTrackImage = './assets/default-track.jpg';
   const defaultAlbumImage = './assets/default-album.jpg';
   
-  // Update top artists box with thumbnails
   if (data.topArtists && data.topArtists.length > 0) {
     const artistsList = data.topArtists.slice(0, 5).map(artist => {
       const imageUrl = isValidImageUrl(artist.image) ? artist.image : defaultArtistImage;
@@ -173,7 +151,6 @@ function updateMusicDisplay(data) {
     `;
   }
   
-  // Update top tracks box with thumbnails
   if (data.topTracks && data.topTracks.length > 0) {
     const tracksList = data.topTracks.slice(0, 5).map(track => {
       const imageUrl = isValidImageUrl(track.image) ? track.image : defaultTrackImage;
@@ -198,7 +175,6 @@ function updateMusicDisplay(data) {
     `;
   }
   
-  // Update top albums box with thumbnails
   if (data.topAlbums && data.topAlbums.length > 0) {
     const albumsList = data.topAlbums.slice(0, 5).map(album => {
       const imageUrl = isValidImageUrl(album.image) ? album.image : defaultAlbumImage;

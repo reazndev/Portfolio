@@ -1,22 +1,22 @@
-// Single global chart instance
+
 let listeningChart = null;
 
-// Function to create or update the chart
+
 async function initializeChart() {
     try {
-        // Get canvas context
+        
         const canvas = document.getElementById('listening-chart');
         if (!canvas) {
             console.error('Canvas element not found');
             return;
         }
 
-        // Destroy existing chart if it exists
+        
         if (listeningChart instanceof Chart) {
             listeningChart.destroy();
         }
 
-        // Fetch new data
+        
         const response = await fetch('weekly_chart.json');
         if (!response.ok) {
             throw new Error(`Failed to fetch chart data: ${response.status} ${response.statusText}`);
@@ -24,7 +24,7 @@ async function initializeChart() {
         const chartData = await response.json();
         console.log('Chart data:', chartData);
 
-        // Chart configuration
+        
         const chartConfig = {
             type: 'line',
             data: {
@@ -34,7 +34,7 @@ async function initializeChart() {
                     data: chartData.data.map(d => ({
                         x: d.day,
                         y: d.count,
-                        date: d.date // Store date for tooltip
+                        date: d.date 
                     })),
                     backgroundColor: 'rgba(142, 141, 190, 0.0)',
                     borderColor: 'rgba(142, 141, 190, 1)',
@@ -96,11 +96,11 @@ async function initializeChart() {
             }
         };
 
-        // Create new chart
+        
         listeningChart = new Chart(canvas, chartConfig);
         console.log('Chart initialized:', listeningChart);
 
-        // Setup hover effects
+        
         setupHoverEffects();
 
     } catch (error) {
@@ -108,7 +108,7 @@ async function initializeChart() {
     }
 }
 
-// Function to handle hover effects
+
 function setupHoverEffects() {
     const musicBox = document.getElementById('box-lastfm');
     if (!musicBox) {
@@ -116,7 +116,7 @@ function setupHoverEffects() {
         return;
     }
 
-    // Add mouseenter event
+    
     musicBox.addEventListener('mouseenter', () => {
         if (listeningChart) {
             listeningChart.data.datasets[0].backgroundColor = 'rgba(142, 141, 190, 0.2)';
@@ -124,7 +124,7 @@ function setupHoverEffects() {
         }
     });
 
-    // Add mouseleave event
+    
     musicBox.addEventListener('mouseleave', () => {
         if (listeningChart) {
             listeningChart.data.datasets[0].backgroundColor = 'rgba(142, 141, 190, 0.0)';
@@ -133,12 +133,12 @@ function setupHoverEffects() {
     });
 }
 
-// Initialize chart when DOM is ready
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeChart);
 } else {
     initializeChart();
 }
 
-// Export for external use
+
 window.updateChart = initializeChart;

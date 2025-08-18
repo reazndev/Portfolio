@@ -1,19 +1,15 @@
 const cursor = document.querySelector('.custom-cursor');
-// Exclude nav-items from the clickable elements selector
 const clickableElements = document.querySelectorAll('a:not(.nav-item), .box');
 
-// Update cursor position
 document.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
 });
 
-// Handle cursor states for different elements
 clickableElements.forEach(element => {
     element.addEventListener('mouseenter', () => {
         cursor.classList.add('active');
         
-        // Check if it's an external link AND NOT a nav item
         if (element.tagName === 'A' && !element.getAttribute('onclick') && !element.classList.contains('nav-item')) {
             cursor.classList.add('external');
             cursor.classList.remove('internal');
@@ -31,12 +27,11 @@ clickableElements.forEach(element => {
     });
 });
 
-// Add event listener to the arrow icon to hide the preview window
 const arrowIcons = document.querySelectorAll('.link-icon');
 arrowIcons.forEach(icon => {
     icon.addEventListener('mouseenter', () => {
         const previewWindow = document.querySelector('.preview-window');
-        previewWindow.style.display = 'none'; // Hide the preview window
+        previewWindow.style.display = 'none'; 
     });
 });
 
@@ -50,36 +45,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Add visible class to the section itself
                 entry.target.classList.add('visible');
                 
-                // Add visible class to all projects in the section
                 entry.target.querySelectorAll('.project').forEach(project => {
                     project.classList.add('visible');
                 });
                 
-                // Add visible class to about section content
                 entry.target.querySelectorAll('.about-section-content > div').forEach(div => {
                     div.classList.add('visible');
                 });
                 
-                // Add visible class to timeline items
                 entry.target.querySelectorAll('.timeline-item').forEach(item => {
                     item.classList.add('visible');
                 });
             }
         });
     }, {
-        threshold: 0.1,  // Trigger when at least 10% of the element is visible
-        rootMargin: '0px 0px -10% 0px'  // Slightly offset the trigger point
+        threshold: 0.1,  
+        rootMargin: '0px 0px -10% 0px'  
     });
 
-    // Observe all sections
     document.querySelectorAll('.content-section').forEach((section) => {
         observer.observe(section);
     });
 
-    // Timeline color transition
     const timelineItems = document.querySelectorAll('.timeline-item');
     const aboutSection = document.querySelector('#about-section');
     
@@ -92,38 +81,32 @@ document.addEventListener('DOMContentLoaded', () => {
         timelineItems.forEach((item) => {
             const itemRect = item.getBoundingClientRect();
             const itemTop = itemRect.top;
-            const startTrigger = viewportHeight * 1; // Start transition earlier
-            const endTrigger = viewportHeight * 0.75;   // End transition later
+            const startTrigger = viewportHeight * 1; 
+            const endTrigger = viewportHeight * 0.75;  
             
             if (itemTop <= startTrigger && itemTop >= endTrigger) {
-                // Calculate progress (0 to 1) based on item's position between start and end points
                 const progress = (startTrigger - itemTop) / (startTrigger - endTrigger);
                 
-                // Interpolate from transparent to purple (#8E8DBE)
                 const opacity = progress;
                 item.style.setProperty('--timeline-color', `rgba(142, 141, 190, ${opacity})`);
                 item.style.setProperty('--timeline-opacity', opacity);
             } else if (itemTop < endTrigger) {
-                item.style.setProperty('--timeline-color', '#8E8DBE'); // Fully purple
+                item.style.setProperty('--timeline-color', '#8E8DBE');
                 item.style.setProperty('--timeline-opacity', '1');
             } else {
-                item.style.setProperty('--timeline-color', 'rgba(142, 141, 190, 0)'); // Fully transparent
+                item.style.setProperty('--timeline-color', 'rgba(142, 141, 190, 0)'); 
                 item.style.setProperty('--timeline-opacity', '0');
             }
         });
     });
 });
 
-// Artist image mapping with working image URL for d4vd
 const artistImages = {
-    'd4vd': './assets/cover/Leave Her.jpg', // Using local asset from playlist
-    // Add more artists as needed
+    'd4vd': './assets/cover/Leave Her.jpg', 
 };
 
-// Function to fetch artist image from MusicBrainz
 async function fetchArtistImageFromMusicBrainz(artistName) {
     try {
-        // First get the MusicBrainz ID (mbid) from Last.fm
         const lastfmResponse = await fetch(`/api/lastfm/artist.getinfo?artist=${encodeURIComponent(artistName)}`);
         const lastfmData = await lastfmResponse.json();
         const mbid = lastfmData.artist?.mbid;
@@ -133,18 +116,15 @@ async function fetchArtistImageFromMusicBrainz(artistName) {
             return null;
         }
         
-        // Then fetch artist data from MusicBrainz
         const url = `https://musicbrainz.org/ws/2/artist/${mbid}?inc=url-rels&fmt=json`;
         const response = await fetch(url);
         const data = await response.json();
         
-        // Look for image relations
         const relations = data.relations || [];
         for (let i = 0; i < relations.length; i++) {
             if (relations[i].type === 'image') {
                 let imageUrl = relations[i].url.resource;
                 
-                // Handle Wikimedia Commons URLs
                 if (imageUrl.startsWith('https://commons.wikimedia.org/wiki/File:')) {
                     const filename = imageUrl.substring(imageUrl.lastIndexOf('/') + 1);
                     imageUrl = 'https://commons.wikimedia.org/wiki/Special:Redirect/file/' + filename;
@@ -162,10 +142,8 @@ async function fetchArtistImageFromMusicBrainz(artistName) {
     }
 }
 
-// Fetch and display music stats
 async function displayMusicStats() {
     try {
-        // Fetch the most recent track directly from Last.fm API
         const recentResponse = await fetch('/api/lastfm/user.getRecentTracks?user=syntiiix&limit=1');
         const recentData = await recentResponse.json();
         
@@ -175,7 +153,6 @@ async function displayMusicStats() {
         
         const recentTrack = recentData.recenttracks.track[0];
 
-        // Display the most recent track with cover image next to the song name
         document.getElementById('recent-track').innerHTML = `
             <h4 style="font-size: 0.95em; margin-bottom: 8px;">Most Recent Track</h4>
             <div style="display: flex; align-items: center;">
@@ -187,11 +164,9 @@ async function displayMusicStats() {
             </div>
         `;
 
-        // Fetch monthly stats from local JSON
         const monthlyResponse = await fetch('monthly_stats.json');
         const monthlyStats = await monthlyResponse.json();
 
-        // Display top track
         document.getElementById('top-track').innerHTML = `
             <h4 style="font-size: 0.95em; margin-bottom: 8px;">Top Track This Month</h4>
             <div style="display: flex; align-items: center;">
@@ -204,11 +179,9 @@ async function displayMusicStats() {
             </div>
         `;
 
-        // For top artist, try to get image from MusicBrainz
-        let artistImageUrl = artistImages[monthlyStats.topArtist.name]; // Try from mapping first
+        let artistImageUrl = artistImages[monthlyStats.topArtist.name]; 
         
         if (!artistImageUrl) {
-            // If not in mapping, try MusicBrainz
             const mbImage = await fetchArtistImageFromMusicBrainz(monthlyStats.topArtist.name);
             artistImageUrl = mbImage || './assets/default-album.png';
         }
@@ -224,7 +197,6 @@ async function displayMusicStats() {
             </div>
         `;
 
-        // Display top album
         document.getElementById('top-album').innerHTML = `
             <h4 style="font-size: 0.95em; margin-bottom: 8px;">Top Album This Month</h4>
             <div style="display: flex; align-items: center;">
@@ -239,7 +211,6 @@ async function displayMusicStats() {
 
     } catch (error) {
         console.error('Error fetching music stats:', error);
-        // Display error messages in the UI
         const elements = ['recent-track', 'top-track', 'top-artist', 'top-album'];
         elements.forEach(id => {
             const element = document.getElementById(id);
@@ -255,7 +226,6 @@ async function displayMusicStats() {
     }
 }
 
-// Function to display a random track recommendation from a Spotify playlist
 async function displayRandomRecommendation() {
     try {
         const playlistTracks = [
@@ -322,10 +292,8 @@ async function displayRandomRecommendation() {
             { name: "In A Sentimental Mood", artist: "Duke Ellington", image: "./assets/cover/In A Sentimental Mood.jpg" }
         ];
 
-        // Select a random track
         const randomTrack = playlistTracks[Math.floor(Math.random() * playlistTracks.length)];
 
-        // Display the random recommendation
         document.getElementById('random-recommendation').innerHTML = `
             <h4 style="font-size: 0.95em; margin-bottom: 8px;">Random Recommendation</h4>
             <div style="display: flex; align-items: center;">
@@ -341,18 +309,15 @@ async function displayRandomRecommendation() {
     }
 }
 
-// Add this function to update the chart
 async function updateChart() {
     try {
         const response = await fetch('weekly_chart.json');
         const chartData = await response.json();
 
-        // Debug logs to see what data we're working with
         console.log('Raw chart data:', chartData);
         console.log('Labels:', chartData.data.map(d => d.day));
         console.log('Values:', chartData.data.map(d => d.count));
 
-        // Update the chart with the new data
         const ctx = document.getElementById('listening-chart').getContext('2d');
         const myChart = new Chart(ctx, {
             type: 'line',
@@ -424,7 +389,6 @@ async function updateChart() {
             }
         });
 
-        // Add hover effect for the Last.fm box
         const lastfmBox = document.getElementById('box-lastfm');
 
         lastfmBox.addEventListener('mouseenter', () => {
@@ -447,12 +411,10 @@ async function updateChart() {
     }
 }
 
-// Call all functions when the page loads
 displayMusicStats();
 displayRandomRecommendation();
 updateChart();
 
-// ASCII Clock implementation - exact working code
 document.addEventListener('DOMContentLoaded', function() {
   const digits = [
     [" 000 ", "0   0", "0   0", "0   0", " 000 "],
@@ -465,11 +427,10 @@ document.addEventListener('DOMContentLoaded', function() {
     [" 7777", "    7", "   7 ", "  7  ", " 7   "],
     [" 888 ", "8   8", " 888 ", "8   8", " 888 "],
     [" 999 ", "9   9", " 999 ", "    9", " 999 "],
-    ["     ", "  *  ", "     ", "  *  ", "     "] // Colon
+    ["     ", "  *  ", "     ", "  *  ", "     "] 
   ];
   
   function getAsciiTime() {
-    // Create date for Berlin timezone (CEST)
     const now = new Date();
     const berlinTime = new Date(now.toLocaleString('en-US', { timeZone: 'Europe/Berlin' }));
     
@@ -496,11 +457,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Update every second
   setInterval(updateClock, 1000);
   updateClock();
   
-  // Add hover information for the timezone
   const clockElement = document.getElementById('ascii-clock');
   clockElement.setAttribute('data-timezone', 'CEST / BERLIN');
   clockElement.classList.add('has-info');
@@ -508,7 +467,6 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('ASCII clock initialized with Berlin time');
 });
 
-// Update cursor for clock hover with random city
 document.addEventListener('DOMContentLoaded', function() {
   const cestCities = [
     "BERLIN", "PARIS", "ROME", "MADRID", "VIENNA", 
@@ -522,7 +480,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const clockElement = document.querySelector('#ascii-clock');
   if (clockElement) {
     clockElement.addEventListener('mouseenter', () => {
-      // Get random city
       const randomCity = cestCities[Math.floor(Math.random() * cestCities.length)];
       cursor.classList.add('active', 'clock-hover');
       cursor.innerHTML = `CEST / ${randomCity}`;
@@ -536,11 +493,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Navigation highlight functionality
   const sections = document.querySelectorAll('section[id]');
   const navItems = document.querySelectorAll('.nav-item');
 
-  // Add click handlers for smooth scrolling
   navItems.forEach(item => {
     item.addEventListener('click', function(e) {
       e.preventDefault();
@@ -548,7 +503,7 @@ document.addEventListener('DOMContentLoaded', function() {
       let targetPosition;
       
       if (targetId === '#content') {
-        targetPosition = 0; // Scroll to top for home
+        targetPosition = 0; 
       } else {
         const targetElement = document.querySelector(targetId);
         targetPosition = targetElement.offsetTop;
@@ -565,10 +520,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
     
-    // Remove active class from all items first
     navItems.forEach(item => item.classList.remove('active'));
     
-    // Check if we're at the top (home section)
     if (scrollY < windowHeight * 0.3) {
         navItems.forEach(item => {
             if (item.getAttribute('href') === '#content') {
@@ -578,7 +531,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     
-    // Find the closest section
     let closestSection = null;
     let closestDistance = Infinity;
     
@@ -593,7 +545,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Highlight the closest section
     if (closestSection) {
         const sectionId = closestSection.getAttribute('id');
         navItems.forEach(item => {
@@ -604,24 +555,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Initial highlight
   highlightNavigation();
 
-  // Update highlight on scroll
   window.addEventListener('scroll', highlightNavigation);
 }); 
 
-// Dajia.lol Popup Functions
 function openDajiaPopup(event) {
-    event.preventDefault();
-    event.stopPropagation();
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
     
     const popup = document.getElementById('dajia-popup');
     if (popup) {
         popup.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        document.body.style.overflow = 'hidden'; 
         
-        // Add escape key listener
+        if (window.location.hash !== '#dajia-popup') {
+            history.pushState(null, null, '#dajia-popup');
+        }
+        
         document.addEventListener('keydown', handleEscapeKey);
     }
 }
@@ -630,9 +583,12 @@ function closeDajiaPopup() {
     const popup = document.getElementById('dajia-popup');
     if (popup) {
         popup.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
+        document.body.style.overflow = ''; 
         
-        // Remove escape key listener
+        if (window.location.hash === '#dajia-popup') {
+            history.pushState(null, null, window.location.pathname + window.location.search);
+        }
+        
         document.removeEventListener('keydown', handleEscapeKey);
     }
 }
@@ -643,7 +599,49 @@ function handleEscapeKey(event) {
     }
 }
 
-// Close popup when clicking outside the content
+function copyPopupLink() {
+    const url = window.location.origin + window.location.pathname + '#dajia-popup';
+    
+    navigator.clipboard.writeText(url).then(function() {
+        const shareButton = document.querySelector('.popup-share');
+        const originalIcon = shareButton.innerHTML;
+        const originalColor = shareButton.style.color;
+        
+        shareButton.innerHTML = '<i class="fas fa-check"></i>';
+        shareButton.style.color = '#28a745';
+        
+        setTimeout(() => {
+            shareButton.innerHTML = originalIcon;
+            shareButton.style.color = originalColor;
+        }, 2000);
+        
+        console.log('Popup link copied to clipboard:', url);
+    }).catch(function(err) {
+        console.error('Failed to copy link to clipboard:', err);
+        
+        const tempInput = document.createElement('input');
+        tempInput.value = url;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        
+        const shareButton = document.querySelector('.popup-share');
+        const originalIcon = shareButton.innerHTML;
+        const originalColor = shareButton.style.color;
+        
+        shareButton.innerHTML = '<i class="fas fa-check"></i>';
+        shareButton.style.color = '#28a745';
+        
+        setTimeout(() => {
+            shareButton.innerHTML = originalIcon;
+            shareButton.style.color = originalColor;
+        }, 2000);
+        
+        console.log('Popup link copied to clipboard (fallback):', url);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const popup = document.getElementById('dajia-popup');
     if (popup) {
@@ -653,4 +651,76 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    initializeTOC();
+    
+    if (window.location.hash === '#dajia-popup') {
+        openDajiaPopup();
+    }
+    
+    window.addEventListener('popstate', function(event) {
+        if (window.location.hash === '#dajia-popup') {
+            openDajiaPopup();
+        } else {
+            closeDajiaPopup();
+        }
+    });
+    
+    window.addEventListener('hashchange', function(event) {
+        if (window.location.hash === '#dajia-popup') {
+            openDajiaPopup();
+        } else {
+            const popup = document.getElementById('dajia-popup');
+            if (popup && popup.classList.contains('active')) {
+                closeDajiaPopup();
+            }
+        }
+    });
 }); 
+
+function initializeTOC() {
+    const tocItems = document.querySelectorAll('.toc-item');
+    const sections = document.querySelectorAll('.popup-section h2, .popup-section h3, .popup-section h4');
+    
+    if (tocItems.length === 0 || sections.length === 0) return;
+    
+    const tocObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                if (sectionId) {
+                    tocItems.forEach(item => item.classList.remove('active'));
+                    
+                    const activeTocItem = document.querySelector(`.toc-item[href="#${sectionId}"]`);
+                    if (activeTocItem) {
+                        activeTocItem.classList.add('active');
+                    }
+                }
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '-20% 0px -60% 0px'
+    });
+    
+    sections.forEach(section => {
+        if (section.id) {
+            tocObserver.observe(section);
+        }
+    });
+    
+    tocItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = item.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+

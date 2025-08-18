@@ -1,14 +1,14 @@
-// Function to format WPM with no decimals
+
 function formatWPM(wpm) {
     return Math.floor(parseFloat(wpm));
 }
 
-// Function to format accuracy as percentage with no decimals
+
 function formatAccuracy(accuracy) {
     return `${Math.floor(parseFloat(accuracy))}%`;
 }
 
-// Function to format date
+
 function formatDate(timestamp) {
     const date = new Date(timestamp);
     return date.toLocaleDateString('en-US', { 
@@ -19,7 +19,7 @@ function formatDate(timestamp) {
     });
 }
 
-// Function to show error message in a container
+
 function showError(container, message) {
     if (container) {
         container.innerHTML = `
@@ -30,7 +30,7 @@ function showError(container, message) {
     }
 }
 
-// Function to show loading state
+
 function showLoading(container) {
     if (container) {
         container.innerHTML = `
@@ -41,12 +41,12 @@ function showLoading(container) {
     }
 }
 
-// Function to update Monkeytype stats with retries
+
 async function updateMonkeytypeStats(retries = 3, delay = 2000) {
     const personalBestsContainer = document.querySelector('#personal-bests');
     const recentResultsContainer = document.querySelector('#recent-results');
 
-    // Show loading state
+    
     showLoading(personalBestsContainer);
     showLoading(recentResultsContainer);
 
@@ -60,7 +60,7 @@ async function updateMonkeytypeStats(retries = 3, delay = 2000) {
             
             if (!response.ok) {
                 console.error('Server error response:', data);
-                // If the cache is being populated, wait and retry
+                
                 if (response.status === 503 && attempt < retries - 1) {
                     console.log(`Waiting ${delay/1000} seconds before retry...`);
                     await new Promise(resolve => setTimeout(resolve, delay));
@@ -69,7 +69,7 @@ async function updateMonkeytypeStats(retries = 3, delay = 2000) {
                 throw new Error(data.details || data.error || 'Failed to fetch Monkeytype stats');
             }
 
-            // Update personal bests section
+            
             if (personalBestsContainer) {
                 console.log('Updating personal bests container...');
                 if (!data.personalBests || Object.keys(data.personalBests).length === 0) {
@@ -78,18 +78,18 @@ async function updateMonkeytypeStats(retries = 3, delay = 2000) {
                     return;
                 }
 
-                // Get all time-based tests (15, 30, 60, etc.)
+                
                 const timeTests = Object.entries(data.personalBests)
                     .map(([duration, tests]) => {
-                        // Get the best test for this duration
-                        const bestTest = tests[0]; // Tests are already sorted by WPM
+                        
+                        const bestTest = tests[0]; 
                         return {
                             duration: parseInt(duration),
                             ...bestTest
                         };
                     })
                     .sort((a, b) => b.wpm - a.wpm)
-                    .slice(0, 3); // Show top 3 personal bests
+                    .slice(0, 3); 
 
                 if (timeTests.length === 0) {
                     console.log('No time-based personal bests found');
@@ -117,7 +117,7 @@ async function updateMonkeytypeStats(retries = 3, delay = 2000) {
                 console.log('Personal bests updated successfully');
             }
 
-            // Update recent results section
+            
             if (recentResultsContainer) {
                 console.log('Updating recent results container...');
                 const recentResults = Array.isArray(data.recentResults) ? data.recentResults : [];
@@ -150,14 +150,14 @@ async function updateMonkeytypeStats(retries = 3, delay = 2000) {
                 console.log('Recent results updated successfully');
             }
 
-            // Successfully updated, break the retry loop
+            
             break;
 
         } catch (error) {
             console.error('Error updating Monkeytype stats:', error);
             console.error('Error stack:', error.stack);
             
-            // On last retry, show error to user
+            
             if (attempt === retries - 1) {
                 const errorMessage = error.message || 'Failed to load Monkeytype stats';
                 showError(personalBestsContainer, `Error loading personal bests: ${errorMessage}`);
@@ -170,7 +170,7 @@ async function updateMonkeytypeStats(retries = 3, delay = 2000) {
     }
 }
 
-// Update stats every 5 minutes
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Initializing Monkeytype stats...');
     updateMonkeytypeStats();
