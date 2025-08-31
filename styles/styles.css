@@ -339,10 +339,12 @@ body::-webkit-scrollbar {
     from {
         opacity: 0;
         transform: translate(-50%, 20px) scale(0.9);
+        filter: blur(2px);
     }
     to {
         opacity: 1;
         transform: translate(-50%, 20px) scale(1);
+        filter: blur(0px);
     }
 }
 
@@ -519,14 +521,14 @@ body::-webkit-scrollbar {
 }
 
 @keyframes wave {
-    0% { transform: rotate(0deg); }
-    10% { transform: rotate(14deg); }
-    20% { transform: rotate(-8deg); }
-    30% { transform: rotate(14deg); }
-    40% { transform: rotate(-4deg); }
-    50% { transform: rotate(10deg); }
-    60% { transform: rotate(0deg); }
-    100% { transform: rotate(0deg); }
+    0% { transform: rotate(0deg); filter: blur(0px); }
+    10% { transform: rotate(14deg); filter: blur(0.5px); }
+    20% { transform: rotate(-8deg); filter: blur(0.3px); }
+    30% { transform: rotate(14deg); filter: blur(0.7px); }
+    40% { transform: rotate(-4deg); filter: blur(0.4px); }
+    50% { transform: rotate(10deg); filter: blur(0.6px); }
+    60% { transform: rotate(0deg); filter: blur(0.2px); }
+    100% { transform: rotate(0deg); filter: blur(0px); }
 }
 
 .about-text {
@@ -691,16 +693,16 @@ body::-webkit-scrollbar {
 
 
 @keyframes grain {
-    0%, 100% { transform: translate(0, 0); }
-    10% { transform: translate(-5%, -5%); }
-    20% { transform: translate(-10%, 5%); }
-    30% { transform: translate(5%, -10%); }
-    40% { transform: translate(-5%, 15%); }
-    50% { transform: translate(-10%, 5%); }
-    60% { transform: translate(15%, 0); }
-    70% { transform: translate(0, 10%); }
-    80% { transform: translate(-15%, 0); }
-    90% { transform: translate(10%, 5%); }
+    0%, 100% { transform: translate(0, 0); filter: blur(0px); }
+    10% { transform: translate(-5%, -5%); filter: blur(0.5px); }
+    20% { transform: translate(-10%, 5%); filter: blur(0.3px); }
+    30% { transform: translate(5%, -10%); filter: blur(0.7px); }
+    40% { transform: translate(-5%, 15%); filter: blur(0.4px); }
+    50% { transform: translate(-10%, 5%); filter: blur(0.6px); }
+    60% { transform: translate(15%, 0); filter: blur(0.2px); }
+    70% { transform: translate(0, 10%); filter: blur(0.8px); }
+    80% { transform: translate(-15%, 0); filter: blur(0.3px); }
+    90% { transform: translate(10%, 5%); filter: blur(0.5px); }
 }
 
 .project-links {
@@ -889,9 +891,23 @@ body::-webkit-scrollbar {
 @keyframes scrollTech {
     0% {
         transform: translateX(0);
+        filter: blur(0px);
+    }
+    25% {
+        transform: translateX(calc(-25% - 0.5rem));
+        filter: blur(0.3px);
+    }
+    50% {
+        transform: translateX(calc(-50% - 1rem));
+        filter: blur(0.5px);
+    }
+    75% {
+        transform: translateX(calc(-75% - 1.5rem));
+        filter: blur(0.3px);
     }
     100% {
-        transform: translateX(calc(-50% - 1rem)); 
+        transform: translateX(calc(-50% - 1rem));
+        filter: blur(0px);
     }
 }
 
@@ -2322,11 +2338,12 @@ body::-webkit-scrollbar {
     margin-top: 1rem;
     border-radius: 0.5rem;
     text-align: center;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, filter 0.3s ease;
 }
 
 .personal-best-item:hover {
     transform: translateY(-2px);
+    filter: blur(0.2px);
 }
 
 .pb-mode {
@@ -2383,7 +2400,12 @@ body::-webkit-scrollbar {
     padding: 0.5rem;
     background: rgba(0, 0, 0, 0.04);
     border-radius: 0.5rem;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, filter 0.3s ease;
+}
+
+.result-item:hover {
+    transform: translateX(4px);
+    filter: blur(0.2px);
 }
 
 .result-main {
@@ -2722,10 +2744,12 @@ body::-webkit-scrollbar {
   from {
     opacity: 0;
     transform: translateY(30px);
+    filter: blur(3px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0px);
   }
 }
 
@@ -2773,12 +2797,13 @@ body::-webkit-scrollbar {
 .popup-gallery-image {
   width: 100%;
   border-radius: 0.5rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .popup-gallery-image:hover {
   transform: translateY(-5px);
+  filter: blur(0.4px);
 }
 
 .feature-grid {
@@ -2792,12 +2817,13 @@ body::-webkit-scrollbar {
   background: var(--box-color);
   padding: 1.5rem;
   border-radius: 0.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .feature-item:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  filter: blur(0.3px);
 }
 
 .feature-item h3 {
@@ -2840,17 +2866,16 @@ body::-webkit-scrollbar {
   box-shadow: 
     0 4px 15px rgba(231, 199, 111, 0.25),
     0 2px 8px rgba(142, 141, 190, 0.15);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
   overflow: hidden;
 }
 
-
-
 .demo-link:hover {
+  transform: translateY(-3px) scale(1.02);
   box-shadow: 
-    0 4px 15px rgba(144, 143, 192, 0.7),
-    0 2px 8px rgba(142, 141, 190, 0.5a);
-
+    0 8px 25px rgba(231, 199, 111, 0.4),
+    0 4px 15px rgba(142, 141, 190, 0.3);
+  filter: blur(0.5px);
 }
 
 
