@@ -977,8 +977,8 @@ body::-webkit-scrollbar {
 .social-links {
     display: flex;
     justify-content: flex-start;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    gap: 1.2em;
+    flex-wrap: nowrap;
 }
 
 .social-box {
@@ -1022,16 +1022,31 @@ body::-webkit-scrollbar {
     color: #d54b3d;
 }
 
-
+a
 .social-box:hover i.fa-discord {
     color: #5865F2;
 }
 
 
-.social-box:hover i.fa-twitter {
-    color: #1da1f2;
+.social-box:hover i.fa-comment-dots {
+    color: #228833;
 }
 
+
+@media screen and (max-width: 768px) {
+  .social-box {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  .social-box i {
+    font-size: 2.2rem !important;
+  }
+  
+  .social-box span {
+    font-size: 1rem !important;
+  }
+}
 
 
 .section-content-about {
@@ -1670,6 +1685,7 @@ body::-webkit-scrollbar {
     padding: 1rem;
     width: 90%;
     margin: 0 auto;
+    margin-bottom: 70rem !important;
   }
 
  
@@ -1677,12 +1693,53 @@ body::-webkit-scrollbar {
   #box-about,
   #box-lastfm,
   #box-links,
-  #cv-download {
-    grid-column: 1 / -1;
-    grid-row: auto;
-    margin-bottom: 1rem;
+  #cv-download,
+  #box-github,
+  #box-linkedin,
+  #box-techstack {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
     width: 100%;
     box-sizing: border-box;
+  }
+
+  #box-projects {
+    display: none !important;
+  }
+
+  #box-about {
+    margin-bottom: 1rem !important;
+  }
+
+  #box-links {
+    margin-bottom: 1rem !important;
+  }
+
+  #cv-download {
+    margin-bottom: 2rem !important;
+  }
+
+  #box-github {
+    margin-bottom: 1rem !important;
+  }
+  
+  #box-right-top {
+    margin-bottom: 1rem !important;
+    min-height: 250px !important;
+    overflow: visible !important;
+  }
+
+    #box-right-bottom {
+    margin-bottom: 1rem !important;
+  }
+
+
+  #box-linkedin {
+    margin-bottom: 1rem !important;
+  }
+
+  #box-techstack {
+    margin-bottom: 1rem !important;
   }
 
  
@@ -1758,14 +1815,14 @@ body::-webkit-scrollbar {
 
   #box-projects {
     order: 1 !important;
+    margin-bottom: 3rem !important;
   }
 
   .tech-stack {
     position: static !important;
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 1rem !important;
-    margin-top: 2rem !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 0.5rem !important;
     bottom: auto !important;
     left: auto !important;
     width: 100% !important;
@@ -1786,8 +1843,8 @@ body::-webkit-scrollbar {
  
   @media screen and (max-width: 480px) {
     .tech-stack {
-      grid-template-columns: repeat(4, 1fr) !important;
-      gap: 0.8rem !important;
+      grid-template-columns: repeat(5, 1fr) !important;
+      gap: 0.3rem !important;
     }
 
     .tech-stack a,
@@ -2558,7 +2615,7 @@ body::-webkit-scrollbar {
 .popup-sections {
   display: flex;
   gap: 2rem;
-  padding: 1rem 3rem 5rem 3rem; /* popup-section-padding*/
+  padding: 1rem 3rem 5rem 3rem;
 }
 
 /* Table of Contents */
@@ -3173,6 +3230,10 @@ body::-webkit-scrollbar {
   
   .monkeytype-left-column {
     gap: 1rem;
+  }
+
+  .wakatime-container {
+    grid-template-columns: 1fr;
   }
 } 
 
