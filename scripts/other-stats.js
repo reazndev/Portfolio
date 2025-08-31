@@ -1,4 +1,4 @@
-// Other stats loading functionality
+
 document.addEventListener('DOMContentLoaded', function() {
     loadGitHubStats();
     loadCodingTimeStats();

@@ -1,4 +1,3 @@
-// Language color mapping
 const languageColors = {
     JavaScript: '#f1e05a',
     TypeScript: '#3178c6',
@@ -28,60 +27,52 @@ const languageColors = {
     Other: '#333333'
 };
 
-// Function to get color for a language
 function getLanguageColor(language) {
     return languageColors[language] || languageColors.Other;
 }
 
-// Function to format time duration
 function formatTime(seconds) {
     if (!seconds || isNaN(seconds)) {
         return '0h 0m';
     }
-    // Convert seconds to hours and minutes
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.round((seconds % 3600) / 60);
     return `${hours}h ${minutes}m`;
 }
 
-// Function to format percentage
 function formatPercentage(decimal) {
     return `${(decimal * 100).toFixed(1)}%`;
 }
 
-// Function to update WakaTime stats
 async function updateWakaTimeStats() {
     try {
         const response = await fetch('/api/wakatime/stats');
         const data = await response.json();
         const stats = data.data;
 
-        // Update total time for last 7 days
         const totalTime = document.querySelector('#total-coding-time');
         if (totalTime) {
             totalTime.textContent = formatTime(stats.total_seconds);
         }
 
-        // Update all-time statsasdfasdfasdfasdfasdf
         const allTimeStats = document.querySelector('#all-time-stats');
         if (allTimeStats) {
             allTimeStats.textContent = formatTime(stats.all_time_seconds);
         }
 
-        // Calculate and update daily average based on last 7 days
         const dailyAverageSeconds = stats.total_seconds / 7;
         const dailyAverageStats = document.querySelector('#daily-average-stats');
         if (dailyAverageStats) {
             dailyAverageStats.textContent = formatTime(dailyAverageSeconds);
         }
 
-        // Update languages with hours (show all languages with more than 1 hour)
+        
         const languagesContainer = document.querySelector('#language-stats');
         if (languagesContainer && stats.languages) {
-            // Filter languages with more than 1 hour of usage
+            
             const filteredLanguages = stats.languages.filter(lang => lang.total_seconds >= 3600);
             
-            // Recalculate percentages based on filtered languages
+            
             const totalSeconds = filteredLanguages.reduce((sum, lang) => sum + lang.total_seconds, 0);
             const languagesWithNewPercentages = filteredLanguages.map(lang => ({
                 ...lang,
@@ -113,7 +104,7 @@ async function updateWakaTimeStats() {
     }
 }
 
-// Update stats every 5 minutes
+
 document.addEventListener('DOMContentLoaded', () => {
     updateWakaTimeStats();
     setInterval(updateWakaTimeStats, 5 * 60 * 1000);

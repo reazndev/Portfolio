@@ -19,7 +19,6 @@
   width: 140px;
 }
 
-/* Add the line before each nav item */
 .nav-item::before {
   content: '';
   width: 20px;
@@ -30,7 +29,6 @@
   flex-shrink: 0;
 }
 
-/* Style for active state only */
 .nav-item.active {
   color: #000;
 }
@@ -39,5 +37,3 @@
   background-color: #000;
   width: 40px;
 }
-
-/* Remove hover effects */ 
