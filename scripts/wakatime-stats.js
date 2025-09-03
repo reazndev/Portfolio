@@ -69,12 +69,13 @@ async function updateWakaTimeStats() {
         
         const languagesContainer = document.querySelector('#language-stats');
         if (languagesContainer && stats.languages) {
-            
             const filteredLanguages = stats.languages.filter(lang => lang.total_seconds >= 3600);
-            
-            
-            const totalSeconds = filteredLanguages.reduce((sum, lang) => sum + lang.total_seconds, 0);
-            const languagesWithNewPercentages = filteredLanguages.map(lang => ({
+            const topLanguages = filteredLanguages
+                .sort((a, b) => b.total_seconds - a.total_seconds)
+                .slice(0, 9);
+
+            const totalSeconds = topLanguages.reduce((sum, lang) => sum + lang.total_seconds, 0);
+            const languagesWithNewPercentages = topLanguages.map(lang => ({
                 ...lang,
                 percent: (lang.total_seconds / totalSeconds) * 100
             }));
