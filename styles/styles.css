@@ -2164,7 +2164,7 @@ body::-webkit-scrollbar {
 }
 
 .time-stat-box {
-    background: rgba(0, 0, 0, 0.02);
+    background: #E0E0E6;
     padding: 1.5rem;
     border-radius: 0.5rem;
     text-align: center;
@@ -2333,7 +2333,7 @@ body::-webkit-scrollbar {
 }
 
 .personal-best-item {
-    background: rgba(0, 0, 0, 0.02);
+    background: #E0E0E6;
     padding: 1.5rem;
     margin-top: 1rem;
     border-radius: 0.5rem;
